@@ -1,1 +1,1 @@
-# xAtom Starter Project
+# Travelshore demo project.
