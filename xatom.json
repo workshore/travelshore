@@ -1,0 +1,8 @@
+{
+  "webflowSubdomain": "travelshore",
+  "port": 5001,
+  "source": "./src/app.ts",
+  "dist": "./dist",
+  "scriptList": ["app.js"],
+  "scriptAttribute": "xa-script"
+}

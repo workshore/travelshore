@@ -1,0 +1,19 @@
+{
+  "name": "Travelshore",
+  "version": "1.0.0",
+  "description": "A workshore demo",
+  "private": false,
+  "scripts": {
+    "dev": "xatom dev",
+    "build": "xatom build"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.6",
+    "@xatom/core": "1.0.12"
+  },
+  "devDependencies": {
+    "@xatom/build-tool": "1.0.5",
+    "buffer": "^5.5.0||^6.0.0"
+  }
+}
