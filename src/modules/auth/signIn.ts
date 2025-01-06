@@ -7,7 +7,7 @@ export const signIn = async () => {
     const email = 'hari.kishore@workshore.io';
     const password = 'Test1';
 
-    const response = await fetch('https://travelshore-backend-proxy.vercel.app/api/auth/login', {
+    const response = await fetch('https://travelshore-backend-proxy.vercel.app/api', {
         method: 'POST', 
         headers: {
             "Content-Type": "application/json"
