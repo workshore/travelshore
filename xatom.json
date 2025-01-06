@@ -1,6 +1,6 @@
 {
   "webflowSubdomain": "travelshore",
-  "port": 5001,
+  "port": 43827,
   "source": "./src/app.ts",
   "dist": "./dist",
   "scriptList": ["app.js"],
