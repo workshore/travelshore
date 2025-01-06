@@ -1,7 +1,2014 @@
-!function(e,t,r,s,n){var i="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{},o="function"==typeof i[s]&&i[s],a=o.cache||{},l="undefined"!=typeof module&&"function"==typeof module.require&&module.require.bind(module);function u(t,r){if(!a[t]){if(!e[t]){var n="function"==typeof i[s]&&i[s];if(!r&&n)return n(t,!0);if(o)return o(t,!0);if(l&&"string"==typeof t)return l(t);var h=Error("Cannot find module '"+t+"'");throw h.code="MODULE_NOT_FOUND",h}d.resolve=function(r){var s=e[t][1][r];return null!=s?s:r},d.cache={};var c=a[t]=new u.Module(t);e[t][0].call(c.exports,d,c,c.exports,i)}return a[t].exports;function d(e){var t=d.resolve(e);return!1===t?{}:u(t)}}u.isParcelRequire=!0,u.Module=function(e){this.id=e,this.bundle=u,this.exports={}},u.modules=e,u.cache=a,u.parent=o,u.register=function(t,r){e[t]=[function(e,t){t.exports=r},{}]},Object.defineProperty(u,"root",{get:function(){return i[s]}}),i[s]=u;for(var h=0;h<t.length;h++)u(t[h]);if(r){var c=u(r);"object"==typeof exports&&"undefined"!=typeof module?module.exports=c:"function"==typeof define&&define.amd&&define(function(){return c})}}({"1cfbo":[function(e,t,r,s){e("4cb3b076bcb65f61").register(e("fc66331b2fae1b06").getBundleURL("5pDNv"),JSON.parse('["5pDNv","app.js","bDAMX","browser.b1a8cbb2.js","gDIGd","landing.3b55464c.js","hNOg1","signIn.0679bf9b.js","8JkDf","signUp.1769a33d.js","4o371","verify.d5413700.js","ahPzY","tripDesigner.c77896fe.js"]'))},{"4cb3b076bcb65f61":"gSiLw",fc66331b2fae1b06:"a2ypy"}],gSiLw:[function(e,t,r,s){var n=new Map;t.exports.register=function(e,t){for(var r=0;r<t.length-1;r+=2)n.set(t[r],{baseUrl:e,path:t[r+1]})},t.exports.resolve=function(e){var t=n.get(e);if(null==t)throw Error("Could not resolve bundle with id "+e);return new URL(t.path,t.baseUrl).toString()}},{}],a2ypy:[function(e,t,r,s){var n={};function i(e){return(""+e).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/,"$1")+"/"}r.getBundleURL=function(e){var t=n[e];return t||(t=function(){try{throw Error()}catch(t){var e=(""+t.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);if(e)return i(e[2])}return"/"}(),n[e]=t),t},r.getBaseURL=i,r.getOrigin=function(e){var t=(""+e).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);if(!t)throw Error("Origin not found");return t[0]}},{}],"83hJF":[function(e,t,r,s){var n=e("@xatom/core"),i=e("./modules/supabase"),o=e("./routes");window.WFDebug=!0,(0,n.onReady)(()=>{(0,i.initSupabase)(()=>{(0,o.app)()})})},{"@xatom/core":"5eqAK","./modules/supabase":"gSvrO","./routes":"2uPfR"}],"5eqAK":[function(e,t,r,s){var n=e("116fc168c31b637d");function i(e,t){return Object.keys(t).forEach(function(r){"default"===r||"__esModule"===r||e.hasOwnProperty(r)||Object.defineProperty(e,r,{enumerable:!0,get:function(){return t[r]}})}),e}function o(e,t,r,s){Object.defineProperty(e,t,{get:r,set:s,enumerable:!0,configurable:!0})}var a={};o(a,"WFAuth",()=>l);class l{constructor(e={}){this.config=e}isLoggedIn(){return!!this.user}getRole(){return this.role}getUser(){return this.user}getConfig(){return this.config}logout(){this.user=null,this.role=null,this.config=null}setUser(e){this.user=e}setRole(e){this.role=e}setConfig(e){this.config=e}}var u={};o(u,"WFAuthMiddleware",()=>h);class h{constructor(e){this.auth=e}allowTo(e){return this.auth.getRole()===e}disallowedTo(e){return this.auth.getRole()!==e}getAuth(){return this.auth}}var c={};o(c,"WFComponent",()=>U);var d={},f={};o(f,"debug",()=>p);let p=(...e)=>{window.WFDebug&&console.log(...e)};var g={};function m(e,t){return document.evaluate(e,t,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue}o(g,"getElementByXPath",()=>m);var y={};o(y,"getRouteQueryParams",()=>b);let b=()=>{let e={};return new URLSearchParams(location.search).forEach((t,r)=>{e[r]=t}),e};var v={};function w(e,t){let r=[];for(;e&&e!==t&&e.nodeType===Node.ELEMENT_NODE;){let t=e.nodeName.toLowerCase();e.hasAttribute("id")?t+='[@id="'+e.getAttribute("id")+'"]':e.hasAttribute("class")&&(t+='[@class="'+e.getAttribute("class")+'"]'),r.unshift(t),e=e.parentNode}return r.join("/")}o(v,"getXPathForChangedChild",()=>w);var _={};o(_,"navigate",()=>E);let E=e=>{"string"==typeof e?window.location.assign(e):"object"==typeof e&&"replace"===e.type?window.location.replace(e.to):"object"==typeof e&&"reload"===e.type&&window.location.reload()};var j={};function A(e,t={}){let r=function(e){let t=[],r=0;for(;r<e.length;){let s=e[r];if("*"===s||"+"===s||"?"===s){t.push({type:"MODIFIER",index:r,value:e[r++]});continue}if("\\"===s){t.push({type:"ESCAPED_CHAR",index:r++,value:e[r++]});continue}if("{"===s){t.push({type:"OPEN",index:r,value:e[r++]});continue}if("}"===s){t.push({type:"CLOSE",index:r,value:e[r++]});continue}if(":"===s){let s="",n=r+1;for(;n<e.length;){let t=e.charCodeAt(n);if(t>=48&&t<=57||t>=65&&t<=90||t>=97&&t<=122||95===t){s+=e[n++];continue}break}if(!s)throw TypeError(`Missing parameter name at ${r}`);t.push({type:"NAME",index:r,value:s}),r=n;continue}if("("===s){let s=1,n="",i=r+1;if("?"===e[i])throw TypeError(`Pattern cannot start with "?" at ${i}`);for(;i<e.length;){if("\\"===e[i]){n+=e[i++]+e[i++];continue}if(")"===e[i]){if(0==--s){i++;break}}else if("("===e[i]&&(s++,"?"!==e[i+1]))throw TypeError(`Capturing groups are not allowed at ${i}`);n+=e[i++]}if(s)throw TypeError(`Unbalanced pattern at ${r}`);if(!n)throw TypeError(`Missing pattern at ${r}`);t.push({type:"PATTERN",index:r,value:n}),r=i;continue}t.push({type:"CHAR",index:r,value:e[r++]})}return t.push({type:"END",index:r,value:""}),t}(e),{prefixes:s="./"}=t,n=`[^${C(t.delimiter||"/#?")}]+?`,i=[],o=0,a=0,l="",u=e=>{if(a<r.length&&r[a].type===e)return r[a++].value},h=e=>{let t=u(e);if(void 0!==t)return t;let{type:s,index:n}=r[a];throw TypeError(`Unexpected ${s} at ${n}, expected ${e}`)},c=()=>{let e,t="";for(;e=u("CHAR")||u("ESCAPED_CHAR");)t+=e;return t};for(;a<r.length;){let e=u("CHAR"),t=u("NAME"),r=u("PATTERN");if(t||r){let a=e||"";-1===s.indexOf(a)&&(l+=a,a=""),l&&(i.push(l),l=""),i.push({name:t||o++,prefix:a,suffix:"",pattern:r||n,modifier:u("MODIFIER")||""});continue}let a=e||u("ESCAPED_CHAR");if(a){l+=a;continue}if(l&&(i.push(l),l=""),u("OPEN")){let e=c(),t=u("NAME")||"",r=u("PATTERN")||"",s=c();h("CLOSE"),i.push({name:t||(r?o++:""),pattern:t&&!r?n:r,prefix:e,suffix:s,modifier:u("MODIFIER")||""});continue}h("END")}return i}function S(e,t){return x(A(e,t),t)}function x(e,t={}){let r=R(t),{encode:s=e=>e,validate:n=!0}=t,i=e.map(e=>{if("object"==typeof e)return RegExp(`^(?:${e.pattern})$`,r)});return t=>{let r="";for(let o=0;o<e.length;o++){let a=e[o];if("string"==typeof a){r+=a;continue}let l=t?t[a.name]:void 0,u="?"===a.modifier||"*"===a.modifier,h="*"===a.modifier||"+"===a.modifier;if(Array.isArray(l)){if(!h)throw TypeError(`Expected "${a.name}" to not repeat, but got an array`);if(0===l.length){if(u)continue;throw TypeError(`Expected "${a.name}" to not be empty`)}for(let e=0;e<l.length;e++){let t=s(l[e],a);if(n&&!i[o].test(t))throw TypeError(`Expected all "${a.name}" to match "${a.pattern}", but got "${t}"`);r+=a.prefix+t+a.suffix}continue}if("string"==typeof l||"number"==typeof l){let e=s(String(l),a);if(n&&!i[o].test(e))throw TypeError(`Expected "${a.name}" to match "${a.pattern}", but got "${e}"`);r+=a.prefix+e+a.suffix;continue}if(u)continue;let c=h?"an array":"a string";throw TypeError(`Expected "${a.name}" to be ${c}`)}return r}}function T(e,t){let r=[];return k(O(e,r,t),r,t)}function k(e,t,r={}){let{decode:s=e=>e}=r;return function(r){let n=e.exec(r);if(!n)return!1;let{0:i,index:o}=n,a=Object.create(null);for(let e=1;e<n.length;e++){if(void 0===n[e])continue;let r=t[e-1];"*"===r.modifier||"+"===r.modifier?a[r.name]=n[e].split(r.prefix+r.suffix).map(e=>s(e,r)):a[r.name]=s(n[e],r)}return{path:i,index:o,params:a}}}function C(e){return e.replace(/([.+*?=^!:${}()[\]|/\\])/g,"\\$1")}function R(e){return e&&e.sensitive?"":"i"}function I(e,t,r={}){let{strict:s=!1,start:n=!0,end:i=!0,encode:o=e=>e,delimiter:a="/#?",endsWith:l=""}=r,u=`[${C(l)}]|$`,h=`[${C(a)}]`,c=n?"^":"";for(let r of e)if("string"==typeof r)c+=C(o(r));else{let e=C(o(r.prefix)),s=C(o(r.suffix));if(r.pattern){if(t&&t.push(r),e||s){if("+"===r.modifier||"*"===r.modifier){let t="*"===r.modifier?"?":"";c+=`(?:${e}((?:${r.pattern})(?:${s}${e}(?:${r.pattern}))*)${s})${t}`}else c+=`(?:${e}(${r.pattern})${s})${r.modifier}`}else"+"===r.modifier||"*"===r.modifier?c+=`((?:${r.pattern})${r.modifier})`:c+=`(${r.pattern})${r.modifier}`}else c+=`(?:${e}${s})${r.modifier}`}if(i)s||(c+=`${h}?`),c+=r.endsWith?`(?=${u})`:"$";else{let t=e[e.length-1],r="string"==typeof t?h.indexOf(t[t.length-1])>-1:void 0===t;s||(c+=`(?:${h}(?=${u}))?`),r||(c+=`(?=${h}|${u})`)}return new RegExp(c,R(r))}function O(e,t,r){return e instanceof RegExp?function(e,t){if(!t)return e;let r=/\((?:\?<(.*?)>)?(?!\?)/g,s=0,n=r.exec(e.source);for(;n;)t.push({name:n[1]||s++,prefix:"",suffix:"",modifier:"",pattern:""}),n=r.exec(e.source);return e}(e,t):Array.isArray(e)?function(e,t,r){let s=e.map(e=>O(e,t,r).source);return RegExp(`(?:${s.join("|")})`,R(r))}(e,t,r):I(A(e,r),t,r)}o(j,"parse",()=>A),o(j,"compile",()=>S),o(j,"tokensToFunction",()=>x),o(j,"match",()=>T),o(j,"pathToRegexp",()=>O),o(j,"regexpToFunction",()=>k),o(j,"tokensToRegexp",()=>I),o(j,"routeMatch",()=>P);let P=(e,t,r={},s={})=>(function(e={}){return function(t){var r=[],s=O(t,r,e);return function(e,t){var n,i,o=s.exec(e);if(!o)return!1;t=t||{};for(var a=0;a<r.length;a++)n=r[a],(i=o[a+1])&&(t[n.name]=function(e){try{return decodeURIComponent(e)}catch(t){throw Error('failed to decode param "'+e+'"')}}(i),n.repeat&&(t[n.name]=t[n.name].split(n.delimiter)));return t}}})(s)(e)(t,r);var L={};o(L,"createComponent",()=>$);let $=e=>new U(document.createElement(e));i(d,f),i(d,g),i(d,y),i(d,v),i(d,_),i(d,j),i(d,L);class U{constructor(e){if("string"==typeof e){let t=document.querySelector(e);if(t)this.element=t,this.updateClone();else throw Error(`Could not find ${e}`)}else if("object"==typeof e&&e instanceof HTMLElement)this.element=e,this.updateClone();else if("object"==typeof e&&e instanceof SVGSVGElement)this.element=e,this.updateClone();else if(e instanceof U)this.element=e.getElement(),this.updateClone();else throw Error(`Could not find ${e}`)}updateClone(){this.cloneEl=this.element.cloneNode(!0)}getElement(){return this.element}updateTextViaAttrVar(e){let t={},r=(e,r)=>{e in t||(t[e]=[]),t[e].push(r)};this.hasAttribute("xa-var")&&r(this.getAttribute("xa-var"),this.getElement()),this.getChildAsComponents("[xa-var]").forEach(e=>{r(e.getAttribute("xa-var"),e.getElement())}),Object.keys(e).forEach(r=>{r in t&&t[r].forEach(t=>{t.textContent=e[r].toString()})})}updateTextVariable(e){if(1===this.cloneEl.childNodes.length&&this.cloneEl.firstChild instanceof Text)Object.keys(e).forEach(t=>{this.cloneEl.textContent.includes(`{{${t}}}`)&&(this.element.textContent=this.cloneEl.textContent.replace(`{{${t}}}`,e[t].toString()))});else{let t=Array.from(this.cloneEl.querySelectorAll("*")).map(e=>Array.from(e.childNodes).filter(e=>e instanceof Text&&e.textContent.trim().length>0)).flat();Object.keys(e).forEach(r=>{t.filter(e=>e.textContent.includes(`{{${r}}}`)).forEach(t=>{let s=w(t.parentElement,this.cloneEl),n=m(s,this.element);n?n.textContent=t.textContent.replace(`{{${r}}}`,e[r].toString()):console.log(t,n,"not found",s,t.parentElement,this)})})}}setAttribute(e,t){this.element.setAttribute(e,t)}removeAttribute(e){this.element.removeAttribute(e)}getAttribute(e){return this.element.getAttribute(e)}hasAttribute(e){return this.element.hasAttribute(e)}getChildAsComponents(e){return Array.from(this.element.querySelectorAll(e)).map(e=>new U(e))}getChildAsComponent(e){return new U(this.element.querySelector(e))}getManyChildAsComponents(e){let t={};return Object.keys(e).forEach(r=>{t[r]=new U(this.element.querySelector(e[r]))}),t}getCssClass(){return Array.from(this.element.classList)}addCssClass(e){this.element.classList.add(e),this.cloneEl.classList.add(e)}removeCssClass(e){this.element.classList.remove(e),this.cloneEl.classList.remove(e)}replaceCssClass(e,t){this.element.classList.replace(e,t),this.cloneEl.classList.replace(e,t)}toggleCssClass(e){this.element.classList.toggle(e),this.cloneEl.classList.toggle(e)}on(e,t,r){this.element.addEventListener(e,t,r)}off(e,t,r){this.element.removeEventListener(e,t,r)}setText(e){this.getElement().innerText=e.toString()}getText(){return this.getElement().innerText}setTextContent(e){this.getElement().textContent=e}getTextContent(){return this.getElement().textContent}setHTML(e){this.getElement().innerHTML=e}getHTML(){return this.getElement().innerHTML}getCloneAsComponent(){return new U(this.cloneEl.cloneNode(!0))}setStyle(e={}){Object.keys(e).forEach(t=>{this.element.style[t]=e[t]})}getStyle(){return window.getComputedStyle(this.element)}appendChild(e){this.element.appendChild(new U(e).getElement())}remove(){this.element.remove()}removeAllChildren(){this.element.replaceChildren()}}var F={};o(F,"WFDynamicList",()=>N);class N extends U{showLoadingState=!1;constructor(e,t){super(e),"string"==typeof t.rowSelector?this.rowComponent=this.getChildAsComponent(t.rowSelector):this.rowComponent=new U(t.rowSelector),this.rowComponent.remove(),t.loaderSelector&&("string"==typeof t.loaderSelector?this.loaderComponent=this.getChildAsComponent(t.loaderSelector):this.loaderComponent=new U(t.loaderSelector),this.loaderComponent.remove()),t.emptySelector&&("string"==typeof t.emptySelector?this.emptyComponent=this.getChildAsComponent(t.emptySelector):this.emptyComponent=new U(t.emptySelector),this.emptyComponent.remove())}rowRenderer(e){this.rowRendererCB=e}emptyRenderer(e){this.emptyRendererCB=e}loaderRenderer(e){this.loaderRendererCB=e}setData(e){this.data=e,this.render()}render(){if(!this.rowRendererCB)throw Error("Unable to find renderer");this.hideLoading(),this.removeAllChildren(),0===this.data.length&&this.emptyComponent&&this.showEmpty(),this.data.map((e,t,r)=>this.rowRendererCB({index:t,rowData:e,rowElement:this.rowComponent.getCloneAsComponent(),data:r})).filter(e=>e).forEach(e=>{this.appendChild(e)}),this.showLoadingState&&this.showLoading()}changeLoadingStatus(e){this.showLoadingState=e,e?this.showLoading():this.hideLoading()}showLoading(){this.hideLoading(),this.loaderComponent&&(this.loaderRendererCB?this.lastLoadingComponent=this.loaderRendererCB(this.loaderComponent.getCloneAsComponent()):this.lastLoadingComponent=this.loaderComponent.getCloneAsComponent(),this.appendChild(this.lastLoadingComponent))}showEmpty(){this.hideEmpty(),this.emptyRendererCB?this.lastEmptyComponent=this.emptyRendererCB(this.emptyComponent.getCloneAsComponent()):this.lastEmptyComponent=this.emptyComponent.getCloneAsComponent(),this.appendChild(this.lastEmptyComponent)}hideLoading(){this.lastLoadingComponent&&this.lastLoadingComponent.remove()}hideEmpty(){this.lastEmptyComponent&&this.lastEmptyComponent.remove()}forceRender(){this.render()}}var D={};o(D,"WFFormComponent",()=>B);class B extends U{defaultFormDisplayStyle="";constructor(e){super(e),this.formComponent=this.getChildAsComponents("form")[0],this.defaultFormDisplayStyle=window.getComputedStyle(this.formComponent.getElement()).display}getFormData(){let e={};return new FormData(this.formComponent.getElement()).forEach((t,r)=>{e[r]?e[r]=[e[r],t].flat():e[r]=t}),e}setFromData(e){Object.keys(e).forEach(t=>{this.getFormComponent().getElement().querySelector(`[name="${t}"]`).value=e[t]})}onFormSubmit(e){this.formComponent.getElement().onsubmit=t=>{t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),e(this.getFormData(),t)}}submitWebflowForm(){let e=Object.keys(this.formComponent.getElement()).filter(e=>e.includes("jQuery")).map(e=>this.formComponent.getElement()[e]).filter(e=>"object"==typeof e&&".wForm"in e).map(e=>e[".wForm"]).reduce(e=>e);e&&e.handler?e.handler(e):e&&e.action&&this.formComponent.getElement().submit()}getFormComponent(){return this.formComponent}getSuccessComponent(){return this.getChildAsComponents(".w-form-done")[0]}getErrorComponent(){return this.getChildAsComponents(".w-form-fail")[0]}showSuccessState(){this.formComponent.getElement().style.display="none",this.getErrorComponent().getElement().style.display="none",this.getSuccessComponent().getElement().style.display="block"}showErrorState(){this.getSuccessComponent().getElement().style.display="none",this.getErrorComponent().getElement().style.display="block",this.formComponent.getElement().style.display=this.defaultFormDisplayStyle}showForm(){this.getErrorComponent().getElement().style.display="none",this.getSuccessComponent().getElement().style.display="none",this.formComponent.getElement().style.display=this.defaultFormDisplayStyle}disableForm(){Array.from(this.formComponent.getElement().querySelectorAll("input, select, option, textarea, button")).forEach(e=>{e.setAttribute("disabled","disabled")})}enableForm(){Array.from(this.formComponent.getElement().querySelectorAll("input, select, option, textarea, button")).forEach(e=>{e.removeAttribute("disabled")})}getSubmitButton(){return this.formComponent.getChildAsComponents('[type="submit"]')[0]}resetForm(){this.formComponent.getElement().reset()}updateSubmitButtonText(e){this.getSubmitButton().setAttribute("value",e)}}var M={};o(M,"WFRoute",()=>H);class H{middlewareAllowExecutionOnFail=!1;constructor(e){this.route=e}withMiddleware(e,t,r="allow",s={}){return this.middleware=e,this.middlewareRole=t,this.middlewareType=r,"allowExecutionOnFail"in s&&(this.middlewareAllowExecutionOnFail=!0===s.allowExecutionOnFail),"onError"in s&&(this.middlewareErrorFn=s.onError),this}validateRole(){return"allow"===this.middlewareType?this.middleware.allowTo(this.middlewareRole):this.middleware.disallowedTo(this.middlewareRole)}execute(e){let t=P(this.route,location.pathname);if(t){if(p("matched fn start",this.route,location.pathname),this.middleware){let r=this.validateRole();p("checking access role",this.route,this.middlewareRole,this.middlewareType,"canAccess",r,this.middlewareAllowExecutionOnFail),r||this.middlewareAllowExecutionOnFail?e({...t,...b()},r,this.middleware.getAuth()):this.middlewareErrorFn&&this.middlewareErrorFn()}else e({...t,...b()},!0);p("matched fn end",this.route,location.pathname)}else p("did not match",this.route,location.pathname);return this}}var q={};o(q,"onReady",()=>z);let z=e=>{window.Webflow||=[],window.Webflow.push(()=>{e()})};var G={};o(G,"WFInvisibleForm",()=>J);class J{loading=!1;loadingListener=new Map;successListener=new Map;errorListener=new Map;constructor(e=""){this.fromName=e,this.siteId=document.querySelector("html").getAttribute("data-wf-site")||""}setFormName(e){this.fromName=e}getFormName(){return this.fromName}setFormData(e){this.data=e}getFormData(){return this.data}isLoading(){return this.loading}onLoadingChange(e){let t=(0,n.v4)();return this.loadingListener.set(t,e),()=>{this.loadingListener.delete(t)}}onSuccess(e){let t=(0,n.v4)();return this.successListener.set(t,e),()=>{this.successListener.delete(t)}}onError(e){let t=(0,n.v4)();return this.errorListener.set(t,e),()=>{this.errorListener.delete(t)}}updateLoadingState(e){this.loading=e,this.loadingListener.forEach(e=>{e(this.loading)})}formSubmitted(){this.successListener.forEach(e=>{e()})}formFailed(){this.errorListener.forEach(e=>{e()})}submitForm(){let e=e=>{this.updateLoadingState(e)},t=()=>{this.formFailed()},r=()=>{this.formSubmitted()};e(!0),window.jQuery.ajax({url:`https://webflow.com/api/v1/form/${this.siteId}`,type:"POST",data:{name:this.fromName||"Untitled Form",source:location.href,test:!1,fields:this.data,dolphin:!1},dataType:"json",crossDomain:!0}).done(function(s){e(!1),s&&200===s.code?r():t()}).fail(function(){e(!1),t()})}}i(t.exports,a),i(t.exports,u),i(t.exports,c),i(t.exports,F),i(t.exports,D),i(t.exports,M),i(t.exports,d),i(t.exports,q),i(t.exports,G)},{"116fc168c31b637d":"hIyym"}],hIyym:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"v1",()=>o.default),n.export(r,"v3",()=>l.default),n.export(r,"v4",()=>h.default),n.export(r,"v5",()=>d.default),n.export(r,"NIL",()=>p.default),n.export(r,"version",()=>m.default),n.export(r,"validate",()=>b.default),n.export(r,"stringify",()=>w.default),n.export(r,"parse",()=>E.default);var i=e("./v1.js"),o=n.interopDefault(i),a=e("./v3.js"),l=n.interopDefault(a),u=e("./v4.js"),h=n.interopDefault(u),c=e("./v5.js"),d=n.interopDefault(c),f=e("./nil.js"),p=n.interopDefault(f),g=e("./version.js"),m=n.interopDefault(g),y=e("./validate.js"),b=n.interopDefault(y),v=e("./stringify.js"),w=n.interopDefault(v),_=e("./parse.js"),E=n.interopDefault(_)},{"./v1.js":"iQ6UN","./v3.js":"fW2F8","./v4.js":"h4z53","./v5.js":"jMNKD","./nil.js":"5Bod7","./version.js":"dnsqZ","./validate.js":"eG5s0","./stringify.js":"doA1n","./parse.js":"j2gue","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],iQ6UN:[function(e,t,r,s){let n,i;var o=e("@parcel/transformer-js/src/esmodule-helpers.js");o.defineInteropFlag(r);var a=e("./rng.js"),l=o.interopDefault(a),u=e("./stringify.js");let h=0,c=0;r.default=function(e,t,r){let s=t&&r||0,o=t||Array(16),a=(e=e||{}).node||n,d=void 0!==e.clockseq?e.clockseq:i;if(null==a||null==d){let t=e.random||(e.rng||(0,l.default))();null==a&&(a=n=[1|t[0],t[1],t[2],t[3],t[4],t[5]]),null==d&&(d=i=(t[6]<<8|t[7])&16383)}let f=void 0!==e.msecs?e.msecs:Date.now(),p=void 0!==e.nsecs?e.nsecs:c+1,g=f-h+(p-c)/1e4;if(g<0&&void 0===e.clockseq&&(d=d+1&16383),(g<0||f>h)&&void 0===e.nsecs&&(p=0),p>=1e4)throw Error("uuid.v1(): Can't create more than 10M uuids/sec");h=f,c=p,i=d;let m=((0xfffffff&(f+=122192928e5))*1e4+p)%0x100000000;o[s++]=m>>>24&255,o[s++]=m>>>16&255,o[s++]=m>>>8&255,o[s++]=255&m;let y=f/0x100000000*1e4&0xfffffff;o[s++]=y>>>8&255,o[s++]=255&y,o[s++]=y>>>24&15|16,o[s++]=y>>>16&255,o[s++]=d>>>8|128,o[s++]=255&d;for(let e=0;e<6;++e)o[s+e]=a[e];return t||(0,u.unsafeStringify)(o)}},{"./rng.js":"fo5Bv","./stringify.js":"doA1n","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],fo5Bv:[function(e,t,r,s){let n;var i=e("@parcel/transformer-js/src/esmodule-helpers.js");i.defineInteropFlag(r),i.export(r,"default",()=>a);let o=new Uint8Array(16);function a(){if(!n&&!(n="undefined"!=typeof crypto&&crypto.getRandomValues&&crypto.getRandomValues.bind(crypto)))throw Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");return n(o)}},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],jiucr:[function(e,t,r,s){r.interopDefault=function(e){return e&&e.__esModule?e:{default:e}},r.defineInteropFlag=function(e){Object.defineProperty(e,"__esModule",{value:!0})},r.exportAll=function(e,t){return Object.keys(e).forEach(function(r){"default"===r||"__esModule"===r||Object.prototype.hasOwnProperty.call(t,r)||Object.defineProperty(t,r,{enumerable:!0,get:function(){return e[r]}})}),t},r.export=function(e,t,r){Object.defineProperty(e,t,{enumerable:!0,get:r})}},{}],doA1n:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"unsafeStringify",()=>l);var i=e("./validate.js"),o=n.interopDefault(i);let a=[];for(let e=0;e<256;++e)a.push((e+256).toString(16).slice(1));function l(e,t=0){return a[e[t+0]]+a[e[t+1]]+a[e[t+2]]+a[e[t+3]]+"-"+a[e[t+4]]+a[e[t+5]]+"-"+a[e[t+6]]+a[e[t+7]]+"-"+a[e[t+8]]+a[e[t+9]]+"-"+a[e[t+10]]+a[e[t+11]]+a[e[t+12]]+a[e[t+13]]+a[e[t+14]]+a[e[t+15]]}r.default=function(e,t=0){let r=l(e,t);if(!(0,o.default)(r))throw TypeError("Stringified UUID is invalid");return r}},{"./validate.js":"eG5s0","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],eG5s0:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r);var i=e("./regex.js"),o=n.interopDefault(i);r.default=function(e){return"string"==typeof e&&(0,o.default).test(e)}},{"./regex.js":"2jBiL","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"2jBiL":[function(e,t,r,s){e("@parcel/transformer-js/src/esmodule-helpers.js").defineInteropFlag(r),r.default=/^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],fW2F8:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r);var i=e("./v35.js"),o=n.interopDefault(i),a=e("./md5.js"),l=n.interopDefault(a);let u=(0,o.default)("v3",48,l.default);r.default=u},{"./v35.js":"6feLd","./md5.js":"gsSTl","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"6feLd":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"DNS",()=>l),n.export(r,"URL",()=>u),n.export(r,"default",()=>h);var i=e("./stringify.js"),o=e("./parse.js"),a=n.interopDefault(o);let l="6ba7b810-9dad-11d1-80b4-00c04fd430c8",u="6ba7b811-9dad-11d1-80b4-00c04fd430c8";function h(e,t,r){function s(e,s,n,o){var l;if("string"==typeof e&&(e=function(e){e=unescape(encodeURIComponent(e));let t=[];for(let r=0;r<e.length;++r)t.push(e.charCodeAt(r));return t}(e)),"string"==typeof s&&(s=(0,a.default)(s)),(null===(l=s)||void 0===l?void 0:l.length)!==16)throw TypeError("Namespace must be array-like (16 iterable integer values, 0-255)");let u=new Uint8Array(16+e.length);if(u.set(s),u.set(e,s.length),(u=r(u))[6]=15&u[6]|t,u[8]=63&u[8]|128,n){o=o||0;for(let e=0;e<16;++e)n[o+e]=u[e];return n}return(0,i.unsafeStringify)(u)}try{s.name=e}catch(e){}return s.DNS=l,s.URL=u,s}},{"./stringify.js":"doA1n","./parse.js":"j2gue","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],j2gue:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r);var i=e("./validate.js"),o=n.interopDefault(i);r.default=function(e){let t;if(!(0,o.default)(e))throw TypeError("Invalid UUID");let r=new Uint8Array(16);return r[0]=(t=parseInt(e.slice(0,8),16))>>>24,r[1]=t>>>16&255,r[2]=t>>>8&255,r[3]=255&t,r[4]=(t=parseInt(e.slice(9,13),16))>>>8,r[5]=255&t,r[6]=(t=parseInt(e.slice(14,18),16))>>>8,r[7]=255&t,r[8]=(t=parseInt(e.slice(19,23),16))>>>8,r[9]=255&t,r[10]=(t=parseInt(e.slice(24,36),16))/0x10000000000&255,r[11]=t/0x100000000&255,r[12]=t>>>24&255,r[13]=t>>>16&255,r[14]=t>>>8&255,r[15]=255&t,r}},{"./validate.js":"eG5s0","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],gsSTl:[function(e,t,r,s){function n(e){return(e+64>>>9<<4)+14+1}function i(e,t){let r=(65535&e)+(65535&t);return(e>>16)+(t>>16)+(r>>16)<<16|65535&r}function o(e,t,r,s,n,o){var a;return i((a=i(i(t,e),i(s,o)))<<n|a>>>32-n,r)}function a(e,t,r,s,n,i,a){return o(t&r|~t&s,e,t,n,i,a)}function l(e,t,r,s,n,i,a){return o(t&s|r&~s,e,t,n,i,a)}function u(e,t,r,s,n,i,a){return o(t^r^s,e,t,n,i,a)}function h(e,t,r,s,n,i,a){return o(r^(t|~s),e,t,n,i,a)}e("@parcel/transformer-js/src/esmodule-helpers.js").defineInteropFlag(r),r.default=function(e){if("string"==typeof e){let t=unescape(encodeURIComponent(e));e=new Uint8Array(t.length);for(let r=0;r<t.length;++r)e[r]=t.charCodeAt(r)}return function(e){let t=[],r=32*e.length,s="0123456789abcdef";for(let n=0;n<r;n+=8){let r=e[n>>5]>>>n%32&255,i=parseInt(s.charAt(r>>>4&15)+s.charAt(15&r),16);t.push(i)}return t}(function(e,t){e[t>>5]|=128<<t%32,e[n(t)-1]=t;let r=0x67452301,s=-0x10325477,o=-0x67452302,c=0x10325476;for(let t=0;t<e.length;t+=16){let n=r,d=s,f=o,p=c;r=a(r,s,o,c,e[t],7,-0x28955b88),c=a(c,r,s,o,e[t+1],12,-0x173848aa),o=a(o,c,r,s,e[t+2],17,0x242070db),s=a(s,o,c,r,e[t+3],22,-0x3e423112),r=a(r,s,o,c,e[t+4],7,-0xa83f051),c=a(c,r,s,o,e[t+5],12,0x4787c62a),o=a(o,c,r,s,e[t+6],17,-0x57cfb9ed),s=a(s,o,c,r,e[t+7],22,-0x2b96aff),r=a(r,s,o,c,e[t+8],7,0x698098d8),c=a(c,r,s,o,e[t+9],12,-0x74bb0851),o=a(o,c,r,s,e[t+10],17,-42063),s=a(s,o,c,r,e[t+11],22,-0x76a32842),r=a(r,s,o,c,e[t+12],7,0x6b901122),c=a(c,r,s,o,e[t+13],12,-0x2678e6d),o=a(o,c,r,s,e[t+14],17,-0x5986bc72),s=a(s,o,c,r,e[t+15],22,0x49b40821),r=l(r,s,o,c,e[t+1],5,-0x9e1da9e),c=l(c,r,s,o,e[t+6],9,-0x3fbf4cc0),o=l(o,c,r,s,e[t+11],14,0x265e5a51),s=l(s,o,c,r,e[t],20,-0x16493856),r=l(r,s,o,c,e[t+5],5,-0x29d0efa3),c=l(c,r,s,o,e[t+10],9,0x2441453),o=l(o,c,r,s,e[t+15],14,-0x275e197f),s=l(s,o,c,r,e[t+4],20,-0x182c0438),r=l(r,s,o,c,e[t+9],5,0x21e1cde6),c=l(c,r,s,o,e[t+14],9,-0x3cc8f82a),o=l(o,c,r,s,e[t+3],14,-0xb2af279),s=l(s,o,c,r,e[t+8],20,0x455a14ed),r=l(r,s,o,c,e[t+13],5,-0x561c16fb),c=l(c,r,s,o,e[t+2],9,-0x3105c08),o=l(o,c,r,s,e[t+7],14,0x676f02d9),s=l(s,o,c,r,e[t+12],20,-0x72d5b376),r=u(r,s,o,c,e[t+5],4,-378558),c=u(c,r,s,o,e[t+8],11,-0x788e097f),o=u(o,c,r,s,e[t+11],16,0x6d9d6122),s=u(s,o,c,r,e[t+14],23,-0x21ac7f4),r=u(r,s,o,c,e[t+1],4,-0x5b4115bc),c=u(c,r,s,o,e[t+4],11,0x4bdecfa9),o=u(o,c,r,s,e[t+7],16,-0x944b4a0),s=u(s,o,c,r,e[t+10],23,-0x41404390),r=u(r,s,o,c,e[t+13],4,0x289b7ec6),c=u(c,r,s,o,e[t],11,-0x155ed806),o=u(o,c,r,s,e[t+3],16,-0x2b10cf7b),s=u(s,o,c,r,e[t+6],23,0x4881d05),r=u(r,s,o,c,e[t+9],4,-0x262b2fc7),c=u(c,r,s,o,e[t+12],11,-0x1924661b),o=u(o,c,r,s,e[t+15],16,0x1fa27cf8),s=u(s,o,c,r,e[t+2],23,-0x3b53a99b),r=h(r,s,o,c,e[t],6,-0xbd6ddbc),c=h(c,r,s,o,e[t+7],10,0x432aff97),o=h(o,c,r,s,e[t+14],15,-0x546bdc59),s=h(s,o,c,r,e[t+5],21,-0x36c5fc7),r=h(r,s,o,c,e[t+12],6,0x655b59c3),c=h(c,r,s,o,e[t+3],10,-0x70f3336e),o=h(o,c,r,s,e[t+10],15,-1051523),s=h(s,o,c,r,e[t+1],21,-0x7a7ba22f),r=h(r,s,o,c,e[t+8],6,0x6fa87e4f),c=h(c,r,s,o,e[t+15],10,-0x1d31920),o=h(o,c,r,s,e[t+6],15,-0x5cfebcec),s=h(s,o,c,r,e[t+13],21,0x4e0811a1),r=h(r,s,o,c,e[t+4],6,-0x8ac817e),c=h(c,r,s,o,e[t+11],10,-0x42c50dcb),o=h(o,c,r,s,e[t+2],15,0x2ad7d2bb),s=h(s,o,c,r,e[t+9],21,-0x14792c6f),r=i(r,n),s=i(s,d),o=i(o,f),c=i(c,p)}return[r,s,o,c]}(function(e){if(0===e.length)return[];let t=8*e.length,r=new Uint32Array(n(t));for(let s=0;s<t;s+=8)r[s>>5]|=(255&e[s/8])<<s%32;return r}(e),8*e.length))}},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],h4z53:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r);var i=e("./native.js"),o=n.interopDefault(i),a=e("./rng.js"),l=n.interopDefault(a),u=e("./stringify.js");r.default=function(e,t,r){if(o.default.randomUUID&&!t&&!e)return(0,o.default).randomUUID();let s=(e=e||{}).random||(e.rng||(0,l.default))();if(s[6]=15&s[6]|64,s[8]=63&s[8]|128,t){r=r||0;for(let e=0;e<16;++e)t[r+e]=s[e];return t}return(0,u.unsafeStringify)(s)}},{"./native.js":"agPy7","./rng.js":"fo5Bv","./stringify.js":"doA1n","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],agPy7:[function(e,t,r,s){e("@parcel/transformer-js/src/esmodule-helpers.js").defineInteropFlag(r);let n="undefined"!=typeof crypto&&crypto.randomUUID&&crypto.randomUUID.bind(crypto);r.default={randomUUID:n}},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],jMNKD:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r);var i=e("./v35.js"),o=n.interopDefault(i),a=e("./sha1.js"),l=n.interopDefault(a);let u=(0,o.default)("v5",80,l.default);r.default=u},{"./v35.js":"6feLd","./sha1.js":"bDFTF","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],bDFTF:[function(e,t,r,s){function n(e,t){return e<<t|e>>>32-t}e("@parcel/transformer-js/src/esmodule-helpers.js").defineInteropFlag(r),r.default=function(e){let t=[0x5a827999,0x6ed9eba1,0x8f1bbcdc,0xca62c1d6],r=[0x67452301,0xefcdab89,0x98badcfe,0x10325476,0xc3d2e1f0];if("string"==typeof e){let t=unescape(encodeURIComponent(e));e=[];for(let r=0;r<t.length;++r)e.push(t.charCodeAt(r))}else Array.isArray(e)||(e=Array.prototype.slice.call(e));e.push(128);let s=Math.ceil((e.length/4+2)/16),i=Array(s);for(let t=0;t<s;++t){let r=new Uint32Array(16);for(let s=0;s<16;++s)r[s]=e[64*t+4*s]<<24|e[64*t+4*s+1]<<16|e[64*t+4*s+2]<<8|e[64*t+4*s+3];i[t]=r}i[s-1][14]=(e.length-1)*8/0x100000000,i[s-1][14]=Math.floor(i[s-1][14]),i[s-1][15]=(e.length-1)*8&0xffffffff;for(let e=0;e<s;++e){let s=new Uint32Array(80);for(let t=0;t<16;++t)s[t]=i[e][t];for(let e=16;e<80;++e)s[e]=n(s[e-3]^s[e-8]^s[e-14]^s[e-16],1);let o=r[0],a=r[1],l=r[2],u=r[3],h=r[4];for(let e=0;e<80;++e){let r=Math.floor(e/20),i=n(o,5)+function(e,t,r,s){switch(e){case 0:return t&r^~t&s;case 1:case 3:return t^r^s;case 2:return t&r^t&s^r&s}}(r,a,l,u)+h+t[r]+s[e]>>>0;h=u,u=l,l=n(a,30)>>>0,a=o,o=i}r[0]=r[0]+o>>>0,r[1]=r[1]+a>>>0,r[2]=r[2]+l>>>0,r[3]=r[3]+u>>>0,r[4]=r[4]+h>>>0}return[r[0]>>24&255,r[0]>>16&255,r[0]>>8&255,255&r[0],r[1]>>24&255,r[1]>>16&255,r[1]>>8&255,255&r[1],r[2]>>24&255,r[2]>>16&255,r[2]>>8&255,255&r[2],r[3]>>24&255,r[3]>>16&255,r[3]>>8&255,255&r[3],r[4]>>24&255,r[4]>>16&255,r[4]>>8&255,255&r[4]]}},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"5Bod7":[function(e,t,r,s){e("@parcel/transformer-js/src/esmodule-helpers.js").defineInteropFlag(r),r.default="00000000-0000-0000-0000-000000000000"},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],dnsqZ:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r);var i=e("./validate.js"),o=n.interopDefault(i);r.default=function(e){if(!(0,o.default)(e))throw TypeError("Invalid UUID");return parseInt(e.slice(14,15),16)}},{"./validate.js":"eG5s0","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],gSvrO:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"initSupabase",()=>l);var i=e("@supabase/supabase-js"),o=e("../auth");let a=(0,i.createClient)(void 0,void 0,{db:{schema:"public"},auth:{autoRefreshToken:!0,persistSession:!0,detectSessionInUrl:!0}}),l=e=>{a.auth.getSession().then(e=>{!e.error&&e.data&&e.data.session&&(0,o.setUser)(e.data.session.user.user_metadata.fullName,e.data.session.user.email)}).catch(e=>{console.log(e)}).finally(e)};r.default=a},{"@supabase/supabase-js":"7aWuS","../auth":"apxUl","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"7aWuS":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"FunctionsHttpError",()=>l.FunctionsHttpError),n.export(r,"FunctionsFetchError",()=>l.FunctionsFetchError),n.export(r,"FunctionsRelayError",()=>l.FunctionsRelayError),n.export(r,"FunctionsError",()=>l.FunctionsError),n.export(r,"FunctionRegion",()=>l.FunctionRegion),n.export(r,"SupabaseClient",()=>o.default),n.export(r,"createClient",()=>h);var i=e("./SupabaseClient"),o=n.interopDefault(i),a=e("@supabase/auth-js");n.exportAll(a,r);var l=e("@supabase/functions-js"),u=e("@supabase/realtime-js");n.exportAll(u,r);let h=(e,t,r)=>new o.default(e,t,r)},{"./SupabaseClient":"3zLHT","@supabase/auth-js":"8VjzZ","@supabase/functions-js":!1,"@supabase/realtime-js":"dSbb2","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"3zLHT":[function(e,t,r,s){e("@parcel/transformer-js/src/esmodule-helpers.js").defineInteropFlag(r);var n=e("@supabase/functions-js"),i=e("@supabase/postgrest-js"),o=e("@supabase/realtime-js"),a=e("@supabase/storage-js"),l=e("./lib/constants"),u=e("./lib/fetch"),h=e("./lib/helpers"),c=e("./lib/SupabaseAuthClient");r.default=class{constructor(e,t,r){var s,n,o;if(this.supabaseUrl=e,this.supabaseKey=t,!e)throw Error("supabaseUrl is required.");if(!t)throw Error("supabaseKey is required.");let a=(0,h.stripTrailingSlash)(e);this.realtimeUrl=`${a}/realtime/v1`.replace(/^http/i,"ws"),this.authUrl=`${a}/auth/v1`,this.storageUrl=`${a}/storage/v1`,this.functionsUrl=`${a}/functions/v1`;let c=`sb-${new URL(this.authUrl).hostname.split(".")[0]}-auth-token`,d={db:l.DEFAULT_DB_OPTIONS,realtime:l.DEFAULT_REALTIME_OPTIONS,auth:Object.assign(Object.assign({},l.DEFAULT_AUTH_OPTIONS),{storageKey:c}),global:l.DEFAULT_GLOBAL_OPTIONS},f=(0,h.applySettingDefaults)(null!=r?r:{},d);this.storageKey=null!==(s=f.auth.storageKey)&&void 0!==s?s:"",this.headers=null!==(n=f.global.headers)&&void 0!==n?n:{},f.accessToken?(this.accessToken=f.accessToken,this.auth=new Proxy({},{get:(e,t)=>{throw Error(`@supabase/supabase-js: Supabase Client is configured with the accessToken option, accessing supabase.auth.${String(t)} is not possible`)}})):this.auth=this._initSupabaseAuthClient(null!==(o=f.auth)&&void 0!==o?o:{},this.headers,f.global.fetch),this.fetch=(0,u.fetchWithAuth)(t,this._getAccessToken.bind(this),f.global.fetch),this.realtime=this._initRealtimeClient(Object.assign({headers:this.headers},f.realtime)),this.rest=new i.PostgrestClient(`${a}/rest/v1`,{headers:this.headers,schema:f.db.schema,fetch:this.fetch}),f.accessToken||this._listenForAuthEvents()}get functions(){return new n.FunctionsClient(this.functionsUrl,{headers:this.headers,customFetch:this.fetch})}get storage(){return new a.StorageClient(this.storageUrl,this.headers,this.fetch)}from(e){return this.rest.from(e)}schema(e){return this.rest.schema(e)}rpc(e,t={},r={}){return this.rest.rpc(e,t,r)}channel(e,t={config:{}}){return this.realtime.channel(e,t)}getChannels(){return this.realtime.getChannels()}removeChannel(e){return this.realtime.removeChannel(e)}removeAllChannels(){return this.realtime.removeAllChannels()}_getAccessToken(){var e,t,r,s,n,i;return r=this,s=void 0,n=void 0,i=function*(){if(this.accessToken)return yield this.accessToken();let{data:r}=yield this.auth.getSession();return null!==(t=null===(e=r.session)||void 0===e?void 0:e.access_token)&&void 0!==t?t:null},new(n||(n=Promise))(function(e,t){function o(e){try{l(i.next(e))}catch(e){t(e)}}function a(e){try{l(i.throw(e))}catch(e){t(e)}}function l(t){var r;t.done?e(t.value):((r=t.value)instanceof n?r:new n(function(e){e(r)})).then(o,a)}l((i=i.apply(r,s||[])).next())})}_initSupabaseAuthClient({autoRefreshToken:e,persistSession:t,detectSessionInUrl:r,storage:s,storageKey:n,flowType:i,lock:o,debug:a},l,u){var h;let d={Authorization:`Bearer ${this.supabaseKey}`,apikey:`${this.supabaseKey}`};return new c.SupabaseAuthClient({url:this.authUrl,headers:Object.assign(Object.assign({},d),l),storageKey:n,autoRefreshToken:e,persistSession:t,detectSessionInUrl:r,storage:s,flowType:i,lock:o,debug:a,fetch:u,hasCustomAuthorizationHeader:"Authorization"in this.headers})}_initRealtimeClient(e){return new o.RealtimeClient(this.realtimeUrl,Object.assign(Object.assign({},e),{params:Object.assign({apikey:this.supabaseKey},null==e?void 0:e.params)}))}_listenForAuthEvents(){return this.auth.onAuthStateChange((e,t)=>{this._handleTokenChanged(e,"CLIENT",null==t?void 0:t.access_token)})}_handleTokenChanged(e,t,r){("TOKEN_REFRESHED"===e||"SIGNED_IN"===e)&&this.changedAccessToken!==r?(this.realtime.setAuth(null!=r?r:null),this.changedAccessToken=r):"SIGNED_OUT"===e&&(this.realtime.setAuth(this.supabaseKey),"STORAGE"==t&&this.auth.signOut(),this.changedAccessToken=void 0)}}},{"@supabase/functions-js":"bltAo","@supabase/postgrest-js":"7SSSP","@supabase/realtime-js":"dSbb2","@supabase/storage-js":"dLDMJ","./lib/constants":"1uIhb","./lib/fetch":"jU4vw","./lib/helpers":"3zuQC","./lib/SupabaseAuthClient":"7YJ7Q","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],bltAo:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"FunctionsClient",()=>i.FunctionsClient),n.export(r,"FunctionsError",()=>o.FunctionsError),n.export(r,"FunctionsFetchError",()=>o.FunctionsFetchError),n.export(r,"FunctionsHttpError",()=>o.FunctionsHttpError),n.export(r,"FunctionsRelayError",()=>o.FunctionsRelayError),n.export(r,"FunctionRegion",()=>o.FunctionRegion);var i=e("./FunctionsClient"),o=e("./types")},{"./FunctionsClient":"34eZ1","./types":!1,"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"34eZ1":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"FunctionsClient",()=>a);var i=e("./helper"),o=e("./types");class a{constructor(e,{headers:t={},customFetch:r,region:s=o.FunctionRegion.Any}={}){this.url=e,this.headers=t,this.region=s,this.fetch=(0,i.resolveFetch)(r)}setAuth(e){this.headers.Authorization=`Bearer ${e}`}invoke(e,t={}){var r,s,n,i,a;return s=this,n=void 0,i=void 0,a=function*(){try{let s;let{headers:n,method:i,body:a}=t,l={},{region:u}=t;u||(u=this.region),u&&"any"!==u&&(l["x-region"]=u),a&&(n&&!Object.prototype.hasOwnProperty.call(n,"Content-Type")||!n)&&("undefined"!=typeof Blob&&a instanceof Blob||a instanceof ArrayBuffer?(l["Content-Type"]="application/octet-stream",s=a):"string"==typeof a?(l["Content-Type"]="text/plain",s=a):"undefined"!=typeof FormData&&a instanceof FormData?s=a:(l["Content-Type"]="application/json",s=JSON.stringify(a)));let h=yield this.fetch(`${this.url}/${e}`,{method:i||"POST",headers:Object.assign(Object.assign(Object.assign({},l),this.headers),n),body:s}).catch(e=>{throw new o.FunctionsFetchError(e)}),c=h.headers.get("x-relay-error");if(c&&"true"===c)throw new o.FunctionsRelayError(h);if(!h.ok)throw new o.FunctionsHttpError(h);let d=(null!==(r=h.headers.get("Content-Type"))&&void 0!==r?r:"text/plain").split(";")[0].trim();return{data:"application/json"===d?yield h.json():"application/octet-stream"===d?yield h.blob():"text/event-stream"===d?h:"multipart/form-data"===d?yield h.formData():yield h.text(),error:null}}catch(e){return{data:null,error:e}}},new(i||(i=Promise))(function(e,t){function r(e){try{l(a.next(e))}catch(e){t(e)}}function o(e){try{l(a.throw(e))}catch(e){t(e)}}function l(t){var s;t.done?e(t.value):((s=t.value)instanceof i?s:new i(function(e){e(s)})).then(r,o)}l((a=a.apply(s,n||[])).next())})}}},{"./helper":"6UEpC","./types":"f4Ykd","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"6UEpC":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"resolveFetch",()=>i);let i=t=>{let r;return t?r=t:"undefined"==typeof fetch?r=(...t)=>e("db8a7a5aa4509164").then(({default:e})=>e(...t)):r=fetch,(...e)=>r(...e)}},{db8a7a5aa4509164:"a8HCk","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],a8HCk:[function(e,t,r,s){t.exports=Promise.resolve(t.bundle.root("4Q5V1"))},{}],f4Ykd:[function(e,t,r,s){var n,i,o=e("@parcel/transformer-js/src/esmodule-helpers.js");o.defineInteropFlag(r),o.export(r,"FunctionsError",()=>a),o.export(r,"FunctionsFetchError",()=>l),o.export(r,"FunctionsRelayError",()=>u),o.export(r,"FunctionsHttpError",()=>h),o.export(r,"FunctionRegion",()=>i);class a extends Error{constructor(e,t="FunctionsError",r){super(e),this.name=t,this.context=r}}class l extends a{constructor(e){super("Failed to send a request to the Edge Function","FunctionsFetchError",e)}}class u extends a{constructor(e){super("Relay Error invoking the Edge Function","FunctionsRelayError",e)}}class h extends a{constructor(e){super("Edge Function returned a non-2xx status code","FunctionsHttpError",e)}}(n=i||(i={})).Any="any",n.ApNortheast1="ap-northeast-1",n.ApNortheast2="ap-northeast-2",n.ApSouth1="ap-south-1",n.ApSoutheast1="ap-southeast-1",n.ApSoutheast2="ap-southeast-2",n.CaCentral1="ca-central-1",n.EuCentral1="eu-central-1",n.EuWest1="eu-west-1",n.EuWest2="eu-west-2",n.EuWest3="eu-west-3",n.SaEast1="sa-east-1",n.UsEast1="us-east-1",n.UsWest1="us-west-1",n.UsWest2="us-west-2"},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"7SSSP":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"PostgrestBuilder",()=>h),n.export(r,"PostgrestClient",()=>o),n.export(r,"PostgrestFilterBuilder",()=>l),n.export(r,"PostgrestQueryBuilder",()=>a),n.export(r,"PostgrestTransformBuilder",()=>u);var i=e("../cjs/index.js");let{PostgrestClient:o,PostgrestQueryBuilder:a,PostgrestFilterBuilder:l,PostgrestTransformBuilder:u,PostgrestBuilder:h}=n.interopDefault(i).default;r.default={PostgrestClient:o,PostgrestQueryBuilder:a,PostgrestFilterBuilder:l,PostgrestTransformBuilder:u,PostgrestBuilder:h}},{"../cjs/index.js":"jITuT","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],jITuT:[function(e,t,r,s){var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(r,"__esModule",{value:!0}),r.PostgrestError=r.PostgrestBuilder=r.PostgrestTransformBuilder=r.PostgrestFilterBuilder=r.PostgrestQueryBuilder=r.PostgrestClient=void 0;let i=n(e("f5e06a51982719bd"));r.PostgrestClient=i.default;let o=n(e("df90e8e15649ad51"));r.PostgrestQueryBuilder=o.default;let a=n(e("599489c94cb82979"));r.PostgrestFilterBuilder=a.default;let l=n(e("f49dd89b70eda0a2"));r.PostgrestTransformBuilder=l.default;let u=n(e("aab5557e345022fe"));r.PostgrestBuilder=u.default;let h=n(e("79848042fc731b87"));r.PostgrestError=h.default,r.default={PostgrestClient:i.default,PostgrestQueryBuilder:o.default,PostgrestFilterBuilder:a.default,PostgrestTransformBuilder:l.default,PostgrestBuilder:u.default,PostgrestError:h.default}},{f5e06a51982719bd:"1Ot24",df90e8e15649ad51:"i7fD9","599489c94cb82979":"6JEn9",f49dd89b70eda0a2:"jx0WB",aab5557e345022fe:"5u3Bg","79848042fc731b87":"ieSnf"}],"1Ot24":[function(e,t,r,s){var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(r,"__esModule",{value:!0});let i=n(e("46c45ba978d8f946")),o=n(e("a418b29a37404612")),a=e("56170df5c50b72a8");class l{constructor(e,{headers:t={},schema:r,fetch:s}={}){this.url=e,this.headers=Object.assign(Object.assign({},a.DEFAULT_HEADERS),t),this.schemaName=r,this.fetch=s}from(e){let t=new URL(`${this.url}/${e}`);return new i.default(t,{headers:Object.assign({},this.headers),schema:this.schemaName,fetch:this.fetch})}schema(e){return new l(this.url,{headers:this.headers,schema:e,fetch:this.fetch})}rpc(e,t={},{head:r=!1,get:s=!1,count:n}={}){let i,a;let l=new URL(`${this.url}/rpc/${e}`);r||s?(i=r?"HEAD":"GET",Object.entries(t).filter(([e,t])=>void 0!==t).map(([e,t])=>[e,Array.isArray(t)?`{${t.join(",")}}`:`${t}`]).forEach(([e,t])=>{l.searchParams.append(e,t)})):(i="POST",a=t);let u=Object.assign({},this.headers);return n&&(u.Prefer=`count=${n}`),new o.default({method:i,url:l,headers:u,schema:this.schemaName,body:a,fetch:this.fetch,allowEmpty:!1})}}r.default=l},{"46c45ba978d8f946":"i7fD9",a418b29a37404612:"6JEn9","56170df5c50b72a8":"82nQd"}],i7fD9:[function(e,t,r,s){var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(r,"__esModule",{value:!0});let i=n(e("d92f25ea3845826e"));r.default=class{constructor(e,{headers:t={},schema:r,fetch:s}){this.url=e,this.headers=t,this.schema=r,this.fetch=s}select(e,{head:t=!1,count:r}={}){let s=!1,n=(null!=e?e:"*").split("").map(e=>/\s/.test(e)&&!s?"":('"'===e&&(s=!s),e)).join("");return this.url.searchParams.set("select",n),r&&(this.headers.Prefer=`count=${r}`),new i.default({method:t?"HEAD":"GET",url:this.url,headers:this.headers,schema:this.schema,fetch:this.fetch,allowEmpty:!1})}insert(e,{count:t,defaultToNull:r=!0}={}){let s=[];if(this.headers.Prefer&&s.push(this.headers.Prefer),t&&s.push(`count=${t}`),r||s.push("missing=default"),this.headers.Prefer=s.join(","),Array.isArray(e)){let t=e.reduce((e,t)=>e.concat(Object.keys(t)),[]);if(t.length>0){let e=[...new Set(t)].map(e=>`"${e}"`);this.url.searchParams.set("columns",e.join(","))}}return new i.default({method:"POST",url:this.url,headers:this.headers,schema:this.schema,body:e,fetch:this.fetch,allowEmpty:!1})}upsert(e,{onConflict:t,ignoreDuplicates:r=!1,count:s,defaultToNull:n=!0}={}){let o=[`resolution=${r?"ignore":"merge"}-duplicates`];if(void 0!==t&&this.url.searchParams.set("on_conflict",t),this.headers.Prefer&&o.push(this.headers.Prefer),s&&o.push(`count=${s}`),n||o.push("missing=default"),this.headers.Prefer=o.join(","),Array.isArray(e)){let t=e.reduce((e,t)=>e.concat(Object.keys(t)),[]);if(t.length>0){let e=[...new Set(t)].map(e=>`"${e}"`);this.url.searchParams.set("columns",e.join(","))}}return new i.default({method:"POST",url:this.url,headers:this.headers,schema:this.schema,body:e,fetch:this.fetch,allowEmpty:!1})}update(e,{count:t}={}){let r=[];return this.headers.Prefer&&r.push(this.headers.Prefer),t&&r.push(`count=${t}`),this.headers.Prefer=r.join(","),new i.default({method:"PATCH",url:this.url,headers:this.headers,schema:this.schema,body:e,fetch:this.fetch,allowEmpty:!1})}delete({count:e}={}){let t=[];return e&&t.push(`count=${e}`),this.headers.Prefer&&t.unshift(this.headers.Prefer),this.headers.Prefer=t.join(","),new i.default({method:"DELETE",url:this.url,headers:this.headers,schema:this.schema,fetch:this.fetch,allowEmpty:!1})}}},{d92f25ea3845826e:"6JEn9"}],"6JEn9":[function(e,t,r,s){var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(r,"__esModule",{value:!0});let i=n(e("f4f4faf3c6f1b259"));class o extends i.default{eq(e,t){return this.url.searchParams.append(e,`eq.${t}`),this}neq(e,t){return this.url.searchParams.append(e,`neq.${t}`),this}gt(e,t){return this.url.searchParams.append(e,`gt.${t}`),this}gte(e,t){return this.url.searchParams.append(e,`gte.${t}`),this}lt(e,t){return this.url.searchParams.append(e,`lt.${t}`),this}lte(e,t){return this.url.searchParams.append(e,`lte.${t}`),this}like(e,t){return this.url.searchParams.append(e,`like.${t}`),this}likeAllOf(e,t){return this.url.searchParams.append(e,`like(all).{${t.join(",")}}`),this}likeAnyOf(e,t){return this.url.searchParams.append(e,`like(any).{${t.join(",")}}`),this}ilike(e,t){return this.url.searchParams.append(e,`ilike.${t}`),this}ilikeAllOf(e,t){return this.url.searchParams.append(e,`ilike(all).{${t.join(",")}}`),this}ilikeAnyOf(e,t){return this.url.searchParams.append(e,`ilike(any).{${t.join(",")}}`),this}is(e,t){return this.url.searchParams.append(e,`is.${t}`),this}in(e,t){let r=Array.from(new Set(t)).map(e=>"string"==typeof e&&RegExp("[,()]").test(e)?`"${e}"`:`${e}`).join(",");return this.url.searchParams.append(e,`in.(${r})`),this}contains(e,t){return"string"==typeof t?this.url.searchParams.append(e,`cs.${t}`):Array.isArray(t)?this.url.searchParams.append(e,`cs.{${t.join(",")}}`):this.url.searchParams.append(e,`cs.${JSON.stringify(t)}`),this}containedBy(e,t){return"string"==typeof t?this.url.searchParams.append(e,`cd.${t}`):Array.isArray(t)?this.url.searchParams.append(e,`cd.{${t.join(",")}}`):this.url.searchParams.append(e,`cd.${JSON.stringify(t)}`),this}rangeGt(e,t){return this.url.searchParams.append(e,`sr.${t}`),this}rangeGte(e,t){return this.url.searchParams.append(e,`nxl.${t}`),this}rangeLt(e,t){return this.url.searchParams.append(e,`sl.${t}`),this}rangeLte(e,t){return this.url.searchParams.append(e,`nxr.${t}`),this}rangeAdjacent(e,t){return this.url.searchParams.append(e,`adj.${t}`),this}overlaps(e,t){return"string"==typeof t?this.url.searchParams.append(e,`ov.${t}`):this.url.searchParams.append(e,`ov.{${t.join(",")}}`),this}textSearch(e,t,{config:r,type:s}={}){let n="";"plain"===s?n="pl":"phrase"===s?n="ph":"websearch"===s&&(n="w");let i=void 0===r?"":`(${r})`;return this.url.searchParams.append(e,`${n}fts${i}.${t}`),this}match(e){return Object.entries(e).forEach(([e,t])=>{this.url.searchParams.append(e,`eq.${t}`)}),this}not(e,t,r){return this.url.searchParams.append(e,`not.${t}.${r}`),this}or(e,{foreignTable:t,referencedTable:r=t}={}){let s=r?`${r}.or`:"or";return this.url.searchParams.append(s,`(${e})`),this}filter(e,t,r){return this.url.searchParams.append(e,`${t}.${r}`),this}}r.default=o},{f4f4faf3c6f1b259:"jx0WB"}],jx0WB:[function(e,t,r,s){var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(r,"__esModule",{value:!0});let i=n(e("389721aef4055205"));class o extends i.default{select(e){let t=!1,r=(null!=e?e:"*").split("").map(e=>/\s/.test(e)&&!t?"":('"'===e&&(t=!t),e)).join("");return this.url.searchParams.set("select",r),this.headers.Prefer&&(this.headers.Prefer+=","),this.headers.Prefer+="return=representation",this}order(e,{ascending:t=!0,nullsFirst:r,foreignTable:s,referencedTable:n=s}={}){let i=n?`${n}.order`:"order",o=this.url.searchParams.get(i);return this.url.searchParams.set(i,`${o?`${o},`:""}${e}.${t?"asc":"desc"}${void 0===r?"":r?".nullsfirst":".nullslast"}`),this}limit(e,{foreignTable:t,referencedTable:r=t}={}){let s=void 0===r?"limit":`${r}.limit`;return this.url.searchParams.set(s,`${e}`),this}range(e,t,{foreignTable:r,referencedTable:s=r}={}){let n=void 0===s?"offset":`${s}.offset`,i=void 0===s?"limit":`${s}.limit`;return this.url.searchParams.set(n,`${e}`),this.url.searchParams.set(i,`${t-e+1}`),this}abortSignal(e){return this.signal=e,this}single(){return this.headers.Accept="application/vnd.pgrst.object+json",this}maybeSingle(){return"GET"===this.method?this.headers.Accept="application/json":this.headers.Accept="application/vnd.pgrst.object+json",this.isMaybeSingle=!0,this}csv(){return this.headers.Accept="text/csv",this}geojson(){return this.headers.Accept="application/geo+json",this}explain({analyze:e=!1,verbose:t=!1,settings:r=!1,buffers:s=!1,wal:n=!1,format:i="text"}={}){var o;let a=[e?"analyze":null,t?"verbose":null,r?"settings":null,s?"buffers":null,n?"wal":null].filter(Boolean).join("|"),l=null!==(o=this.headers.Accept)&&void 0!==o?o:"application/json";return this.headers.Accept=`application/vnd.pgrst.plan+${i}; for="${l}"; options=${a};`,this}rollback(){var e;return(null!==(e=this.headers.Prefer)&&void 0!==e?e:"").trim().length>0?this.headers.Prefer+=",tx=rollback":this.headers.Prefer="tx=rollback",this}returns(){return this}}r.default=o},{"389721aef4055205":"5u3Bg"}],"5u3Bg":[function(e,t,r,s){var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(r,"__esModule",{value:!0});let i=n(e("a07474f6bfb42ff0")),o=n(e("d8f4708fc301a50"));r.default=class{constructor(e){this.shouldThrowOnError=!1,this.method=e.method,this.url=e.url,this.headers=e.headers,this.schema=e.schema,this.body=e.body,this.shouldThrowOnError=e.shouldThrowOnError,this.signal=e.signal,this.isMaybeSingle=e.isMaybeSingle,e.fetch?this.fetch=e.fetch:"undefined"==typeof fetch?this.fetch=i.default:this.fetch=fetch}throwOnError(){return this.shouldThrowOnError=!0,this}setHeader(e,t){return this.headers=Object.assign({},this.headers),this.headers[e]=t,this}then(e,t){void 0===this.schema||(["GET","HEAD"].includes(this.method)?this.headers["Accept-Profile"]=this.schema:this.headers["Content-Profile"]=this.schema),"GET"!==this.method&&"HEAD"!==this.method&&(this.headers["Content-Type"]="application/json");let r=(0,this.fetch)(this.url.toString(),{method:this.method,headers:this.headers,body:JSON.stringify(this.body),signal:this.signal}).then(async e=>{var t,r,s;let n=null,i=null,a=null,l=e.status,u=e.statusText;if(e.ok){if("HEAD"!==this.method){let t=await e.text();""===t||(i="text/csv"===this.headers.Accept?t:this.headers.Accept&&this.headers.Accept.includes("application/vnd.pgrst.plan+text")?t:JSON.parse(t))}let s=null===(t=this.headers.Prefer)||void 0===t?void 0:t.match(/count=(exact|planned|estimated)/),o=null===(r=e.headers.get("content-range"))||void 0===r?void 0:r.split("/");s&&o&&o.length>1&&(a=parseInt(o[1])),this.isMaybeSingle&&"GET"===this.method&&Array.isArray(i)&&(i.length>1?(n={code:"PGRST116",details:`Results contain ${i.length} rows, application/vnd.pgrst.object+json requires 1 row`,hint:null,message:"JSON object requested, multiple (or no) rows returned"},i=null,a=null,l=406,u="Not Acceptable"):i=1===i.length?i[0]:null)}else{let t=await e.text();try{n=JSON.parse(t),Array.isArray(n)&&404===e.status&&(i=[],n=null,l=200,u="OK")}catch(r){404===e.status&&""===t?(l=204,u="No Content"):n={message:t}}if(n&&this.isMaybeSingle&&(null===(s=null==n?void 0:n.details)||void 0===s?void 0:s.includes("0 rows"))&&(n=null,l=200,u="OK"),n&&this.shouldThrowOnError)throw new o.default(n)}return{error:n,data:i,count:a,status:l,statusText:u}});return this.shouldThrowOnError||(r=r.catch(e=>{var t,r,s;return{error:{message:`${null!==(t=null==e?void 0:e.name)&&void 0!==t?t:"FetchError"}: ${null==e?void 0:e.message}`,details:`${null!==(r=null==e?void 0:e.stack)&&void 0!==r?r:""}`,hint:"",code:`${null!==(s=null==e?void 0:e.code)&&void 0!==s?s:""}`},data:null,count:null,status:0,statusText:""}})),r.then(e,t)}}},{a07474f6bfb42ff0:"4Q5V1",d8f4708fc301a50:"ieSnf"}],"4Q5V1":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"fetch",()=>a),n.export(r,"Headers",()=>l),n.export(r,"Request",()=>u),n.export(r,"Response",()=>h);var i=arguments[3],o=function(){if("undefined"!=typeof self)return self;if("undefined"!=typeof window)return window;if(void 0!==i)return i;throw Error("unable to locate global object")}();let a=o.fetch;r.default=o.fetch.bind(o);let l=o.Headers,u=o.Request,h=o.Response},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],ieSnf:[function(e,t,r,s){Object.defineProperty(r,"__esModule",{value:!0}),r.default=class extends Error{constructor(e){super(e.message),this.name="PostgrestError",this.details=e.details,this.hint=e.hint,this.code=e.code}}},{}],"82nQd":[function(e,t,r,s){Object.defineProperty(r,"__esModule",{value:!0}),r.DEFAULT_HEADERS=void 0;let n=e("f6ef08da709cffa4");r.DEFAULT_HEADERS={"X-Client-Info":`postgrest-js/${n.version}`}},{f6ef08da709cffa4:"2psnM"}],"2psnM":[function(e,t,r,s){Object.defineProperty(r,"__esModule",{value:!0}),r.version=void 0,r.version="0.0.0-automated"},{}],dSbb2:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"RealtimePresence",()=>h.default),n.export(r,"RealtimeChannel",()=>l.default),n.export(r,"RealtimeClient",()=>o.default),n.export(r,"REALTIME_LISTEN_TYPES",()=>a.REALTIME_LISTEN_TYPES),n.export(r,"REALTIME_POSTGRES_CHANGES_LISTEN_EVENT",()=>a.REALTIME_POSTGRES_CHANGES_LISTEN_EVENT),n.export(r,"REALTIME_PRESENCE_LISTEN_EVENTS",()=>u.REALTIME_PRESENCE_LISTEN_EVENTS),n.export(r,"REALTIME_SUBSCRIBE_STATES",()=>a.REALTIME_SUBSCRIBE_STATES),n.export(r,"REALTIME_CHANNEL_STATES",()=>a.REALTIME_CHANNEL_STATES);var i=e("./RealtimeClient"),o=n.interopDefault(i),a=e("./RealtimeChannel"),l=n.interopDefault(a),u=e("./RealtimePresence"),h=n.interopDefault(u)},{"./RealtimeClient":"bwAzk","./RealtimeChannel":"kPfVs","./RealtimePresence":"1SbUv","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],bwAzk:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r);var i=e("./lib/constants"),o=e("./lib/serializer"),a=n.interopDefault(o),l=e("./lib/timer"),u=n.interopDefault(l),h=e("./lib/transformers"),c=e("./RealtimeChannel"),d=n.interopDefault(c);let f=()=>{},p="undefined"!=typeof WebSocket,g=`
-  addEventListener("message", (e) => {
-    if (e.data.event === "start") {
-      setInterval(() => postMessage({ event: "keepAlive" }), e.data.interval);
+// modules are defined as an array
+// [ module function, map of requires ]
+//
+// map of requires is short require name -> numeric require
+//
+// anything defined in a previous bundle is accessed via the
+// orig method which is the require for previous bundles
+
+(function (modules, entry, mainEntry, parcelRequireName, globalName) {
+  /* eslint-disable no-undef */
+  var globalObject =
+    typeof globalThis !== 'undefined'
+      ? globalThis
+      : typeof self !== 'undefined'
+      ? self
+      : typeof window !== 'undefined'
+      ? window
+      : typeof global !== 'undefined'
+      ? global
+      : {};
+  /* eslint-enable no-undef */
+
+  // Save the require from previous bundle to this closure if any
+  var previousRequire =
+    typeof globalObject[parcelRequireName] === 'function' &&
+    globalObject[parcelRequireName];
+
+  var cache = previousRequire.cache || {};
+  // Do not use `require` to prevent Webpack from trying to bundle this call
+  var nodeRequire =
+    typeof module !== 'undefined' &&
+    typeof module.require === 'function' &&
+    module.require.bind(module);
+
+  function newRequire(name, jumped) {
+    if (!cache[name]) {
+      if (!modules[name]) {
+        // if we cannot find the module within our internal map or
+        // cache jump to the current global require ie. the last bundle
+        // that was added to the page.
+        var currentRequire =
+          typeof globalObject[parcelRequireName] === 'function' &&
+          globalObject[parcelRequireName];
+        if (!jumped && currentRequire) {
+          return currentRequire(name, true);
+        }
+
+        // If there are other bundles on this page the require from the
+        // previous one is saved to 'previousRequire'. Repeat this as
+        // many times as there are bundles until the module is found or
+        // we exhaust the require chain.
+        if (previousRequire) {
+          return previousRequire(name, true);
+        }
+
+        // Try the node require function if it exists.
+        if (nodeRequire && typeof name === 'string') {
+          return nodeRequire(name);
+        }
+
+        var err = new Error("Cannot find module '" + name + "'");
+        err.code = 'MODULE_NOT_FOUND';
+        throw err;
+      }
+
+      localRequire.resolve = resolve;
+      localRequire.cache = {};
+
+      var module = (cache[name] = new newRequire.Module(name));
+
+      modules[name][0].call(
+        module.exports,
+        localRequire,
+        module,
+        module.exports,
+        globalObject
+      );
     }
-  });`;r.default=class{constructor(t,r){var s;this.accessToken=null,this.apiKey=null,this.channels=[],this.endPoint="",this.httpEndpoint="",this.headers=i.DEFAULT_HEADERS,this.params={},this.timeout=i.DEFAULT_TIMEOUT,this.heartbeatIntervalMs=3e4,this.heartbeatTimer=void 0,this.pendingHeartbeatRef=null,this.ref=0,this.logger=f,this.conn=null,this.sendBuffer=[],this.serializer=new a.default,this.stateChangeCallbacks={open:[],close:[],error:[],message:[]},this._resolveFetch=t=>{let r;return t?r=t:"undefined"==typeof fetch?r=(...t)=>e("3ea8640035012c43").then(({default:e})=>e(...t)):r=fetch,(...e)=>r(...e)},this.endPoint=`${t}/${i.TRANSPORTS.websocket}`,this.httpEndpoint=(0,h.httpEndpointURL)(t),(null==r?void 0:r.transport)?this.transport=r.transport:this.transport=null,(null==r?void 0:r.params)&&(this.params=r.params),(null==r?void 0:r.headers)&&(this.headers=Object.assign(Object.assign({},this.headers),r.headers)),(null==r?void 0:r.timeout)&&(this.timeout=r.timeout),(null==r?void 0:r.logger)&&(this.logger=r.logger),(null==r?void 0:r.heartbeatIntervalMs)&&(this.heartbeatIntervalMs=r.heartbeatIntervalMs);let n=null===(s=null==r?void 0:r.params)||void 0===s?void 0:s.apikey;if(n&&(this.accessToken=n,this.apiKey=n),this.reconnectAfterMs=(null==r?void 0:r.reconnectAfterMs)?r.reconnectAfterMs:e=>[1e3,2e3,5e3,1e4][e-1]||1e4,this.encode=(null==r?void 0:r.encode)?r.encode:(e,t)=>t(JSON.stringify(e)),this.decode=(null==r?void 0:r.decode)?r.decode:this.serializer.decode.bind(this.serializer),this.reconnectTimer=new u.default(async()=>{this.disconnect(),this.connect()},this.reconnectAfterMs),this.fetch=this._resolveFetch(null==r?void 0:r.fetch),null==r?void 0:r.worker){if("undefined"!=typeof window&&!window.Worker)throw Error("Web Worker is not supported");this.worker=(null==r?void 0:r.worker)||!1,this.workerUrl=null==r?void 0:r.workerUrl}}connect(){if(!this.conn){if(this.transport){this.conn=new this.transport(this._endPointURL(),void 0,{headers:this.headers});return}if(p){this.conn=new WebSocket(this._endPointURL()),this.setupConnection();return}this.conn=new m(this._endPointURL(),void 0,{close:()=>{this.conn=null}}),e("c4dfe9bfdd39a2b7").then(({default:e})=>{this.conn=new e(this._endPointURL(),void 0,{headers:this.headers}),this.setupConnection()})}}disconnect(e,t){this.conn&&(this.conn.onclose=function(){},e?this.conn.close(e,null!=t?t:""):this.conn.close(),this.conn=null,this.heartbeatTimer&&clearInterval(this.heartbeatTimer),this.reconnectTimer.reset())}getChannels(){return this.channels}async removeChannel(e){let t=await e.unsubscribe();return 0===this.channels.length&&this.disconnect(),t}async removeAllChannels(){let e=await Promise.all(this.channels.map(e=>e.unsubscribe()));return this.disconnect(),e}log(e,t,r){this.logger(e,t,r)}connectionState(){switch(this.conn&&this.conn.readyState){case i.SOCKET_STATES.connecting:return i.CONNECTION_STATE.Connecting;case i.SOCKET_STATES.open:return i.CONNECTION_STATE.Open;case i.SOCKET_STATES.closing:return i.CONNECTION_STATE.Closing;default:return i.CONNECTION_STATE.Closed}}isConnected(){return this.connectionState()===i.CONNECTION_STATE.Open}channel(e,t={config:{}}){let r=new d.default(`realtime:${e}`,t,this);return this.channels.push(r),r}push(e){let{topic:t,event:r,payload:s,ref:n}=e,i=()=>{this.encode(e,e=>{var t;null===(t=this.conn)||void 0===t||t.send(e)})};this.log("push",`${t} ${r} (${n})`,s),this.isConnected()?i():this.sendBuffer.push(i)}setAuth(e){if(e){let t=null;try{t=JSON.parse(atob(e.split(".")[1]))}catch(e){}if(t&&t.exp&&!(Math.floor(Date.now()/1e3)-t.exp<0)){this.log("auth",`InvalidJWTToken: Invalid value for JWT claim "exp" with value ${t.exp}`);return}}this.accessToken=e,this.channels.forEach(t=>{e&&t.updateJoinPayload({access_token:e}),t.joinedOnce&&t._isJoined()&&t._push(i.CHANNEL_EVENTS.access_token,{access_token:e})})}_makeRef(){let e=this.ref+1;return e===this.ref?this.ref=0:this.ref=e,this.ref.toString()}_leaveOpenTopic(e){let t=this.channels.find(t=>t.topic===e&&(t._isJoined()||t._isJoining()));t&&(this.log("transport",`leaving duplicate topic "${e}"`),t.unsubscribe())}_remove(e){this.channels=this.channels.filter(t=>t._joinRef()!==e._joinRef())}setupConnection(){this.conn&&(this.conn.binaryType="arraybuffer",this.conn.onopen=()=>this._onConnOpen(),this.conn.onerror=e=>this._onConnError(e),this.conn.onmessage=e=>this._onConnMessage(e),this.conn.onclose=e=>this._onConnClose(e))}_endPointURL(){return this._appendParams(this.endPoint,Object.assign({},this.params,{vsn:i.VSN}))}_onConnMessage(e){this.decode(e.data,e=>{let{topic:t,event:r,payload:s,ref:n}=e;(n&&n===this.pendingHeartbeatRef||r===(null==s?void 0:s.type))&&(this.pendingHeartbeatRef=null),this.log("receive",`${s.status||""} ${t} ${r} ${n&&"("+n+")"||""}`,s),this.channels.filter(e=>e._isMember(t)).forEach(e=>e._trigger(r,s,n)),this.stateChangeCallbacks.message.forEach(t=>t(e))})}async _onConnOpen(){if(this.log("transport",`connected to ${this._endPointURL()}`),this._flushSendBuffer(),this.reconnectTimer.reset(),this.worker){this.workerUrl?this.log("worker",`starting worker for from ${this.workerUrl}`):this.log("worker","starting default worker");let e=this._workerObjectUrl(this.workerUrl);this.workerRef=new Worker(e),this.workerRef.onerror=e=>{this.log("worker","worker error",e.message),this.workerRef.terminate()},this.workerRef.onmessage=e=>{"keepAlive"===e.data.event&&this._sendHeartbeat()},this.workerRef.postMessage({event:"start",interval:this.heartbeatIntervalMs})}else this.heartbeatTimer&&clearInterval(this.heartbeatTimer),this.heartbeatTimer=setInterval(()=>this._sendHeartbeat(),this.heartbeatIntervalMs);this.stateChangeCallbacks.open.forEach(e=>e())}_onConnClose(e){this.log("transport","close",e),this._triggerChanError(),this.heartbeatTimer&&clearInterval(this.heartbeatTimer),this.reconnectTimer.scheduleTimeout(),this.stateChangeCallbacks.close.forEach(t=>t(e))}_onConnError(e){this.log("transport",e.message),this._triggerChanError(),this.stateChangeCallbacks.error.forEach(t=>t(e))}_triggerChanError(){this.channels.forEach(e=>e._trigger(i.CHANNEL_EVENTS.error))}_appendParams(e,t){if(0===Object.keys(t).length)return e;let r=e.match(/\?/)?"&":"?",s=new URLSearchParams(t);return`${e}${r}${s}`}_flushSendBuffer(){this.isConnected()&&this.sendBuffer.length>0&&(this.sendBuffer.forEach(e=>e()),this.sendBuffer=[])}_sendHeartbeat(){var e;if(this.isConnected()){if(this.pendingHeartbeatRef){this.pendingHeartbeatRef=null,this.log("transport","heartbeat timeout. Attempting to re-establish connection"),null===(e=this.conn)||void 0===e||e.close(i.WS_CLOSE_NORMAL,"hearbeat timeout");return}this.pendingHeartbeatRef=this._makeRef(),this.push({topic:"phoenix",event:"heartbeat",payload:{},ref:this.pendingHeartbeatRef}),this.setAuth(this.accessToken)}}_workerObjectUrl(e){let t;if(e)t=e;else{let e=new Blob([g],{type:"application/javascript"});t=URL.createObjectURL(e)}return t}};class m{constructor(e,t,r){this.binaryType="arraybuffer",this.onclose=()=>{},this.onerror=()=>{},this.onmessage=()=>{},this.onopen=()=>{},this.readyState=i.SOCKET_STATES.connecting,this.send=()=>{},this.url=null,this.url=e,this.close=r.close}}},{"./lib/constants":"b7Tfz","./lib/serializer":"bHUs4","./lib/timer":"4kZpX","./lib/transformers":"fMnzi","./RealtimeChannel":"kPfVs","3ea8640035012c43":"a8HCk",c4dfe9bfdd39a2b7:"040hw","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],b7Tfz:[function(e,t,r,s){var n,i,o,a,l,u,h,c,d,f=e("@parcel/transformer-js/src/esmodule-helpers.js");f.defineInteropFlag(r),f.export(r,"DEFAULT_HEADERS",()=>g),f.export(r,"VSN",()=>m),f.export(r,"DEFAULT_TIMEOUT",()=>y),f.export(r,"WS_CLOSE_NORMAL",()=>b),f.export(r,"SOCKET_STATES",()=>l),f.export(r,"CHANNEL_STATES",()=>u),f.export(r,"CHANNEL_EVENTS",()=>h),f.export(r,"TRANSPORTS",()=>c),f.export(r,"CONNECTION_STATE",()=>d);var p=e("./version");let g={"X-Client-Info":`realtime-js/${p.version}`},m="1.0.0",y=1e4,b=1e3;(n=l||(l={}))[n.connecting=0]="connecting",n[n.open=1]="open",n[n.closing=2]="closing",n[n.closed=3]="closed",(i=u||(u={})).closed="closed",i.errored="errored",i.joined="joined",i.joining="joining",i.leaving="leaving",(o=h||(h={})).close="phx_close",o.error="phx_error",o.join="phx_join",o.reply="phx_reply",o.leave="phx_leave",o.access_token="access_token",(c||(c={})).websocket="websocket",(a=d||(d={})).Connecting="connecting",a.Open="open",a.Closing="closing",a.Closed="closed"},{"./version":"cD5jd","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],cD5jd:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"version",()=>i);let i="2.10.9"},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],bHUs4:[function(e,t,r,s){e("@parcel/transformer-js/src/esmodule-helpers.js").defineInteropFlag(r),r.default=class{constructor(){this.HEADER_LENGTH=1}decode(e,t){return e.constructor===ArrayBuffer?t(this._binaryDecode(e)):"string"==typeof e?t(JSON.parse(e)):t({})}_binaryDecode(e){let t=new DataView(e),r=new TextDecoder;return this._decodeBroadcast(e,t,r)}_decodeBroadcast(e,t,r){let s=t.getUint8(1),n=t.getUint8(2),i=this.HEADER_LENGTH+2,o=r.decode(e.slice(i,i+s));i+=s;let a=r.decode(e.slice(i,i+n));return i+=n,{ref:null,topic:o,event:a,payload:JSON.parse(r.decode(e.slice(i,e.byteLength)))}}}},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"4kZpX":[function(e,t,r,s){e("@parcel/transformer-js/src/esmodule-helpers.js").defineInteropFlag(r),r.default=class{constructor(e,t){this.callback=e,this.timerCalc=t,this.timer=void 0,this.tries=0,this.callback=e,this.timerCalc=t}reset(){this.tries=0,clearTimeout(this.timer)}scheduleTimeout(){clearTimeout(this.timer),this.timer=setTimeout(()=>{this.tries=this.tries+1,this.callback()},this.timerCalc(this.tries+1))}}},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],fMnzi:[function(e,t,r,s){var n,i,o=e("@parcel/transformer-js/src/esmodule-helpers.js");o.defineInteropFlag(r),o.export(r,"PostgresTypes",()=>i),o.export(r,"convertChangeData",()=>a),o.export(r,"convertColumn",()=>l),o.export(r,"convertCell",()=>u),o.export(r,"toBoolean",()=>c),o.export(r,"toNumber",()=>d),o.export(r,"toJson",()=>f),o.export(r,"toArray",()=>p),o.export(r,"toTimestampString",()=>g),o.export(r,"httpEndpointURL",()=>m),(n=i||(i={})).abstime="abstime",n.bool="bool",n.date="date",n.daterange="daterange",n.float4="float4",n.float8="float8",n.int2="int2",n.int4="int4",n.int4range="int4range",n.int8="int8",n.int8range="int8range",n.json="json",n.jsonb="jsonb",n.money="money",n.numeric="numeric",n.oid="oid",n.reltime="reltime",n.text="text",n.time="time",n.timestamp="timestamp",n.timestamptz="timestamptz",n.timetz="timetz",n.tsrange="tsrange",n.tstzrange="tstzrange";let a=(e,t,r={})=>{var s;let n=null!==(s=r.skipTypes)&&void 0!==s?s:[];return Object.keys(t).reduce((r,s)=>(r[s]=l(s,e,t,n),r),{})},l=(e,t,r,s)=>{let n=t.find(t=>t.name===e),i=null==n?void 0:n.type,o=r[e];return i&&!s.includes(i)?u(i,o):h(o)},u=(e,t)=>{if("_"===e.charAt(0))return p(t,e.slice(1,e.length));switch(e){case i.bool:return c(t);case i.float4:case i.float8:case i.int2:case i.int4:case i.int8:case i.numeric:case i.oid:return d(t);case i.json:case i.jsonb:return f(t);case i.timestamp:return g(t);case i.abstime:case i.date:case i.daterange:case i.int4range:case i.int8range:case i.money:case i.reltime:case i.text:case i.time:case i.timestamptz:case i.timetz:case i.tsrange:case i.tstzrange:default:return h(t)}},h=e=>e,c=e=>{switch(e){case"t":return!0;case"f":return!1;default:return e}},d=e=>{if("string"==typeof e){let t=parseFloat(e);if(!Number.isNaN(t))return t}return e},f=e=>{if("string"==typeof e)try{return JSON.parse(e)}catch(e){console.log(`JSON parse error: ${e}`)}return e},p=(e,t)=>{if("string"!=typeof e)return e;let r=e.length-1,s=e[r];if("{"===e[0]&&"}"===s){let s;let n=e.slice(1,r);try{s=JSON.parse("["+n+"]")}catch(e){s=n?n.split(","):[]}return s.map(e=>u(t,e))}return e},g=e=>"string"==typeof e?e.replace(" ","T"):e,m=e=>{let t=e;return(t=(t=t.replace(/^ws/i,"http")).replace(/(\/socket\/websocket|\/socket|\/websocket)\/?$/i,"")).replace(/\/+$/,"")}},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],kPfVs:[function(e,t,r,s){var n,i,o,a,l,u,h=e("@parcel/transformer-js/src/esmodule-helpers.js");h.defineInteropFlag(r),h.export(r,"REALTIME_POSTGRES_CHANGES_LISTEN_EVENT",()=>a),h.export(r,"REALTIME_LISTEN_TYPES",()=>l),h.export(r,"REALTIME_SUBSCRIBE_STATES",()=>u),h.export(r,"REALTIME_CHANNEL_STATES",()=>v);var c=e("./lib/constants"),d=e("./lib/push"),f=h.interopDefault(d),p=e("./lib/timer"),g=h.interopDefault(p),m=e("./RealtimePresence"),y=h.interopDefault(m),b=e("./lib/transformers");(n=a||(a={})).ALL="*",n.INSERT="INSERT",n.UPDATE="UPDATE",n.DELETE="DELETE",(i=l||(l={})).BROADCAST="broadcast",i.PRESENCE="presence",i.POSTGRES_CHANGES="postgres_changes",i.SYSTEM="system",(o=u||(u={})).SUBSCRIBED="SUBSCRIBED",o.TIMED_OUT="TIMED_OUT",o.CLOSED="CLOSED",o.CHANNEL_ERROR="CHANNEL_ERROR";let v=c.CHANNEL_STATES;class w{constructor(e,t={config:{}},r){this.topic=e,this.params=t,this.socket=r,this.bindings={},this.state=c.CHANNEL_STATES.closed,this.joinedOnce=!1,this.pushBuffer=[],this.subTopic=e.replace(/^realtime:/i,""),this.params.config=Object.assign({broadcast:{ack:!1,self:!1},presence:{key:""},private:!1},t.config),this.timeout=this.socket.timeout,this.joinPush=new f.default(this,c.CHANNEL_EVENTS.join,this.params,this.timeout),this.rejoinTimer=new g.default(()=>this._rejoinUntilConnected(),this.socket.reconnectAfterMs),this.joinPush.receive("ok",()=>{this.state=c.CHANNEL_STATES.joined,this.rejoinTimer.reset(),this.pushBuffer.forEach(e=>e.send()),this.pushBuffer=[]}),this._onClose(()=>{this.rejoinTimer.reset(),this.socket.log("channel",`close ${this.topic} ${this._joinRef()}`),this.state=c.CHANNEL_STATES.closed,this.socket._remove(this)}),this._onError(e=>{this._isLeaving()||this._isClosed()||(this.socket.log("channel",`error ${this.topic}`,e),this.state=c.CHANNEL_STATES.errored,this.rejoinTimer.scheduleTimeout())}),this.joinPush.receive("timeout",()=>{this._isJoining()&&(this.socket.log("channel",`timeout ${this.topic}`,this.joinPush.timeout),this.state=c.CHANNEL_STATES.errored,this.rejoinTimer.scheduleTimeout())}),this._on(c.CHANNEL_EVENTS.reply,{},(e,t)=>{this._trigger(this._replyEventName(t),e)}),this.presence=new y.default(this),this.broadcastEndpointURL=(0,b.httpEndpointURL)(this.socket.endPoint)+"/api/broadcast",this.private=this.params.config.private||!1}subscribe(e,t=this.timeout){var r,s;if(this.socket.isConnected()||this.socket.connect(),this.joinedOnce)throw"tried to subscribe multiple times. 'subscribe' can only be called a single time per channel instance";{let{config:{broadcast:n,presence:i,private:o}}=this.params;this._onError(t=>e&&e("CHANNEL_ERROR",t)),this._onClose(()=>e&&e("CLOSED"));let a={},l={broadcast:n,presence:i,postgres_changes:null!==(s=null===(r=this.bindings.postgres_changes)||void 0===r?void 0:r.map(e=>e.filter))&&void 0!==s?s:[],private:o};this.socket.accessToken&&(a.access_token=this.socket.accessToken),this.updateJoinPayload(Object.assign({config:l},a)),this.joinedOnce=!0,this._rejoin(t),this.joinPush.receive("ok",({postgres_changes:t})=>{var r;if(this.socket.accessToken&&this.socket.setAuth(this.socket.accessToken),void 0===t){e&&e("SUBSCRIBED");return}{let s=this.bindings.postgres_changes,n=null!==(r=null==s?void 0:s.length)&&void 0!==r?r:0,i=[];for(let r=0;r<n;r++){let n=s[r],{filter:{event:o,schema:a,table:l,filter:u}}=n,h=t&&t[r];if(h&&h.event===o&&h.schema===a&&h.table===l&&h.filter===u)i.push(Object.assign(Object.assign({},n),{id:h.id}));else{this.unsubscribe(),e&&e("CHANNEL_ERROR",Error("mismatch between server and client bindings for postgres changes"));return}}this.bindings.postgres_changes=i,e&&e("SUBSCRIBED");return}}).receive("error",t=>{e&&e("CHANNEL_ERROR",Error(JSON.stringify(Object.values(t).join(", ")||"error")))}).receive("timeout",()=>{e&&e("TIMED_OUT")})}return this}presenceState(){return this.presence.state}async track(e,t={}){return await this.send({type:"presence",event:"track",payload:e},t.timeout||this.timeout)}async untrack(e={}){return await this.send({type:"presence",event:"untrack"},e)}on(e,t,r){return this._on(e,t,r)}async send(e,t={}){var r,s;if(this._canPush()||"broadcast"!==e.type)return new Promise(r=>{var s,n,i;let o=this._push(e.type,e,t.timeout||this.timeout);"broadcast"!==e.type||(null===(i=null===(n=null===(s=this.params)||void 0===s?void 0:s.config)||void 0===n?void 0:n.broadcast)||void 0===i?void 0:i.ack)||r("ok"),o.receive("ok",()=>r("ok")),o.receive("error",()=>r("error")),o.receive("timeout",()=>r("timed out"))});{let{event:n,payload:i}=e,o={method:"POST",headers:{Authorization:this.socket.accessToken?`Bearer ${this.socket.accessToken}`:"",apikey:this.socket.apiKey?this.socket.apiKey:"","Content-Type":"application/json"},body:JSON.stringify({messages:[{topic:this.subTopic,event:n,payload:i,private:this.private}]})};try{let e=await this._fetchWithTimeout(this.broadcastEndpointURL,o,null!==(r=t.timeout)&&void 0!==r?r:this.timeout);return await (null===(s=e.body)||void 0===s?void 0:s.cancel()),e.ok?"ok":"error"}catch(e){if("AbortError"===e.name)return"timed out";return"error"}}}updateJoinPayload(e){this.joinPush.updatePayload(e)}unsubscribe(e=this.timeout){this.state=c.CHANNEL_STATES.leaving;let t=()=>{this.socket.log("channel",`leave ${this.topic}`),this._trigger(c.CHANNEL_EVENTS.close,"leave",this._joinRef())};return this.rejoinTimer.reset(),this.joinPush.destroy(),new Promise(r=>{let s=new f.default(this,c.CHANNEL_EVENTS.leave,{},e);s.receive("ok",()=>{t(),r("ok")}).receive("timeout",()=>{t(),r("timed out")}).receive("error",()=>{r("error")}),s.send(),this._canPush()||s.trigger("ok",{})})}async _fetchWithTimeout(e,t,r){let s=new AbortController,n=setTimeout(()=>s.abort(),r),i=await this.socket.fetch(e,Object.assign(Object.assign({},t),{signal:s.signal}));return clearTimeout(n),i}_push(e,t,r=this.timeout){if(!this.joinedOnce)throw`tried to push '${e}' to '${this.topic}' before joining. Use channel.subscribe() before pushing events`;let s=new f.default(this,e,t,r);return this._canPush()?s.send():(s.startTimeout(),this.pushBuffer.push(s)),s}_onMessage(e,t,r){return t}_isMember(e){return this.topic===e}_joinRef(){return this.joinPush.ref}_trigger(e,t,r){var s,n;let i=e.toLocaleLowerCase(),{close:o,error:a,leave:l,join:u}=c.CHANNEL_EVENTS;if(r&&[o,a,l,u].indexOf(i)>=0&&r!==this._joinRef())return;let h=this._onMessage(i,t,r);if(t&&!h)throw"channel onMessage callbacks must return the payload, modified or unmodified";["insert","update","delete"].includes(i)?null===(s=this.bindings.postgres_changes)||void 0===s||s.filter(e=>{var t,r,s;return(null===(t=e.filter)||void 0===t?void 0:t.event)==="*"||(null===(s=null===(r=e.filter)||void 0===r?void 0:r.event)||void 0===s?void 0:s.toLocaleLowerCase())===i}).map(e=>e.callback(h,r)):null===(n=this.bindings[i])||void 0===n||n.filter(e=>{var r,s,n,o,a,l;if(!["broadcast","presence","postgres_changes"].includes(i))return e.type.toLocaleLowerCase()===i;if("id"in e){let i=e.id,o=null===(r=e.filter)||void 0===r?void 0:r.event;return i&&(null===(s=t.ids)||void 0===s?void 0:s.includes(i))&&("*"===o||(null==o?void 0:o.toLocaleLowerCase())===(null===(n=t.data)||void 0===n?void 0:n.type.toLocaleLowerCase()))}{let r=null===(a=null===(o=null==e?void 0:e.filter)||void 0===o?void 0:o.event)||void 0===a?void 0:a.toLocaleLowerCase();return"*"===r||r===(null===(l=null==t?void 0:t.event)||void 0===l?void 0:l.toLocaleLowerCase())}}).map(e=>{if("object"==typeof h&&"ids"in h){let e=h.data,{schema:t,table:r,commit_timestamp:s,type:n,errors:i}=e;h=Object.assign(Object.assign({},{schema:t,table:r,commit_timestamp:s,eventType:n,new:{},old:{},errors:i}),this._getPayloadRecords(e))}e.callback(h,r)})}_isClosed(){return this.state===c.CHANNEL_STATES.closed}_isJoined(){return this.state===c.CHANNEL_STATES.joined}_isJoining(){return this.state===c.CHANNEL_STATES.joining}_isLeaving(){return this.state===c.CHANNEL_STATES.leaving}_replyEventName(e){return`chan_reply_${e}`}_on(e,t,r){let s=e.toLocaleLowerCase(),n={type:s,filter:t,callback:r};return this.bindings[s]?this.bindings[s].push(n):this.bindings[s]=[n],this}_off(e,t){let r=e.toLocaleLowerCase();return this.bindings[r]=this.bindings[r].filter(e=>{var s;return!((null===(s=e.type)||void 0===s?void 0:s.toLocaleLowerCase())===r&&w.isEqual(e.filter,t))}),this}static isEqual(e,t){if(Object.keys(e).length!==Object.keys(t).length)return!1;for(let r in e)if(e[r]!==t[r])return!1;return!0}_rejoinUntilConnected(){this.rejoinTimer.scheduleTimeout(),this.socket.isConnected()&&this._rejoin()}_onClose(e){this._on(c.CHANNEL_EVENTS.close,{},e)}_onError(e){this._on(c.CHANNEL_EVENTS.error,{},t=>e(t))}_canPush(){return this.socket.isConnected()&&this._isJoined()}_rejoin(e=this.timeout){this._isLeaving()||(this.socket._leaveOpenTopic(this.topic),this.state=c.CHANNEL_STATES.joining,this.joinPush.resend(e))}_getPayloadRecords(e){let t={new:{},old:{}};return("INSERT"===e.type||"UPDATE"===e.type)&&(t.new=b.convertChangeData(e.columns,e.record)),("UPDATE"===e.type||"DELETE"===e.type)&&(t.old=b.convertChangeData(e.columns,e.old_record)),t}}r.default=w},{"./lib/constants":"b7Tfz","./lib/push":"04M5X","./lib/timer":"4kZpX","./RealtimePresence":"1SbUv","./lib/transformers":"fMnzi","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"04M5X":[function(e,t,r,s){e("@parcel/transformer-js/src/esmodule-helpers.js").defineInteropFlag(r);var n=e("../lib/constants");r.default=class{constructor(e,t,r={},s=n.DEFAULT_TIMEOUT){this.channel=e,this.event=t,this.payload=r,this.timeout=s,this.sent=!1,this.timeoutTimer=void 0,this.ref="",this.receivedResp=null,this.recHooks=[],this.refEvent=null}resend(e){this.timeout=e,this._cancelRefEvent(),this.ref="",this.refEvent=null,this.receivedResp=null,this.sent=!1,this.send()}send(){this._hasReceived("timeout")||(this.startTimeout(),this.sent=!0,this.channel.socket.push({topic:this.channel.topic,event:this.event,payload:this.payload,ref:this.ref,join_ref:this.channel._joinRef()}))}updatePayload(e){this.payload=Object.assign(Object.assign({},this.payload),e)}receive(e,t){var r;return this._hasReceived(e)&&t(null===(r=this.receivedResp)||void 0===r?void 0:r.response),this.recHooks.push({status:e,callback:t}),this}startTimeout(){this.timeoutTimer||(this.ref=this.channel.socket._makeRef(),this.refEvent=this.channel._replyEventName(this.ref),this.channel._on(this.refEvent,{},e=>{this._cancelRefEvent(),this._cancelTimeout(),this.receivedResp=e,this._matchReceive(e)}),this.timeoutTimer=setTimeout(()=>{this.trigger("timeout",{})},this.timeout))}trigger(e,t){this.refEvent&&this.channel._trigger(this.refEvent,{status:e,response:t})}destroy(){this._cancelRefEvent(),this._cancelTimeout()}_cancelRefEvent(){this.refEvent&&this.channel._off(this.refEvent,{})}_cancelTimeout(){clearTimeout(this.timeoutTimer),this.timeoutTimer=void 0}_matchReceive({status:e,response:t}){this.recHooks.filter(t=>t.status===e).forEach(e=>e.callback(t))}_hasReceived(e){return this.receivedResp&&this.receivedResp.status===e}}},{"../lib/constants":"b7Tfz","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"1SbUv":[function(e,t,r,s){var n,i,o=e("@parcel/transformer-js/src/esmodule-helpers.js");o.defineInteropFlag(r),o.export(r,"REALTIME_PRESENCE_LISTEN_EVENTS",()=>i),(n=i||(i={})).SYNC="sync",n.JOIN="join",n.LEAVE="leave";class a{constructor(e,t){this.channel=e,this.state={},this.pendingDiffs=[],this.joinRef=null,this.caller={onJoin:()=>{},onLeave:()=>{},onSync:()=>{}};let r=(null==t?void 0:t.events)||{state:"presence_state",diff:"presence_diff"};this.channel._on(r.state,{},e=>{let{onJoin:t,onLeave:r,onSync:s}=this.caller;this.joinRef=this.channel._joinRef(),this.state=a.syncState(this.state,e,t,r),this.pendingDiffs.forEach(e=>{this.state=a.syncDiff(this.state,e,t,r)}),this.pendingDiffs=[],s()}),this.channel._on(r.diff,{},e=>{let{onJoin:t,onLeave:r,onSync:s}=this.caller;this.inPendingSyncState()?this.pendingDiffs.push(e):(this.state=a.syncDiff(this.state,e,t,r),s())}),this.onJoin((e,t,r)=>{this.channel._trigger("presence",{event:"join",key:e,currentPresences:t,newPresences:r})}),this.onLeave((e,t,r)=>{this.channel._trigger("presence",{event:"leave",key:e,currentPresences:t,leftPresences:r})}),this.onSync(()=>{this.channel._trigger("presence",{event:"sync"})})}static syncState(e,t,r,s){let n=this.cloneDeep(e),i=this.transformState(t),o={},a={};return this.map(n,(e,t)=>{i[e]||(a[e]=t)}),this.map(i,(e,t)=>{let r=n[e];if(r){let s=t.map(e=>e.presence_ref),n=r.map(e=>e.presence_ref),i=t.filter(e=>0>n.indexOf(e.presence_ref)),l=r.filter(e=>0>s.indexOf(e.presence_ref));i.length>0&&(o[e]=i),l.length>0&&(a[e]=l)}else o[e]=t}),this.syncDiff(n,{joins:o,leaves:a},r,s)}static syncDiff(e,t,r,s){let{joins:n,leaves:i}={joins:this.transformState(t.joins),leaves:this.transformState(t.leaves)};return r||(r=()=>{}),s||(s=()=>{}),this.map(n,(t,s)=>{var n;let i=null!==(n=e[t])&&void 0!==n?n:[];if(e[t]=this.cloneDeep(s),i.length>0){let r=e[t].map(e=>e.presence_ref),s=i.filter(e=>0>r.indexOf(e.presence_ref));e[t].unshift(...s)}r(t,i,s)}),this.map(i,(t,r)=>{let n=e[t];if(!n)return;let i=r.map(e=>e.presence_ref);n=n.filter(e=>0>i.indexOf(e.presence_ref)),e[t]=n,s(t,n,r),0===n.length&&delete e[t]}),e}static map(e,t){return Object.getOwnPropertyNames(e).map(r=>t(r,e[r]))}static transformState(e){return Object.getOwnPropertyNames(e=this.cloneDeep(e)).reduce((t,r)=>{let s=e[r];return"metas"in s?t[r]=s.metas.map(e=>(e.presence_ref=e.phx_ref,delete e.phx_ref,delete e.phx_ref_prev,e)):t[r]=s,t},{})}static cloneDeep(e){return JSON.parse(JSON.stringify(e))}onJoin(e){this.caller.onJoin=e}onLeave(e){this.caller.onLeave=e}onSync(e){this.caller.onSync=e}inPendingSyncState(){return!this.joinRef||this.joinRef!==this.channel._joinRef()}}r.default=a},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"040hw":[function(e,t,r,s){t.exports=e("f772ae9811452f9f")(e("a7e5c7660580f6ff").resolve("bDAMX")).then(()=>t.bundle.root("44gAr"))},{f772ae9811452f9f:"9wKyf",a7e5c7660580f6ff:"gSiLw"}],"9wKyf":[function(e,t,r,s){var n=e("ca2a84f7fa4a3bb0");t.exports=n(function(e){return new Promise(function(t,r){if([].concat(document.getElementsByTagName("script")).some(function(t){return t.src===e})){t();return}var s=document.createElement("link");s.href=e,s.rel="preload",s.as="script",document.head.appendChild(s);var n=document.createElement("script");n.async=!0,n.type="text/javascript",n.src=e,n.onerror=function(t){var s=TypeError("Failed to fetch dynamically imported module: ".concat(e,". Error: ").concat(t.message));n.onerror=n.onload=null,n.remove(),r(s)},n.onload=function(){n.onerror=n.onload=null,t()},document.getElementsByTagName("head")[0].appendChild(n)})})},{ca2a84f7fa4a3bb0:"e8xyU"}],e8xyU:[function(e,t,r,s){var n={},i={},o={};t.exports=function(e,t){return function(r){var s=function(e){switch(e){case"preload":return i;case"prefetch":return o;default:return n}}(t);return s[r]?s[r]:s[r]=e.apply(null,arguments).catch(function(e){throw delete s[r],e})}}},{}],dLDMJ:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"StorageClient",()=>i.StorageClient);var i=e("./StorageClient"),o=e("./lib/types");n.exportAll(o,r);var a=e("./lib/errors");n.exportAll(a,r)},{"./StorageClient":"lznxO","./lib/types":!1,"./lib/errors":!1,"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],lznxO:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"StorageClient",()=>u);var i=e("./packages/StorageFileApi"),o=n.interopDefault(i),a=e("./packages/StorageBucketApi"),l=n.interopDefault(a);class u extends l.default{constructor(e,t={},r){super(e,t,r)}from(e){return new o.default(this.url,this.headers,e,this.fetch)}}},{"./packages/StorageFileApi":"7RmCB","./packages/StorageBucketApi":"d3OVP","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"7RmCB":[function(e,t,r,s){e("@parcel/transformer-js/src/esmodule-helpers.js").defineInteropFlag(r);var n=e("../lib/errors"),i=e("../lib/fetch"),o=e("../lib/helpers"),a=e("ebcf743ac8dd004a").Buffer,l=function(e,t,r,s){return new(r||(r=Promise))(function(n,i){function o(e){try{l(s.next(e))}catch(e){i(e)}}function a(e){try{l(s.throw(e))}catch(e){i(e)}}function l(e){var t;e.done?n(e.value):((t=e.value)instanceof r?t:new r(function(e){e(t)})).then(o,a)}l((s=s.apply(e,t||[])).next())})};let u={limit:100,offset:0,sortBy:{column:"name",order:"asc"}},h={cacheControl:"3600",contentType:"text/plain;charset=UTF-8",upsert:!1};r.default=class{constructor(e,t={},r,s){this.url=e,this.headers=t,this.bucketId=r,this.fetch=(0,o.resolveFetch)(s)}uploadOrUpdate(e,t,r,s){return l(this,void 0,void 0,function*(){try{let n;let i=Object.assign(Object.assign({},h),s),o=Object.assign(Object.assign({},this.headers),"POST"===e&&{"x-upsert":String(i.upsert)}),a=i.metadata;"undefined"!=typeof Blob&&r instanceof Blob?((n=new FormData).append("cacheControl",i.cacheControl),a&&n.append("metadata",this.encodeMetadata(a)),n.append("",r)):"undefined"!=typeof FormData&&r instanceof FormData?((n=r).append("cacheControl",i.cacheControl),a&&n.append("metadata",this.encodeMetadata(a))):(n=r,o["cache-control"]=`max-age=${i.cacheControl}`,o["content-type"]=i.contentType,a&&(o["x-metadata"]=this.toBase64(this.encodeMetadata(a)))),(null==s?void 0:s.headers)&&(o=Object.assign(Object.assign({},o),s.headers));let l=this._removeEmptyFolders(t),u=this._getFinalPath(l),c=yield this.fetch(`${this.url}/object/${u}`,Object.assign({method:e,body:n,headers:o},(null==i?void 0:i.duplex)?{duplex:i.duplex}:{})),d=yield c.json();if(c.ok)return{data:{path:l,id:d.Id,fullPath:d.Key},error:null};return{data:null,error:d}}catch(e){if((0,n.isStorageError)(e))return{data:null,error:e};throw e}})}upload(e,t,r){return l(this,void 0,void 0,function*(){return this.uploadOrUpdate("POST",e,t,r)})}uploadToSignedUrl(e,t,r,s){return l(this,void 0,void 0,function*(){let i=this._removeEmptyFolders(e),o=this._getFinalPath(i),a=new URL(this.url+`/object/upload/sign/${o}`);a.searchParams.set("token",t);try{let e;let t=Object.assign({upsert:h.upsert},s),n=Object.assign(Object.assign({},this.headers),{"x-upsert":String(t.upsert)});"undefined"!=typeof Blob&&r instanceof Blob?((e=new FormData).append("cacheControl",t.cacheControl),e.append("",r)):"undefined"!=typeof FormData&&r instanceof FormData?(e=r).append("cacheControl",t.cacheControl):(e=r,n["cache-control"]=`max-age=${t.cacheControl}`,n["content-type"]=t.contentType);let o=yield this.fetch(a.toString(),{method:"PUT",body:e,headers:n}),l=yield o.json();if(o.ok)return{data:{path:i,fullPath:l.Key},error:null};return{data:null,error:l}}catch(e){if((0,n.isStorageError)(e))return{data:null,error:e};throw e}})}createSignedUploadUrl(e,t){return l(this,void 0,void 0,function*(){try{let r=this._getFinalPath(e),s=Object.assign({},this.headers);(null==t?void 0:t.upsert)&&(s["x-upsert"]="true");let o=yield(0,i.post)(this.fetch,`${this.url}/object/upload/sign/${r}`,{},{headers:s}),a=new URL(this.url+o.url),l=a.searchParams.get("token");if(!l)throw new n.StorageError("No token returned by API");return{data:{signedUrl:a.toString(),path:e,token:l},error:null}}catch(e){if((0,n.isStorageError)(e))return{data:null,error:e};throw e}})}update(e,t,r){return l(this,void 0,void 0,function*(){return this.uploadOrUpdate("PUT",e,t,r)})}move(e,t,r){return l(this,void 0,void 0,function*(){try{return{data:yield(0,i.post)(this.fetch,`${this.url}/object/move`,{bucketId:this.bucketId,sourceKey:e,destinationKey:t,destinationBucket:null==r?void 0:r.destinationBucket},{headers:this.headers}),error:null}}catch(e){if((0,n.isStorageError)(e))return{data:null,error:e};throw e}})}copy(e,t,r){return l(this,void 0,void 0,function*(){try{return{data:{path:(yield(0,i.post)(this.fetch,`${this.url}/object/copy`,{bucketId:this.bucketId,sourceKey:e,destinationKey:t,destinationBucket:null==r?void 0:r.destinationBucket},{headers:this.headers})).Key},error:null}}catch(e){if((0,n.isStorageError)(e))return{data:null,error:e};throw e}})}createSignedUrl(e,t,r){return l(this,void 0,void 0,function*(){try{let s=this._getFinalPath(e),n=yield(0,i.post)(this.fetch,`${this.url}/object/sign/${s}`,Object.assign({expiresIn:t},(null==r?void 0:r.transform)?{transform:r.transform}:{}),{headers:this.headers}),o=(null==r?void 0:r.download)?`&download=${!0===r.download?"":r.download}`:"";return{data:n={signedUrl:encodeURI(`${this.url}${n.signedURL}${o}`)},error:null}}catch(e){if((0,n.isStorageError)(e))return{data:null,error:e};throw e}})}createSignedUrls(e,t,r){return l(this,void 0,void 0,function*(){try{let s=yield(0,i.post)(this.fetch,`${this.url}/object/sign/${this.bucketId}`,{expiresIn:t,paths:e},{headers:this.headers}),n=(null==r?void 0:r.download)?`&download=${!0===r.download?"":r.download}`:"";return{data:s.map(e=>Object.assign(Object.assign({},e),{signedUrl:e.signedURL?encodeURI(`${this.url}${e.signedURL}${n}`):null})),error:null}}catch(e){if((0,n.isStorageError)(e))return{data:null,error:e};throw e}})}download(e,t){return l(this,void 0,void 0,function*(){let r=void 0!==(null==t?void 0:t.transform),s=this.transformOptsToQueryString((null==t?void 0:t.transform)||{}),o=s?`?${s}`:"";try{let t=this._getFinalPath(e),s=yield(0,i.get)(this.fetch,`${this.url}/${r?"render/image/authenticated":"object"}/${t}${o}`,{headers:this.headers,noResolveJson:!0});return{data:yield s.blob(),error:null}}catch(e){if((0,n.isStorageError)(e))return{data:null,error:e};throw e}})}info(e){return l(this,void 0,void 0,function*(){let t=this._getFinalPath(e);try{let e=yield(0,i.get)(this.fetch,`${this.url}/object/info/${t}`,{headers:this.headers});return{data:(0,o.recursiveToCamel)(e),error:null}}catch(e){if((0,n.isStorageError)(e))return{data:null,error:e};throw e}})}exists(e){return l(this,void 0,void 0,function*(){let t=this._getFinalPath(e);try{return yield(0,i.head)(this.fetch,`${this.url}/object/${t}`,{headers:this.headers}),{data:!0,error:null}}catch(e){if((0,n.isStorageError)(e)&&e instanceof n.StorageUnknownError){let t=e.originalError;if([400,404].includes(null==t?void 0:t.status))return{data:!1,error:e}}throw e}})}getPublicUrl(e,t){let r=this._getFinalPath(e),s=[],n=(null==t?void 0:t.download)?`download=${!0===t.download?"":t.download}`:"";""!==n&&s.push(n);let i=void 0!==(null==t?void 0:t.transform),o=this.transformOptsToQueryString((null==t?void 0:t.transform)||{});""!==o&&s.push(o);let a=s.join("&");return""!==a&&(a=`?${a}`),{data:{publicUrl:encodeURI(`${this.url}/${i?"render/image":"object"}/public/${r}${a}`)}}}remove(e){return l(this,void 0,void 0,function*(){try{return{data:yield(0,i.remove)(this.fetch,`${this.url}/object/${this.bucketId}`,{prefixes:e},{headers:this.headers}),error:null}}catch(e){if((0,n.isStorageError)(e))return{data:null,error:e};throw e}})}list(e,t,r){return l(this,void 0,void 0,function*(){try{let s=Object.assign(Object.assign(Object.assign({},u),t),{prefix:e||""});return{data:yield(0,i.post)(this.fetch,`${this.url}/object/list/${this.bucketId}`,s,{headers:this.headers},r),error:null}}catch(e){if((0,n.isStorageError)(e))return{data:null,error:e};throw e}})}encodeMetadata(e){return JSON.stringify(e)}toBase64(e){return void 0!==a?a.from(e).toString("base64"):btoa(e)}_getFinalPath(e){return`${this.bucketId}/${e}`}_removeEmptyFolders(e){return e.replace(/^\/|\/$/g,"").replace(/\/+/g,"/")}transformOptsToQueryString(e){let t=[];return e.width&&t.push(`width=${e.width}`),e.height&&t.push(`height=${e.height}`),e.resize&&t.push(`resize=${e.resize}`),e.format&&t.push(`format=${e.format}`),e.quality&&t.push(`quality=${e.quality}`),t.join("&")}}},{ebcf743ac8dd004a:"dB11O","../lib/errors":"pVJlf","../lib/fetch":"7gpc7","../lib/helpers":"glFBz","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],dB11O:[function(e,t,r,s){let n=e("9c62938f1dccc73c"),i=e("aceacb6a4531a9d2"),o="function"==typeof Symbol&&"function"==typeof Symbol.for?Symbol.for("nodejs.util.inspect.custom"):null;function a(e){if(e>0x7fffffff)throw RangeError('The value "'+e+'" is invalid for option "size"');let t=new Uint8Array(e);return Object.setPrototypeOf(t,l.prototype),t}function l(e,t,r){if("number"==typeof e){if("string"==typeof t)throw TypeError('The "string" argument must be of type string. Received type number');return c(e)}return u(e,t,r)}function u(e,t,r){if("string"==typeof e)return function(e,t){if(("string"!=typeof t||""===t)&&(t="utf8"),!l.isEncoding(t))throw TypeError("Unknown encoding: "+t);let r=0|g(e,t),s=a(r),n=s.write(e,t);return n!==r&&(s=s.slice(0,n)),s}(e,t);if(ArrayBuffer.isView(e))return function(e){if(N(e,Uint8Array)){let t=new Uint8Array(e);return f(t.buffer,t.byteOffset,t.byteLength)}return d(e)}(e);if(null==e)throw TypeError("The first argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. Received type "+typeof e);if(N(e,ArrayBuffer)||e&&N(e.buffer,ArrayBuffer)||"undefined"!=typeof SharedArrayBuffer&&(N(e,SharedArrayBuffer)||e&&N(e.buffer,SharedArrayBuffer)))return f(e,t,r);if("number"==typeof e)throw TypeError('The "value" argument must not be of type number. Received type number');let s=e.valueOf&&e.valueOf();if(null!=s&&s!==e)return l.from(s,t,r);let n=function(e){var t;if(l.isBuffer(e)){let t=0|p(e.length),r=a(t);return 0===r.length||e.copy(r,0,0,t),r}return void 0!==e.length?"number"!=typeof e.length||(t=e.length)!=t?a(0):d(e):"Buffer"===e.type&&Array.isArray(e.data)?d(e.data):void 0}(e);if(n)return n;if("undefined"!=typeof Symbol&&null!=Symbol.toPrimitive&&"function"==typeof e[Symbol.toPrimitive])return l.from(e[Symbol.toPrimitive]("string"),t,r);throw TypeError("The first argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. Received type "+typeof e)}function h(e){if("number"!=typeof e)throw TypeError('"size" argument must be of type number');if(e<0)throw RangeError('The value "'+e+'" is invalid for option "size"')}function c(e){return h(e),a(e<0?0:0|p(e))}function d(e){let t=e.length<0?0:0|p(e.length),r=a(t);for(let s=0;s<t;s+=1)r[s]=255&e[s];return r}function f(e,t,r){let s;if(t<0||e.byteLength<t)throw RangeError('"offset" is outside of buffer bounds');if(e.byteLength<t+(r||0))throw RangeError('"length" is outside of buffer bounds');return Object.setPrototypeOf(s=void 0===t&&void 0===r?new Uint8Array(e):void 0===r?new Uint8Array(e,t):new Uint8Array(e,t,r),l.prototype),s}function p(e){if(e>=0x7fffffff)throw RangeError("Attempt to allocate Buffer larger than maximum size: 0x7fffffff bytes");return 0|e}function g(e,t){if(l.isBuffer(e))return e.length;if(ArrayBuffer.isView(e)||N(e,ArrayBuffer))return e.byteLength;if("string"!=typeof e)throw TypeError('The "string" argument must be one of type string, Buffer, or ArrayBuffer. Received type '+typeof e);let r=e.length,s=arguments.length>2&&!0===arguments[2];if(!s&&0===r)return 0;let n=!1;for(;;)switch(t){case"ascii":case"latin1":case"binary":return r;case"utf8":case"utf-8":return $(e).length;case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return 2*r;case"hex":return r>>>1;case"base64":return U(e).length;default:if(n)return s?-1:$(e).length;t=(""+t).toLowerCase(),n=!0}}function m(e,t,r){let s=!1;if((void 0===t||t<0)&&(t=0),t>this.length||((void 0===r||r>this.length)&&(r=this.length),r<=0||(r>>>=0)<=(t>>>=0)))return"";for(e||(e="utf8");;)switch(e){case"hex":return function(e,t,r){let s=e.length;(!t||t<0)&&(t=0),(!r||r<0||r>s)&&(r=s);let n="";for(let s=t;s<r;++s)n+=D[e[s]];return n}(this,t,r);case"utf8":case"utf-8":return w(this,t,r);case"ascii":return function(e,t,r){let s="";r=Math.min(e.length,r);for(let n=t;n<r;++n)s+=String.fromCharCode(127&e[n]);return s}(this,t,r);case"latin1":case"binary":return function(e,t,r){let s="";r=Math.min(e.length,r);for(let n=t;n<r;++n)s+=String.fromCharCode(e[n]);return s}(this,t,r);case"base64":var i,o;return i=t,o=r,0===i&&o===this.length?n.fromByteArray(this):n.fromByteArray(this.slice(i,o));case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return function(e,t,r){let s=e.slice(t,r),n="";for(let e=0;e<s.length-1;e+=2)n+=String.fromCharCode(s[e]+256*s[e+1]);return n}(this,t,r);default:if(s)throw TypeError("Unknown encoding: "+e);e=(e+"").toLowerCase(),s=!0}}function y(e,t,r){let s=e[t];e[t]=e[r],e[r]=s}function b(e,t,r,s,n){var i;if(0===e.length)return -1;if("string"==typeof r?(s=r,r=0):r>0x7fffffff?r=0x7fffffff:r<-0x80000000&&(r=-0x80000000),(i=r=+r)!=i&&(r=n?0:e.length-1),r<0&&(r=e.length+r),r>=e.length){if(n)return -1;r=e.length-1}else if(r<0){if(!n)return -1;r=0}if("string"==typeof t&&(t=l.from(t,s)),l.isBuffer(t))return 0===t.length?-1:v(e,t,r,s,n);if("number"==typeof t)return(t&=255,"function"==typeof Uint8Array.prototype.indexOf)?n?Uint8Array.prototype.indexOf.call(e,t,r):Uint8Array.prototype.lastIndexOf.call(e,t,r):v(e,[t],r,s,n);throw TypeError("val must be string, number or Buffer")}function v(e,t,r,s,n){let i,o=1,a=e.length,l=t.length;if(void 0!==s&&("ucs2"===(s=String(s).toLowerCase())||"ucs-2"===s||"utf16le"===s||"utf-16le"===s)){if(e.length<2||t.length<2)return -1;o=2,a/=2,l/=2,r/=2}function u(e,t){return 1===o?e[t]:e.readUInt16BE(t*o)}if(n){let s=-1;for(i=r;i<a;i++)if(u(e,i)===u(t,-1===s?0:i-s)){if(-1===s&&(s=i),i-s+1===l)return s*o}else -1!==s&&(i-=i-s),s=-1}else for(r+l>a&&(r=a-l),i=r;i>=0;i--){let r=!0;for(let s=0;s<l;s++)if(u(e,i+s)!==u(t,s)){r=!1;break}if(r)return i}return -1}function w(e,t,r){r=Math.min(e.length,r);let s=[],n=t;for(;n<r;){let t=e[n],i=null,o=t>239?4:t>223?3:t>191?2:1;if(n+o<=r){let r,s,a,l;switch(o){case 1:t<128&&(i=t);break;case 2:(192&(r=e[n+1]))==128&&(l=(31&t)<<6|63&r)>127&&(i=l);break;case 3:r=e[n+1],s=e[n+2],(192&r)==128&&(192&s)==128&&(l=(15&t)<<12|(63&r)<<6|63&s)>2047&&(l<55296||l>57343)&&(i=l);break;case 4:r=e[n+1],s=e[n+2],a=e[n+3],(192&r)==128&&(192&s)==128&&(192&a)==128&&(l=(15&t)<<18|(63&r)<<12|(63&s)<<6|63&a)>65535&&l<1114112&&(i=l)}}null===i?(i=65533,o=1):i>65535&&(i-=65536,s.push(i>>>10&1023|55296),i=56320|1023&i),s.push(i),n+=o}return function(e){let t=e.length;if(t<=4096)return String.fromCharCode.apply(String,e);let r="",s=0;for(;s<t;)r+=String.fromCharCode.apply(String,e.slice(s,s+=4096));return r}(s)}function _(e,t,r){if(e%1!=0||e<0)throw RangeError("offset is not uint");if(e+t>r)throw RangeError("Trying to access beyond buffer length")}function E(e,t,r,s,n,i){if(!l.isBuffer(e))throw TypeError('"buffer" argument must be a Buffer instance');if(t>n||t<i)throw RangeError('"value" argument is out of bounds');if(r+s>e.length)throw RangeError("Index out of range")}function j(e,t,r,s,n){I(t,s,n,e,r,7);let i=Number(t&BigInt(0xffffffff));e[r++]=i,i>>=8,e[r++]=i,i>>=8,e[r++]=i,i>>=8,e[r++]=i;let o=Number(t>>BigInt(32)&BigInt(0xffffffff));return e[r++]=o,o>>=8,e[r++]=o,o>>=8,e[r++]=o,o>>=8,e[r++]=o,r}function A(e,t,r,s,n){I(t,s,n,e,r,7);let i=Number(t&BigInt(0xffffffff));e[r+7]=i,i>>=8,e[r+6]=i,i>>=8,e[r+5]=i,i>>=8,e[r+4]=i;let o=Number(t>>BigInt(32)&BigInt(0xffffffff));return e[r+3]=o,o>>=8,e[r+2]=o,o>>=8,e[r+1]=o,o>>=8,e[r]=o,r+8}function S(e,t,r,s,n,i){if(r+s>e.length||r<0)throw RangeError("Index out of range")}function x(e,t,r,s,n){return t=+t,r>>>=0,n||S(e,t,r,4,34028234663852886e22,-34028234663852886e22),i.write(e,t,r,s,23,4),r+4}function T(e,t,r,s,n){return t=+t,r>>>=0,n||S(e,t,r,8,17976931348623157e292,-17976931348623157e292),i.write(e,t,r,s,52,8),r+8}r.Buffer=l,r.SlowBuffer=function(e){return+e!=e&&(e=0),l.alloc(+e)},r.INSPECT_MAX_BYTES=50,r.kMaxLength=0x7fffffff,l.TYPED_ARRAY_SUPPORT=function(){try{let e=new Uint8Array(1),t={foo:function(){return 42}};return Object.setPrototypeOf(t,Uint8Array.prototype),Object.setPrototypeOf(e,t),42===e.foo()}catch(e){return!1}}(),l.TYPED_ARRAY_SUPPORT||"undefined"==typeof console||"function"!=typeof console.error||console.error("This browser lacks typed array (Uint8Array) support which is required by `buffer` v5.x. Use `buffer` v4.x if you require old browser support."),Object.defineProperty(l.prototype,"parent",{enumerable:!0,get:function(){if(l.isBuffer(this))return this.buffer}}),Object.defineProperty(l.prototype,"offset",{enumerable:!0,get:function(){if(l.isBuffer(this))return this.byteOffset}}),l.poolSize=8192,l.from=function(e,t,r){return u(e,t,r)},Object.setPrototypeOf(l.prototype,Uint8Array.prototype),Object.setPrototypeOf(l,Uint8Array),l.alloc=function(e,t,r){return(h(e),e<=0)?a(e):void 0!==t?"string"==typeof r?a(e).fill(t,r):a(e).fill(t):a(e)},l.allocUnsafe=function(e){return c(e)},l.allocUnsafeSlow=function(e){return c(e)},l.isBuffer=function(e){return null!=e&&!0===e._isBuffer&&e!==l.prototype},l.compare=function(e,t){if(N(e,Uint8Array)&&(e=l.from(e,e.offset,e.byteLength)),N(t,Uint8Array)&&(t=l.from(t,t.offset,t.byteLength)),!l.isBuffer(e)||!l.isBuffer(t))throw TypeError('The "buf1", "buf2" arguments must be one of type Buffer or Uint8Array');if(e===t)return 0;let r=e.length,s=t.length;for(let n=0,i=Math.min(r,s);n<i;++n)if(e[n]!==t[n]){r=e[n],s=t[n];break}return r<s?-1:s<r?1:0},l.isEncoding=function(e){switch(String(e).toLowerCase()){case"hex":case"utf8":case"utf-8":case"ascii":case"latin1":case"binary":case"base64":case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return!0;default:return!1}},l.concat=function(e,t){let r;if(!Array.isArray(e))throw TypeError('"list" argument must be an Array of Buffers');if(0===e.length)return l.alloc(0);if(void 0===t)for(r=0,t=0;r<e.length;++r)t+=e[r].length;let s=l.allocUnsafe(t),n=0;for(r=0;r<e.length;++r){let t=e[r];if(N(t,Uint8Array))n+t.length>s.length?(l.isBuffer(t)||(t=l.from(t)),t.copy(s,n)):Uint8Array.prototype.set.call(s,t,n);else if(l.isBuffer(t))t.copy(s,n);else throw TypeError('"list" argument must be an Array of Buffers');n+=t.length}return s},l.byteLength=g,l.prototype._isBuffer=!0,l.prototype.swap16=function(){let e=this.length;if(e%2!=0)throw RangeError("Buffer size must be a multiple of 16-bits");for(let t=0;t<e;t+=2)y(this,t,t+1);return this},l.prototype.swap32=function(){let e=this.length;if(e%4!=0)throw RangeError("Buffer size must be a multiple of 32-bits");for(let t=0;t<e;t+=4)y(this,t,t+3),y(this,t+1,t+2);return this},l.prototype.swap64=function(){let e=this.length;if(e%8!=0)throw RangeError("Buffer size must be a multiple of 64-bits");for(let t=0;t<e;t+=8)y(this,t,t+7),y(this,t+1,t+6),y(this,t+2,t+5),y(this,t+3,t+4);return this},l.prototype.toString=function(){let e=this.length;return 0===e?"":0==arguments.length?w(this,0,e):m.apply(this,arguments)},l.prototype.toLocaleString=l.prototype.toString,l.prototype.equals=function(e){if(!l.isBuffer(e))throw TypeError("Argument must be a Buffer");return this===e||0===l.compare(this,e)},l.prototype.inspect=function(){let e="",t=r.INSPECT_MAX_BYTES;return e=this.toString("hex",0,t).replace(/(.{2})/g,"$1 ").trim(),this.length>t&&(e+=" ... "),"<Buffer "+e+">"},o&&(l.prototype[o]=l.prototype.inspect),l.prototype.compare=function(e,t,r,s,n){if(N(e,Uint8Array)&&(e=l.from(e,e.offset,e.byteLength)),!l.isBuffer(e))throw TypeError('The "target" argument must be one of type Buffer or Uint8Array. Received type '+typeof e);if(void 0===t&&(t=0),void 0===r&&(r=e?e.length:0),void 0===s&&(s=0),void 0===n&&(n=this.length),t<0||r>e.length||s<0||n>this.length)throw RangeError("out of range index");if(s>=n&&t>=r)return 0;if(s>=n)return -1;if(t>=r)return 1;if(t>>>=0,r>>>=0,s>>>=0,n>>>=0,this===e)return 0;let i=n-s,o=r-t,a=Math.min(i,o),u=this.slice(s,n),h=e.slice(t,r);for(let e=0;e<a;++e)if(u[e]!==h[e]){i=u[e],o=h[e];break}return i<o?-1:o<i?1:0},l.prototype.includes=function(e,t,r){return -1!==this.indexOf(e,t,r)},l.prototype.indexOf=function(e,t,r){return b(this,e,t,r,!0)},l.prototype.lastIndexOf=function(e,t,r){return b(this,e,t,r,!1)},l.prototype.write=function(e,t,r,s){var n,i,o,a,l,u,h,c;if(void 0===t)s="utf8",r=this.length,t=0;else if(void 0===r&&"string"==typeof t)s=t,r=this.length,t=0;else if(isFinite(t))t>>>=0,isFinite(r)?(r>>>=0,void 0===s&&(s="utf8")):(s=r,r=void 0);else throw Error("Buffer.write(string, encoding, offset[, length]) is no longer supported");let d=this.length-t;if((void 0===r||r>d)&&(r=d),e.length>0&&(r<0||t<0)||t>this.length)throw RangeError("Attempt to write outside buffer bounds");s||(s="utf8");let f=!1;for(;;)switch(s){case"hex":return function(e,t,r,s){let n;r=Number(r)||0;let i=e.length-r;s?(s=Number(s))>i&&(s=i):s=i;let o=t.length;for(s>o/2&&(s=o/2),n=0;n<s;++n){let s=parseInt(t.substr(2*n,2),16);if(s!=s)break;e[r+n]=s}return n}(this,e,t,r);case"utf8":case"utf-8":return n=t,i=r,F($(e,this.length-n),this,n,i);case"ascii":case"latin1":case"binary":return o=t,a=r,F(function(e){let t=[];for(let r=0;r<e.length;++r)t.push(255&e.charCodeAt(r));return t}(e),this,o,a);case"base64":return l=t,u=r,F(U(e),this,l,u);case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return h=t,c=r,F(function(e,t){let r,s;let n=[];for(let i=0;i<e.length&&!((t-=2)<0);++i)s=(r=e.charCodeAt(i))>>8,n.push(r%256),n.push(s);return n}(e,this.length-h),this,h,c);default:if(f)throw TypeError("Unknown encoding: "+s);s=(""+s).toLowerCase(),f=!0}},l.prototype.toJSON=function(){return{type:"Buffer",data:Array.prototype.slice.call(this._arr||this,0)}},l.prototype.slice=function(e,t){let r=this.length;e=~~e,t=void 0===t?r:~~t,e<0?(e+=r)<0&&(e=0):e>r&&(e=r),t<0?(t+=r)<0&&(t=0):t>r&&(t=r),t<e&&(t=e);let s=this.subarray(e,t);return Object.setPrototypeOf(s,l.prototype),s},l.prototype.readUintLE=l.prototype.readUIntLE=function(e,t,r){e>>>=0,t>>>=0,r||_(e,t,this.length);let s=this[e],n=1,i=0;for(;++i<t&&(n*=256);)s+=this[e+i]*n;return s},l.prototype.readUintBE=l.prototype.readUIntBE=function(e,t,r){e>>>=0,t>>>=0,r||_(e,t,this.length);let s=this[e+--t],n=1;for(;t>0&&(n*=256);)s+=this[e+--t]*n;return s},l.prototype.readUint8=l.prototype.readUInt8=function(e,t){return e>>>=0,t||_(e,1,this.length),this[e]},l.prototype.readUint16LE=l.prototype.readUInt16LE=function(e,t){return e>>>=0,t||_(e,2,this.length),this[e]|this[e+1]<<8},l.prototype.readUint16BE=l.prototype.readUInt16BE=function(e,t){return e>>>=0,t||_(e,2,this.length),this[e]<<8|this[e+1]},l.prototype.readUint32LE=l.prototype.readUInt32LE=function(e,t){return e>>>=0,t||_(e,4,this.length),(this[e]|this[e+1]<<8|this[e+2]<<16)+0x1000000*this[e+3]},l.prototype.readUint32BE=l.prototype.readUInt32BE=function(e,t){return e>>>=0,t||_(e,4,this.length),0x1000000*this[e]+(this[e+1]<<16|this[e+2]<<8|this[e+3])},l.prototype.readBigUInt64LE=B(function(e){O(e>>>=0,"offset");let t=this[e],r=this[e+7];(void 0===t||void 0===r)&&P(e,this.length-8);let s=t+256*this[++e]+65536*this[++e]+0x1000000*this[++e],n=this[++e]+256*this[++e]+65536*this[++e]+0x1000000*r;return BigInt(s)+(BigInt(n)<<BigInt(32))}),l.prototype.readBigUInt64BE=B(function(e){O(e>>>=0,"offset");let t=this[e],r=this[e+7];(void 0===t||void 0===r)&&P(e,this.length-8);let s=0x1000000*t+65536*this[++e]+256*this[++e]+this[++e],n=0x1000000*this[++e]+65536*this[++e]+256*this[++e]+r;return(BigInt(s)<<BigInt(32))+BigInt(n)}),l.prototype.readIntLE=function(e,t,r){e>>>=0,t>>>=0,r||_(e,t,this.length);let s=this[e],n=1,i=0;for(;++i<t&&(n*=256);)s+=this[e+i]*n;return s>=(n*=128)&&(s-=Math.pow(2,8*t)),s},l.prototype.readIntBE=function(e,t,r){e>>>=0,t>>>=0,r||_(e,t,this.length);let s=t,n=1,i=this[e+--s];for(;s>0&&(n*=256);)i+=this[e+--s]*n;return i>=(n*=128)&&(i-=Math.pow(2,8*t)),i},l.prototype.readInt8=function(e,t){return(e>>>=0,t||_(e,1,this.length),128&this[e])?-((255-this[e]+1)*1):this[e]},l.prototype.readInt16LE=function(e,t){e>>>=0,t||_(e,2,this.length);let r=this[e]|this[e+1]<<8;return 32768&r?0xffff0000|r:r},l.prototype.readInt16BE=function(e,t){e>>>=0,t||_(e,2,this.length);let r=this[e+1]|this[e]<<8;return 32768&r?0xffff0000|r:r},l.prototype.readInt32LE=function(e,t){return e>>>=0,t||_(e,4,this.length),this[e]|this[e+1]<<8|this[e+2]<<16|this[e+3]<<24},l.prototype.readInt32BE=function(e,t){return e>>>=0,t||_(e,4,this.length),this[e]<<24|this[e+1]<<16|this[e+2]<<8|this[e+3]},l.prototype.readBigInt64LE=B(function(e){O(e>>>=0,"offset");let t=this[e],r=this[e+7];return(void 0===t||void 0===r)&&P(e,this.length-8),(BigInt(this[e+4]+256*this[e+5]+65536*this[e+6]+(r<<24))<<BigInt(32))+BigInt(t+256*this[++e]+65536*this[++e]+0x1000000*this[++e])}),l.prototype.readBigInt64BE=B(function(e){O(e>>>=0,"offset");let t=this[e],r=this[e+7];return(void 0===t||void 0===r)&&P(e,this.length-8),(BigInt((t<<24)+65536*this[++e]+256*this[++e]+this[++e])<<BigInt(32))+BigInt(0x1000000*this[++e]+65536*this[++e]+256*this[++e]+r)}),l.prototype.readFloatLE=function(e,t){return e>>>=0,t||_(e,4,this.length),i.read(this,e,!0,23,4)},l.prototype.readFloatBE=function(e,t){return e>>>=0,t||_(e,4,this.length),i.read(this,e,!1,23,4)},l.prototype.readDoubleLE=function(e,t){return e>>>=0,t||_(e,8,this.length),i.read(this,e,!0,52,8)},l.prototype.readDoubleBE=function(e,t){return e>>>=0,t||_(e,8,this.length),i.read(this,e,!1,52,8)},l.prototype.writeUintLE=l.prototype.writeUIntLE=function(e,t,r,s){if(e=+e,t>>>=0,r>>>=0,!s){let s=Math.pow(2,8*r)-1;E(this,e,t,r,s,0)}let n=1,i=0;for(this[t]=255&e;++i<r&&(n*=256);)this[t+i]=e/n&255;return t+r},l.prototype.writeUintBE=l.prototype.writeUIntBE=function(e,t,r,s){if(e=+e,t>>>=0,r>>>=0,!s){let s=Math.pow(2,8*r)-1;E(this,e,t,r,s,0)}let n=r-1,i=1;for(this[t+n]=255&e;--n>=0&&(i*=256);)this[t+n]=e/i&255;return t+r},l.prototype.writeUint8=l.prototype.writeUInt8=function(e,t,r){return e=+e,t>>>=0,r||E(this,e,t,1,255,0),this[t]=255&e,t+1},l.prototype.writeUint16LE=l.prototype.writeUInt16LE=function(e,t,r){return e=+e,t>>>=0,r||E(this,e,t,2,65535,0),this[t]=255&e,this[t+1]=e>>>8,t+2},l.prototype.writeUint16BE=l.prototype.writeUInt16BE=function(e,t,r){return e=+e,t>>>=0,r||E(this,e,t,2,65535,0),this[t]=e>>>8,this[t+1]=255&e,t+2},l.prototype.writeUint32LE=l.prototype.writeUInt32LE=function(e,t,r){return e=+e,t>>>=0,r||E(this,e,t,4,0xffffffff,0),this[t+3]=e>>>24,this[t+2]=e>>>16,this[t+1]=e>>>8,this[t]=255&e,t+4},l.prototype.writeUint32BE=l.prototype.writeUInt32BE=function(e,t,r){return e=+e,t>>>=0,r||E(this,e,t,4,0xffffffff,0),this[t]=e>>>24,this[t+1]=e>>>16,this[t+2]=e>>>8,this[t+3]=255&e,t+4},l.prototype.writeBigUInt64LE=B(function(e,t=0){return j(this,e,t,BigInt(0),BigInt("0xffffffffffffffff"))}),l.prototype.writeBigUInt64BE=B(function(e,t=0){return A(this,e,t,BigInt(0),BigInt("0xffffffffffffffff"))}),l.prototype.writeIntLE=function(e,t,r,s){if(e=+e,t>>>=0,!s){let s=Math.pow(2,8*r-1);E(this,e,t,r,s-1,-s)}let n=0,i=1,o=0;for(this[t]=255&e;++n<r&&(i*=256);)e<0&&0===o&&0!==this[t+n-1]&&(o=1),this[t+n]=(e/i>>0)-o&255;return t+r},l.prototype.writeIntBE=function(e,t,r,s){if(e=+e,t>>>=0,!s){let s=Math.pow(2,8*r-1);E(this,e,t,r,s-1,-s)}let n=r-1,i=1,o=0;for(this[t+n]=255&e;--n>=0&&(i*=256);)e<0&&0===o&&0!==this[t+n+1]&&(o=1),this[t+n]=(e/i>>0)-o&255;return t+r},l.prototype.writeInt8=function(e,t,r){return e=+e,t>>>=0,r||E(this,e,t,1,127,-128),e<0&&(e=255+e+1),this[t]=255&e,t+1},l.prototype.writeInt16LE=function(e,t,r){return e=+e,t>>>=0,r||E(this,e,t,2,32767,-32768),this[t]=255&e,this[t+1]=e>>>8,t+2},l.prototype.writeInt16BE=function(e,t,r){return e=+e,t>>>=0,r||E(this,e,t,2,32767,-32768),this[t]=e>>>8,this[t+1]=255&e,t+2},l.prototype.writeInt32LE=function(e,t,r){return e=+e,t>>>=0,r||E(this,e,t,4,0x7fffffff,-0x80000000),this[t]=255&e,this[t+1]=e>>>8,this[t+2]=e>>>16,this[t+3]=e>>>24,t+4},l.prototype.writeInt32BE=function(e,t,r){return e=+e,t>>>=0,r||E(this,e,t,4,0x7fffffff,-0x80000000),e<0&&(e=0xffffffff+e+1),this[t]=e>>>24,this[t+1]=e>>>16,this[t+2]=e>>>8,this[t+3]=255&e,t+4},l.prototype.writeBigInt64LE=B(function(e,t=0){return j(this,e,t,-BigInt("0x8000000000000000"),BigInt("0x7fffffffffffffff"))}),l.prototype.writeBigInt64BE=B(function(e,t=0){return A(this,e,t,-BigInt("0x8000000000000000"),BigInt("0x7fffffffffffffff"))}),l.prototype.writeFloatLE=function(e,t,r){return x(this,e,t,!0,r)},l.prototype.writeFloatBE=function(e,t,r){return x(this,e,t,!1,r)},l.prototype.writeDoubleLE=function(e,t,r){return T(this,e,t,!0,r)},l.prototype.writeDoubleBE=function(e,t,r){return T(this,e,t,!1,r)},l.prototype.copy=function(e,t,r,s){if(!l.isBuffer(e))throw TypeError("argument should be a Buffer");if(r||(r=0),s||0===s||(s=this.length),t>=e.length&&(t=e.length),t||(t=0),s>0&&s<r&&(s=r),s===r||0===e.length||0===this.length)return 0;if(t<0)throw RangeError("targetStart out of bounds");if(r<0||r>=this.length)throw RangeError("Index out of range");if(s<0)throw RangeError("sourceEnd out of bounds");s>this.length&&(s=this.length),e.length-t<s-r&&(s=e.length-t+r);let n=s-r;return this===e&&"function"==typeof Uint8Array.prototype.copyWithin?this.copyWithin(t,r,s):Uint8Array.prototype.set.call(e,this.subarray(r,s),t),n},l.prototype.fill=function(e,t,r,s){let n;if("string"==typeof e){if("string"==typeof t?(s=t,t=0,r=this.length):"string"==typeof r&&(s=r,r=this.length),void 0!==s&&"string"!=typeof s)throw TypeError("encoding must be a string");if("string"==typeof s&&!l.isEncoding(s))throw TypeError("Unknown encoding: "+s);if(1===e.length){let t=e.charCodeAt(0);("utf8"===s&&t<128||"latin1"===s)&&(e=t)}}else"number"==typeof e?e&=255:"boolean"==typeof e&&(e=Number(e));if(t<0||this.length<t||this.length<r)throw RangeError("Out of range index");if(r<=t)return this;if(t>>>=0,r=void 0===r?this.length:r>>>0,e||(e=0),"number"==typeof e)for(n=t;n<r;++n)this[n]=e;else{let i=l.isBuffer(e)?e:l.from(e,s),o=i.length;if(0===o)throw TypeError('The value "'+e+'" is invalid for argument "value"');for(n=0;n<r-t;++n)this[n+t]=i[n%o]}return this};let k={};function C(e,t,r){k[e]=class extends r{constructor(){super(),Object.defineProperty(this,"message",{value:t.apply(this,arguments),writable:!0,configurable:!0}),this.name=`${this.name} [${e}]`,this.stack,delete this.name}get code(){return e}set code(e){Object.defineProperty(this,"code",{configurable:!0,enumerable:!0,value:e,writable:!0})}toString(){return`${this.name} [${e}]: ${this.message}`}}}function R(e){let t="",r=e.length,s="-"===e[0]?1:0;for(;r>=s+4;r-=3)t=`_${e.slice(r-3,r)}${t}`;return`${e.slice(0,r)}${t}`}function I(e,t,r,s,n,i){if(e>r||e<t){let s;let n="bigint"==typeof t?"n":"";throw s=i>3?0===t||t===BigInt(0)?`>= 0${n} and < 2${n} ** ${(i+1)*8}${n}`:`>= -(2${n} ** ${(i+1)*8-1}${n}) and < 2 ** ${(i+1)*8-1}${n}`:`>= ${t}${n} and <= ${r}${n}`,new k.ERR_OUT_OF_RANGE("value",s,e)}O(n,"offset"),(void 0===s[n]||void 0===s[n+i])&&P(n,s.length-(i+1))}function O(e,t){if("number"!=typeof e)throw new k.ERR_INVALID_ARG_TYPE(t,"number",e)}function P(e,t,r){if(Math.floor(e)!==e)throw O(e,r),new k.ERR_OUT_OF_RANGE(r||"offset","an integer",e);if(t<0)throw new k.ERR_BUFFER_OUT_OF_BOUNDS;throw new k.ERR_OUT_OF_RANGE(r||"offset",`>= ${r?1:0} and <= ${t}`,e)}C("ERR_BUFFER_OUT_OF_BOUNDS",function(e){return e?`${e} is outside of buffer bounds`:"Attempt to access memory outside buffer bounds"},RangeError),C("ERR_INVALID_ARG_TYPE",function(e,t){return`The "${e}" argument must be of type number. Received type ${typeof t}`},TypeError),C("ERR_OUT_OF_RANGE",function(e,t,r){let s=`The value of "${e}" is out of range.`,n=r;return Number.isInteger(r)&&Math.abs(r)>0x100000000?n=R(String(r)):"bigint"==typeof r&&(n=String(r),(r>BigInt(2)**BigInt(32)||r<-(BigInt(2)**BigInt(32)))&&(n=R(n)),n+="n"),s+=` It must be ${t}. Received ${n}`},RangeError);let L=/[^+/0-9A-Za-z-_]/g;function $(e,t){let r;t=t||1/0;let s=e.length,n=null,i=[];for(let o=0;o<s;++o){if((r=e.charCodeAt(o))>55295&&r<57344){if(!n){if(r>56319||o+1===s){(t-=3)>-1&&i.push(239,191,189);continue}n=r;continue}if(r<56320){(t-=3)>-1&&i.push(239,191,189),n=r;continue}r=(n-55296<<10|r-56320)+65536}else n&&(t-=3)>-1&&i.push(239,191,189);if(n=null,r<128){if((t-=1)<0)break;i.push(r)}else if(r<2048){if((t-=2)<0)break;i.push(r>>6|192,63&r|128)}else if(r<65536){if((t-=3)<0)break;i.push(r>>12|224,r>>6&63|128,63&r|128)}else if(r<1114112){if((t-=4)<0)break;i.push(r>>18|240,r>>12&63|128,r>>6&63|128,63&r|128)}else throw Error("Invalid code point")}return i}function U(e){return n.toByteArray(function(e){if((e=(e=e.split("=")[0]).trim().replace(L,"")).length<2)return"";for(;e.length%4!=0;)e+="=";return e}(e))}function F(e,t,r,s){let n;for(n=0;n<s&&!(n+r>=t.length)&&!(n>=e.length);++n)t[n+r]=e[n];return n}function N(e,t){return e instanceof t||null!=e&&null!=e.constructor&&null!=e.constructor.name&&e.constructor.name===t.name}let D=function(){let e="0123456789abcdef",t=Array(256);for(let r=0;r<16;++r){let s=16*r;for(let n=0;n<16;++n)t[s+n]=e[r]+e[n]}return t}();function B(e){return"undefined"==typeof BigInt?M:e}function M(){throw Error("BigInt not supported")}},{"9c62938f1dccc73c":"ettWx",aceacb6a4531a9d2:"6DXND"}],ettWx:[function(e,t,r,s){r.byteLength=function(e){var t=h(e),r=t[0],s=t[1];return(r+s)*3/4-s},r.toByteArray=function(e){var t,r,s=h(e),n=s[0],a=s[1],l=new o((n+a)*3/4-a),u=0,c=a>0?n-4:n;for(r=0;r<c;r+=4)t=i[e.charCodeAt(r)]<<18|i[e.charCodeAt(r+1)]<<12|i[e.charCodeAt(r+2)]<<6|i[e.charCodeAt(r+3)],l[u++]=t>>16&255,l[u++]=t>>8&255,l[u++]=255&t;return 2===a&&(t=i[e.charCodeAt(r)]<<2|i[e.charCodeAt(r+1)]>>4,l[u++]=255&t),1===a&&(t=i[e.charCodeAt(r)]<<10|i[e.charCodeAt(r+1)]<<4|i[e.charCodeAt(r+2)]>>2,l[u++]=t>>8&255,l[u++]=255&t),l},r.fromByteArray=function(e){for(var t,r=e.length,s=r%3,i=[],o=0,a=r-s;o<a;o+=16383)i.push(function(e,t,r){for(var s,i=[],o=t;o<r;o+=3)i.push(n[(s=(e[o]<<16&0xff0000)+(e[o+1]<<8&65280)+(255&e[o+2]))>>18&63]+n[s>>12&63]+n[s>>6&63]+n[63&s]);return i.join("")}(e,o,o+16383>a?a:o+16383));return 1===s?i.push(n[(t=e[r-1])>>2]+n[t<<4&63]+"=="):2===s&&i.push(n[(t=(e[r-2]<<8)+e[r-1])>>10]+n[t>>4&63]+n[t<<2&63]+"="),i.join("")};for(var n=[],i=[],o="undefined"!=typeof Uint8Array?Uint8Array:Array,a="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",l=0,u=a.length;l<u;++l)n[l]=a[l],i[a.charCodeAt(l)]=l;function h(e){var t=e.length;if(t%4>0)throw Error("Invalid string. Length must be a multiple of 4");var r=e.indexOf("=");-1===r&&(r=t);var s=r===t?0:4-r%4;return[r,s]}i["-".charCodeAt(0)]=62,i["_".charCodeAt(0)]=63},{}],"6DXND":[function(e,t,r,s){/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */r.read=function(e,t,r,s,n){var i,o,a=8*n-s-1,l=(1<<a)-1,u=l>>1,h=-7,c=r?n-1:0,d=r?-1:1,f=e[t+c];for(c+=d,i=f&(1<<-h)-1,f>>=-h,h+=a;h>0;i=256*i+e[t+c],c+=d,h-=8);for(o=i&(1<<-h)-1,i>>=-h,h+=s;h>0;o=256*o+e[t+c],c+=d,h-=8);if(0===i)i=1-u;else{if(i===l)return o?NaN:1/0*(f?-1:1);o+=Math.pow(2,s),i-=u}return(f?-1:1)*o*Math.pow(2,i-s)},r.write=function(e,t,r,s,n,i){var o,a,l,u=8*i-n-1,h=(1<<u)-1,c=h>>1,d=23===n?5960464477539062e-23:0,f=s?0:i-1,p=s?1:-1,g=t<0||0===t&&1/t<0?1:0;for(isNaN(t=Math.abs(t))||t===1/0?(a=isNaN(t)?1:0,o=h):(o=Math.floor(Math.log(t)/Math.LN2),t*(l=Math.pow(2,-o))<1&&(o--,l*=2),o+c>=1?t+=d/l:t+=d*Math.pow(2,1-c),t*l>=2&&(o++,l/=2),o+c>=h?(a=0,o=h):o+c>=1?(a=(t*l-1)*Math.pow(2,n),o+=c):(a=t*Math.pow(2,c-1)*Math.pow(2,n),o=0));n>=8;e[r+f]=255&a,f+=p,a/=256,n-=8);for(o=o<<n|a,u+=n;u>0;e[r+f]=255&o,f+=p,o/=256,u-=8);e[r+f-p]|=128*g}},{}],pVJlf:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"StorageError",()=>i),n.export(r,"isStorageError",()=>o),n.export(r,"StorageApiError",()=>a),n.export(r,"StorageUnknownError",()=>l);class i extends Error{constructor(e){super(e),this.__isStorageError=!0,this.name="StorageError"}}function o(e){return"object"==typeof e&&null!==e&&"__isStorageError"in e}class a extends i{constructor(e,t){super(e),this.name="StorageApiError",this.status=t}toJSON(){return{name:this.name,message:this.message,status:this.status}}}class l extends i{constructor(e,t){super(e),this.name="StorageUnknownError",this.originalError=t}}},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"7gpc7":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"get",()=>d),n.export(r,"post",()=>f),n.export(r,"put",()=>p),n.export(r,"head",()=>g),n.export(r,"remove",()=>m);var i=e("./errors"),o=e("./helpers"),a=function(e,t,r,s){return new(r||(r=Promise))(function(n,i){function o(e){try{l(s.next(e))}catch(e){i(e)}}function a(e){try{l(s.throw(e))}catch(e){i(e)}}function l(e){var t;e.done?n(e.value):((t=e.value)instanceof r?t:new r(function(e){e(t)})).then(o,a)}l((s=s.apply(e,t||[])).next())})};let l=e=>e.msg||e.message||e.error_description||e.error||JSON.stringify(e),u=(e,t,r)=>a(void 0,void 0,void 0,function*(){e instanceof(yield(0,o.resolveResponse)())&&!(null==r?void 0:r.noResolveJson)?e.json().then(r=>{t(new i.StorageApiError(l(r),e.status||500))}).catch(e=>{t(new i.StorageUnknownError(l(e),e))}):t(new i.StorageUnknownError(l(e),e))}),h=(e,t,r,s)=>{let n={method:e,headers:(null==t?void 0:t.headers)||{}};return"GET"===e?n:(n.headers=Object.assign({"Content-Type":"application/json"},null==t?void 0:t.headers),s&&(n.body=JSON.stringify(s)),Object.assign(Object.assign({},n),r))};function c(e,t,r,s,n,i){return a(this,void 0,void 0,function*(){return new Promise((o,a)=>{e(r,h(t,s,n,i)).then(e=>{if(!e.ok)throw e;return(null==s?void 0:s.noResolveJson)?e:e.json()}).then(e=>o(e)).catch(e=>u(e,a,s))})})}function d(e,t,r,s){return a(this,void 0,void 0,function*(){return c(e,"GET",t,r,s)})}function f(e,t,r,s,n){return a(this,void 0,void 0,function*(){return c(e,"POST",t,s,n,r)})}function p(e,t,r,s,n){return a(this,void 0,void 0,function*(){return c(e,"PUT",t,s,n,r)})}function g(e,t,r,s){return a(this,void 0,void 0,function*(){return c(e,"HEAD",t,Object.assign(Object.assign({},r),{noResolveJson:!0}),s)})}function m(e,t,r,s,n){return a(this,void 0,void 0,function*(){return c(e,"DELETE",t,s,n,r)})}},{"./errors":"pVJlf","./helpers":"glFBz","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],glFBz:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"resolveFetch",()=>i),n.export(r,"resolveResponse",()=>o),n.export(r,"recursiveToCamel",()=>a);let i=t=>{let r;return t?r=t:"undefined"==typeof fetch?r=(...t)=>e("d0262cf6b6e3064e").then(({default:e})=>e(...t)):r=fetch,(...e)=>r(...e)},o=()=>{var t,r,s,n;return t=void 0,r=void 0,s=void 0,n=function*(){return"undefined"==typeof Response?(yield e("d0262cf6b6e3064e")).Response:Response},new(s||(s=Promise))(function(e,i){function o(e){try{l(n.next(e))}catch(e){i(e)}}function a(e){try{l(n.throw(e))}catch(e){i(e)}}function l(t){var r;t.done?e(t.value):((r=t.value)instanceof s?r:new s(function(e){e(r)})).then(o,a)}l((n=n.apply(t,r||[])).next())})},a=e=>{if(Array.isArray(e))return e.map(e=>a(e));if("function"==typeof e||e!==Object(e))return e;let t={};return Object.entries(e).forEach(([e,r])=>{t[e.replace(/([-_][a-z])/gi,e=>e.toUpperCase().replace(/[-_]/g,""))]=a(r)}),t}},{d0262cf6b6e3064e:"a8HCk","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],d3OVP:[function(e,t,r,s){e("@parcel/transformer-js/src/esmodule-helpers.js").defineInteropFlag(r);var n=e("../lib/constants"),i=e("../lib/errors"),o=e("../lib/fetch"),a=e("../lib/helpers"),l=function(e,t,r,s){return new(r||(r=Promise))(function(n,i){function o(e){try{l(s.next(e))}catch(e){i(e)}}function a(e){try{l(s.throw(e))}catch(e){i(e)}}function l(e){var t;e.done?n(e.value):((t=e.value)instanceof r?t:new r(function(e){e(t)})).then(o,a)}l((s=s.apply(e,t||[])).next())})};r.default=class{constructor(e,t={},r){this.url=e,this.headers=Object.assign(Object.assign({},n.DEFAULT_HEADERS),t),this.fetch=(0,a.resolveFetch)(r)}listBuckets(){return l(this,void 0,void 0,function*(){try{return{data:yield(0,o.get)(this.fetch,`${this.url}/bucket`,{headers:this.headers}),error:null}}catch(e){if((0,i.isStorageError)(e))return{data:null,error:e};throw e}})}getBucket(e){return l(this,void 0,void 0,function*(){try{return{data:yield(0,o.get)(this.fetch,`${this.url}/bucket/${e}`,{headers:this.headers}),error:null}}catch(e){if((0,i.isStorageError)(e))return{data:null,error:e};throw e}})}createBucket(e,t={public:!1}){return l(this,void 0,void 0,function*(){try{return{data:yield(0,o.post)(this.fetch,`${this.url}/bucket`,{id:e,name:e,public:t.public,file_size_limit:t.fileSizeLimit,allowed_mime_types:t.allowedMimeTypes},{headers:this.headers}),error:null}}catch(e){if((0,i.isStorageError)(e))return{data:null,error:e};throw e}})}updateBucket(e,t){return l(this,void 0,void 0,function*(){try{return{data:yield(0,o.put)(this.fetch,`${this.url}/bucket/${e}`,{id:e,name:e,public:t.public,file_size_limit:t.fileSizeLimit,allowed_mime_types:t.allowedMimeTypes},{headers:this.headers}),error:null}}catch(e){if((0,i.isStorageError)(e))return{data:null,error:e};throw e}})}emptyBucket(e){return l(this,void 0,void 0,function*(){try{return{data:yield(0,o.post)(this.fetch,`${this.url}/bucket/${e}/empty`,{},{headers:this.headers}),error:null}}catch(e){if((0,i.isStorageError)(e))return{data:null,error:e};throw e}})}deleteBucket(e){return l(this,void 0,void 0,function*(){try{return{data:yield(0,o.remove)(this.fetch,`${this.url}/bucket/${e}`,{},{headers:this.headers}),error:null}}catch(e){if((0,i.isStorageError)(e))return{data:null,error:e};throw e}})}}},{"../lib/constants":"bnkrr","../lib/errors":"pVJlf","../lib/fetch":"7gpc7","../lib/helpers":"glFBz","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],bnkrr:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"DEFAULT_HEADERS",()=>o);var i=e("./version");let o={"X-Client-Info":`storage-js/${i.version}`}},{"./version":"7HfjH","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"7HfjH":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"version",()=>i);let i="2.7.1"},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"1uIhb":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"DEFAULT_HEADERS",()=>a),n.export(r,"DEFAULT_GLOBAL_OPTIONS",()=>l),n.export(r,"DEFAULT_DB_OPTIONS",()=>u),n.export(r,"DEFAULT_AUTH_OPTIONS",()=>h),n.export(r,"DEFAULT_REALTIME_OPTIONS",()=>c);var i=e("./version");let o="";"undefined"!=typeof Deno?o="deno":"undefined"!=typeof document?o="web":"undefined"!=typeof navigator&&"ReactNative"===navigator.product?o="react-native":o="node";let a={"X-Client-Info":`supabase-js-${o}/${i.version}`},l={headers:a},u={schema:"public"},h={autoRefreshToken:!0,persistSession:!0,detectSessionInUrl:!0,flowType:"implicit"},c={}},{"./version":"lmgeJ","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],lmgeJ:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"version",()=>i);let i="2.46.2"},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],jU4vw:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"resolveFetch",()=>a),n.export(r,"resolveHeadersConstructor",()=>l),n.export(r,"fetchWithAuth",()=>u);var i=e("@supabase/node-fetch"),o=n.interopDefault(i);let a=e=>{let t;return e?t=e:"undefined"==typeof fetch?t=o.default:t=fetch,(...e)=>t(...e)},l=()=>"undefined"==typeof Headers?i.Headers:Headers,u=(e,t,r)=>{let s=a(r),n=l();return(r,i)=>{var o,a,l,u;return o=void 0,a=void 0,l=void 0,u=function*(){var o;let a=null!==(o=yield t())&&void 0!==o?o:e,l=new n(null==i?void 0:i.headers);return l.has("apikey")||l.set("apikey",e),l.has("Authorization")||l.set("Authorization",`Bearer ${a}`),s(r,Object.assign(Object.assign({},i),{headers:l}))},new(l||(l=Promise))(function(e,t){function r(e){try{n(u.next(e))}catch(e){t(e)}}function s(e){try{n(u.throw(e))}catch(e){t(e)}}function n(t){var n;t.done?e(t.value):((n=t.value)instanceof l?n:new l(function(e){e(n)})).then(r,s)}n((u=u.apply(o,a||[])).next())})}}},{"@supabase/node-fetch":"4Q5V1","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"3zuQC":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");function i(){return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(e){var t=16*Math.random()|0;return("x"==e?t:3&t|8).toString(16)})}function o(e){return e.replace(/\/$/,"")}n.defineInteropFlag(r),n.export(r,"uuid",()=>i),n.export(r,"stripTrailingSlash",()=>o),n.export(r,"isBrowser",()=>a),n.export(r,"applySettingDefaults",()=>l);let a=()=>"undefined"!=typeof window;function l(e,t){let{db:r,auth:s,realtime:n,global:i}=e,{db:o,auth:a,realtime:l,global:u}=t,h={db:Object.assign(Object.assign({},o),r),auth:Object.assign(Object.assign({},a),s),realtime:Object.assign(Object.assign({},l),n),global:Object.assign(Object.assign({},u),i),accessToken:()=>{var e,t,r,s;return e=this,t=void 0,s=function*(){return""},new(r=void 0,r=Promise)(function(n,i){function o(e){try{l(s.next(e))}catch(e){i(e)}}function a(e){try{l(s.throw(e))}catch(e){i(e)}}function l(e){var t;e.done?n(e.value):((t=e.value)instanceof r?t:new r(function(e){e(t)})).then(o,a)}l((s=s.apply(e,t||[])).next())})}};return e.accessToken?h.accessToken=e.accessToken:delete h.accessToken,h}},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"7YJ7Q":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"SupabaseAuthClient",()=>o);var i=e("@supabase/auth-js");class o extends i.AuthClient{constructor(e){super(e)}}},{"@supabase/auth-js":"8VjzZ","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"8VjzZ":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"navigatorLock",()=>g.navigatorLock),n.export(r,"NavigatorLockAcquireTimeoutError",()=>g.NavigatorLockAcquireTimeoutError),n.export(r,"lockInternals",()=>g.internals),n.export(r,"GoTrueAdminApi",()=>o.default),n.export(r,"GoTrueClient",()=>l.default),n.export(r,"AuthAdminApi",()=>h.default),n.export(r,"AuthClient",()=>d.default);var i=e("./GoTrueAdminApi"),o=n.interopDefault(i),a=e("./GoTrueClient"),l=n.interopDefault(a),u=e("./AuthAdminApi"),h=n.interopDefault(u),c=e("./AuthClient"),d=n.interopDefault(c),f=e("./lib/types");n.exportAll(f,r);var p=e("./lib/errors");n.exportAll(p,r);var g=e("./lib/locks")},{"./GoTrueAdminApi":"5bmQV","./GoTrueClient":"8QbFP","./AuthAdminApi":"dTWKm","./AuthClient":"itpDP","./lib/types":"aKMd1","./lib/errors":"8RHqO","./lib/locks":"4RjEn","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"5bmQV":[function(e,t,r,s){e("@parcel/transformer-js/src/esmodule-helpers.js").defineInteropFlag(r);var n=e("./lib/fetch"),i=e("./lib/helpers"),o=e("./lib/errors"),a=function(e,t){var r={};for(var s in e)Object.prototype.hasOwnProperty.call(e,s)&&0>t.indexOf(s)&&(r[s]=e[s]);if(null!=e&&"function"==typeof Object.getOwnPropertySymbols)for(var n=0,s=Object.getOwnPropertySymbols(e);n<s.length;n++)0>t.indexOf(s[n])&&Object.prototype.propertyIsEnumerable.call(e,s[n])&&(r[s[n]]=e[s[n]]);return r};r.default=class{constructor({url:e="",headers:t={},fetch:r}){this.url=e,this.headers=t,this.fetch=(0,i.resolveFetch)(r),this.mfa={listFactors:this._listFactors.bind(this),deleteFactor:this._deleteFactor.bind(this)}}async signOut(e,t="global"){try{return await (0,n._request)(this.fetch,"POST",`${this.url}/logout?scope=${t}`,{headers:this.headers,jwt:e,noResolveJson:!0}),{data:null,error:null}}catch(e){if((0,o.isAuthError)(e))return{data:null,error:e};throw e}}async inviteUserByEmail(e,t={}){try{return await (0,n._request)(this.fetch,"POST",`${this.url}/invite`,{body:{email:e,data:t.data},headers:this.headers,redirectTo:t.redirectTo,xform:n._userResponse})}catch(e){if((0,o.isAuthError)(e))return{data:{user:null},error:e};throw e}}async generateLink(e){try{let{options:t}=e,r=a(e,["options"]),s=Object.assign(Object.assign({},r),t);return"newEmail"in r&&(s.new_email=null==r?void 0:r.newEmail,delete s.newEmail),await (0,n._request)(this.fetch,"POST",`${this.url}/admin/generate_link`,{body:s,headers:this.headers,xform:n._generateLinkResponse,redirectTo:null==t?void 0:t.redirectTo})}catch(e){if((0,o.isAuthError)(e))return{data:{properties:null,user:null},error:e};throw e}}async createUser(e){try{return await (0,n._request)(this.fetch,"POST",`${this.url}/admin/users`,{body:e,headers:this.headers,xform:n._userResponse})}catch(e){if((0,o.isAuthError)(e))return{data:{user:null},error:e};throw e}}async listUsers(e){var t,r,s,i,a,l,u;try{let o={nextPage:null,lastPage:0,total:0},h=await (0,n._request)(this.fetch,"GET",`${this.url}/admin/users`,{headers:this.headers,noResolveJson:!0,query:{page:null!==(r=null===(t=null==e?void 0:e.page)||void 0===t?void 0:t.toString())&&void 0!==r?r:"",per_page:null!==(i=null===(s=null==e?void 0:e.perPage)||void 0===s?void 0:s.toString())&&void 0!==i?i:""},xform:n._noResolveJsonResponse});if(h.error)throw h.error;let c=await h.json(),d=null!==(a=h.headers.get("x-total-count"))&&void 0!==a?a:0,f=null!==(u=null===(l=h.headers.get("link"))||void 0===l?void 0:l.split(","))&&void 0!==u?u:[];return f.length>0&&(f.forEach(e=>{let t=parseInt(e.split(";")[0].split("=")[1].substring(0,1)),r=JSON.parse(e.split(";")[1].split("=")[1]);o[`${r}Page`]=t}),o.total=parseInt(d)),{data:Object.assign(Object.assign({},c),o),error:null}}catch(e){if((0,o.isAuthError)(e))return{data:{users:[]},error:e};throw e}}async getUserById(e){try{return await (0,n._request)(this.fetch,"GET",`${this.url}/admin/users/${e}`,{headers:this.headers,xform:n._userResponse})}catch(e){if((0,o.isAuthError)(e))return{data:{user:null},error:e};throw e}}async updateUserById(e,t){try{return await (0,n._request)(this.fetch,"PUT",`${this.url}/admin/users/${e}`,{body:t,headers:this.headers,xform:n._userResponse})}catch(e){if((0,o.isAuthError)(e))return{data:{user:null},error:e};throw e}}async deleteUser(e,t=!1){try{return await (0,n._request)(this.fetch,"DELETE",`${this.url}/admin/users/${e}`,{headers:this.headers,body:{should_soft_delete:t},xform:n._userResponse})}catch(e){if((0,o.isAuthError)(e))return{data:{user:null},error:e};throw e}}async _listFactors(e){try{let{data:t,error:r}=await (0,n._request)(this.fetch,"GET",`${this.url}/admin/users/${e.userId}/factors`,{headers:this.headers,xform:e=>({data:{factors:e},error:null})});return{data:t,error:r}}catch(e){if((0,o.isAuthError)(e))return{data:null,error:e};throw e}}async _deleteFactor(e){try{return{data:await (0,n._request)(this.fetch,"DELETE",`${this.url}/admin/users/${e.userId}/factors/${e.id}`,{headers:this.headers}),error:null}}catch(e){if((0,o.isAuthError)(e))return{data:null,error:e};throw e}}}},{"./lib/fetch":"dOWmM","./lib/helpers":"lQJ1C","./lib/errors":"8RHqO","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],dOWmM:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"handleError",()=>c),n.export(r,"_request",()=>f),n.export(r,"_sessionResponse",()=>g),n.export(r,"_sessionResponsePassword",()=>m),n.export(r,"_userResponse",()=>y),n.export(r,"_ssoResponse",()=>b),n.export(r,"_generateLinkResponse",()=>v),n.export(r,"_noResolveJsonResponse",()=>w);var i=e("./constants"),o=e("./helpers"),a=e("./errors"),l=function(e,t){var r={};for(var s in e)Object.prototype.hasOwnProperty.call(e,s)&&0>t.indexOf(s)&&(r[s]=e[s]);if(null!=e&&"function"==typeof Object.getOwnPropertySymbols)for(var n=0,s=Object.getOwnPropertySymbols(e);n<s.length;n++)0>t.indexOf(s[n])&&Object.prototype.propertyIsEnumerable.call(e,s[n])&&(r[s[n]]=e[s[n]]);return r};let u=e=>e.msg||e.message||e.error_description||e.error||JSON.stringify(e),h=[502,503,504];async function c(e){var t;let r,s;if(!(0,o.looksLikeFetchResponse)(e))throw new a.AuthRetryableFetchError(u(e),0);if(h.includes(e.status))throw new a.AuthRetryableFetchError(u(e),e.status);try{r=await e.json()}catch(e){throw new a.AuthUnknownError(u(e),e)}let n=(0,o.parseResponseAPIVersion)(e);if(n&&n.getTime()>=i.API_VERSIONS["2024-01-01"].timestamp&&"object"==typeof r&&r&&"string"==typeof r.code?s=r.code:"object"==typeof r&&r&&"string"==typeof r.error_code&&(s=r.error_code),s){if("weak_password"===s)throw new a.AuthWeakPasswordError(u(r),e.status,(null===(t=r.weak_password)||void 0===t?void 0:t.reasons)||[]);if("session_not_found"===s)throw new a.AuthSessionMissingError}else if("object"==typeof r&&r&&"object"==typeof r.weak_password&&r.weak_password&&Array.isArray(r.weak_password.reasons)&&r.weak_password.reasons.length&&r.weak_password.reasons.reduce((e,t)=>e&&"string"==typeof t,!0))throw new a.AuthWeakPasswordError(u(r),e.status,r.weak_password.reasons);throw new a.AuthApiError(u(r),e.status||500,s)}let d=(e,t,r,s)=>{let n={method:e,headers:(null==t?void 0:t.headers)||{}};return"GET"===e?n:(n.headers=Object.assign({"Content-Type":"application/json;charset=UTF-8"},null==t?void 0:t.headers),n.body=JSON.stringify(s),Object.assign(Object.assign({},n),r))};async function f(e,t,r,s){var n;let o=Object.assign({},null==s?void 0:s.headers);o[i.API_VERSION_HEADER_NAME]||(o[i.API_VERSION_HEADER_NAME]=i.API_VERSIONS["2024-01-01"].name),(null==s?void 0:s.jwt)&&(o.Authorization=`Bearer ${s.jwt}`);let a=null!==(n=null==s?void 0:s.query)&&void 0!==n?n:{};(null==s?void 0:s.redirectTo)&&(a.redirect_to=s.redirectTo);let l=Object.keys(a).length?"?"+new URLSearchParams(a).toString():"",u=await p(e,t,r+l,{headers:o,noResolveJson:null==s?void 0:s.noResolveJson},{},null==s?void 0:s.body);return(null==s?void 0:s.xform)?null==s?void 0:s.xform(u):{data:Object.assign({},u),error:null}}async function p(e,t,r,s,n,i){let o;let l=d(t,s,n,i);try{o=await e(r,Object.assign({},l))}catch(e){throw console.error(e),new a.AuthRetryableFetchError(u(e),0)}if(o.ok||await c(o),null==s?void 0:s.noResolveJson)return o;try{return await o.json()}catch(e){await c(e)}}function g(e){var t;let r=null;return e.access_token&&e.refresh_token&&e.expires_in&&(r=Object.assign({},e),e.expires_at||(r.expires_at=(0,o.expiresAt)(e.expires_in))),{data:{session:r,user:null!==(t=e.user)&&void 0!==t?t:e},error:null}}function m(e){let t=g(e);return!t.error&&e.weak_password&&"object"==typeof e.weak_password&&Array.isArray(e.weak_password.reasons)&&e.weak_password.reasons.length&&e.weak_password.message&&"string"==typeof e.weak_password.message&&e.weak_password.reasons.reduce((e,t)=>e&&"string"==typeof t,!0)&&(t.data.weak_password=e.weak_password),t}function y(e){var t;return{data:{user:null!==(t=e.user)&&void 0!==t?t:e},error:null}}function b(e){return{data:e,error:null}}function v(e){let{action_link:t,email_otp:r,hashed_token:s,redirect_to:n,verification_type:i}=e;return{data:{properties:{action_link:t,email_otp:r,hashed_token:s,redirect_to:n,verification_type:i},user:Object.assign({},l(e,["action_link","email_otp","hashed_token","redirect_to","verification_type"]))},error:null}}function w(e){return e}},{"./constants":"5kgHI","./helpers":"lQJ1C","./errors":"8RHqO","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"5kgHI":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"GOTRUE_URL",()=>o),n.export(r,"STORAGE_KEY",()=>a),n.export(r,"AUDIENCE",()=>l),n.export(r,"DEFAULT_HEADERS",()=>u),n.export(r,"EXPIRY_MARGIN",()=>h),n.export(r,"NETWORK_FAILURE",()=>c),n.export(r,"API_VERSION_HEADER_NAME",()=>d),n.export(r,"API_VERSIONS",()=>f);var i=e("./version");let o="http://localhost:9999",a="supabase.auth.token",l="",u={"X-Client-Info":`gotrue-js/${i.version}`},h=10,c={MAX_RETRIES:10,RETRY_INTERVAL:2},d="X-Supabase-Api-Version",f={"2024-01-01":{timestamp:Date.parse("2024-01-01T00:00:00.0Z"),name:"2024-01-01"}}},{"./version":"gfN29","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],gfN29:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"version",()=>i);let i="2.65.1"},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],lQJ1C:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"expiresAt",()=>o),n.export(r,"uuid",()=>a),n.export(r,"isBrowser",()=>l),n.export(r,"supportsLocalStorage",()=>h),n.export(r,"parseParametersFromURL",()=>c),n.export(r,"resolveFetch",()=>d),n.export(r,"looksLikeFetchResponse",()=>f),n.export(r,"setItemAsync",()=>p),n.export(r,"getItemAsync",()=>g),n.export(r,"removeItemAsync",()=>m),n.export(r,"decodeBase64URL",()=>y),n.export(r,"Deferred",()=>b),n.export(r,"decodeJWTPayload",()=>v),n.export(r,"sleep",()=>w),n.export(r,"retryable",()=>_),n.export(r,"generatePKCEVerifier",()=>j),n.export(r,"generatePKCEChallenge",()=>S),n.export(r,"getCodeChallengeAndMethod",()=>x),n.export(r,"parseResponseAPIVersion",()=>k);var i=e("./constants");function o(e){return Math.round(Date.now()/1e3)+e}function a(){return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(e){let t=16*Math.random()|0;return("x"==e?t:3&t|8).toString(16)})}let l=()=>"undefined"!=typeof document,u={tested:!1,writable:!1},h=()=>{if(!l())return!1;try{if("object"!=typeof globalThis.localStorage)return!1}catch(e){return!1}if(u.tested)return u.writable;let e=`lswt-${Math.random()}${Math.random()}`;try{globalThis.localStorage.setItem(e,e),globalThis.localStorage.removeItem(e),u.tested=!0,u.writable=!0}catch(e){u.tested=!0,u.writable=!1}return u.writable};function c(e){let t={},r=new URL(e);if(r.hash&&"#"===r.hash[0])try{new URLSearchParams(r.hash.substring(1)).forEach((e,r)=>{t[r]=e})}catch(e){}return r.searchParams.forEach((e,r)=>{t[r]=e}),t}let d=t=>{let r;return t?r=t:"undefined"==typeof fetch?r=(...t)=>e("b14de0e012a619af").then(({default:e})=>e(...t)):r=fetch,(...e)=>r(...e)},f=e=>"object"==typeof e&&null!==e&&"status"in e&&"ok"in e&&"json"in e&&"function"==typeof e.json,p=async(e,t,r)=>{await e.setItem(t,JSON.stringify(r))},g=async(e,t)=>{let r=await e.getItem(t);if(!r)return null;try{return JSON.parse(r)}catch(e){return r}},m=async(e,t)=>{await e.removeItem(t)};function y(e){let t,r,s,n,i,o,a;let l="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",u="",h=0;for(e=e.replace("-","+").replace("_","/");h<e.length;)n=l.indexOf(e.charAt(h++)),i=l.indexOf(e.charAt(h++)),o=l.indexOf(e.charAt(h++)),a=l.indexOf(e.charAt(h++)),t=n<<2|i>>4,r=(15&i)<<4|o>>2,s=(3&o)<<6|a,u+=String.fromCharCode(t),64!=o&&0!=r&&(u+=String.fromCharCode(r)),64!=a&&0!=s&&(u+=String.fromCharCode(s));return u}class b{constructor(){this.promise=new b.promiseConstructor((e,t)=>{this.resolve=e,this.reject=t})}}function v(e){let t=e.split(".");if(3!==t.length)throw Error("JWT is not valid: not a JWT structure");if(!/^([a-z0-9_-]{4})*($|[a-z0-9_-]{3}=?$|[a-z0-9_-]{2}(==)?$)$/i.test(t[1]))throw Error("JWT is not valid: payload is not in base64url format");return JSON.parse(y(t[1]))}async function w(e){return await new Promise(t=>{setTimeout(()=>t(null),e)})}function _(e,t){return new Promise((r,s)=>{(async()=>{for(let n=0;n<1/0;n++)try{let s=await e(n);if(!t(n,null,s)){r(s);return}}catch(e){if(!t(n,e)){s(e);return}}})()})}function E(e){return("0"+e.toString(16)).substr(-2)}function j(){let e=new Uint32Array(56);if("undefined"==typeof crypto){let e="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~",t=e.length,r="";for(let s=0;s<56;s++)r+=e.charAt(Math.floor(Math.random()*t));return r}return crypto.getRandomValues(e),Array.from(e,E).join("")}async function A(e){let t=new TextEncoder().encode(e);return Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256",t))).map(e=>String.fromCharCode(e)).join("")}async function S(e){return"undefined"!=typeof crypto&&void 0!==crypto.subtle&&"undefined"!=typeof TextEncoder?btoa(await A(e)).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,""):(console.warn("WebCrypto API is not supported. Code challenge method will default to use plain instead of sha256."),e)}async function x(e,t,r=!1){let s=j(),n=s;r&&(n+="/PASSWORD_RECOVERY"),await p(e,`${t}-code-verifier`,n);let i=await S(s),o=s===i?"plain":"s256";return[i,o]}b.promiseConstructor=Promise;let T=/^2[0-9]{3}-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1])$/i;function k(e){let t=e.headers.get(i.API_VERSION_HEADER_NAME);if(!t||!t.match(T))return null;try{return new Date(`${t}T00:00:00.0Z`)}catch(e){return null}}},{"./constants":"5kgHI",b14de0e012a619af:"a8HCk","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"8RHqO":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"AuthError",()=>i),n.export(r,"isAuthError",()=>o),n.export(r,"AuthApiError",()=>a),n.export(r,"isAuthApiError",()=>l),n.export(r,"AuthUnknownError",()=>u),n.export(r,"CustomAuthError",()=>h),n.export(r,"AuthSessionMissingError",()=>c),n.export(r,"isAuthSessionMissingError",()=>d),n.export(r,"AuthInvalidTokenResponseError",()=>f),n.export(r,"AuthInvalidCredentialsError",()=>p),n.export(r,"AuthImplicitGrantRedirectError",()=>g),n.export(r,"AuthPKCEGrantCodeExchangeError",()=>m),n.export(r,"AuthRetryableFetchError",()=>y),n.export(r,"isAuthRetryableFetchError",()=>b),n.export(r,"AuthWeakPasswordError",()=>v),n.export(r,"isAuthWeakPasswordError",()=>w);class i extends Error{constructor(e,t,r){super(e),this.__isAuthError=!0,this.name="AuthError",this.status=t,this.code=r}}function o(e){return"object"==typeof e&&null!==e&&"__isAuthError"in e}class a extends i{constructor(e,t,r){super(e,t,r),this.name="AuthApiError",this.status=t,this.code=r}}function l(e){return o(e)&&"AuthApiError"===e.name}class u extends i{constructor(e,t){super(e),this.name="AuthUnknownError",this.originalError=t}}class h extends i{constructor(e,t,r,s){super(e,r,s),this.name=t,this.status=r}}class c extends h{constructor(){super("Auth session missing!","AuthSessionMissingError",400,void 0)}}function d(e){return o(e)&&"AuthSessionMissingError"===e.name}class f extends h{constructor(){super("Auth session or user missing","AuthInvalidTokenResponseError",500,void 0)}}class p extends h{constructor(e){super(e,"AuthInvalidCredentialsError",400,void 0)}}class g extends h{constructor(e,t=null){super(e,"AuthImplicitGrantRedirectError",500,void 0),this.details=null,this.details=t}toJSON(){return{name:this.name,message:this.message,status:this.status,details:this.details}}}class m extends h{constructor(e,t=null){super(e,"AuthPKCEGrantCodeExchangeError",500,void 0),this.details=null,this.details=t}toJSON(){return{name:this.name,message:this.message,status:this.status,details:this.details}}}class y extends h{constructor(e,t){super(e,"AuthRetryableFetchError",t,void 0)}}function b(e){return o(e)&&"AuthRetryableFetchError"===e.name}class v extends h{constructor(e,t,r){super(e,"AuthWeakPasswordError",t,"weak_password"),this.reasons=r}}function w(e){return o(e)&&"AuthWeakPasswordError"===e.name}},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"8QbFP":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r);var i=e("./GoTrueAdminApi"),o=n.interopDefault(i),a=e("./lib/constants"),l=e("./lib/errors"),u=e("./lib/fetch"),h=e("./lib/helpers"),c=e("./lib/local-storage"),d=e("./lib/polyfills"),f=e("./lib/version"),p=e("./lib/locks");(0,d.polyfillGlobalThis)();let g={url:a.GOTRUE_URL,storageKey:a.STORAGE_KEY,autoRefreshToken:!0,persistSession:!0,detectSessionInUrl:!0,headers:a.DEFAULT_HEADERS,flowType:"implicit",debug:!1,hasCustomAuthorizationHeader:!1};async function m(e,t,r){return await r()}class y{constructor(e){var t,r;this.memoryStorage=null,this.stateChangeEmitters=new Map,this.autoRefreshTicker=null,this.visibilityChangedCallback=null,this.refreshingDeferred=null,this.initializePromise=null,this.detectSessionInUrl=!0,this.hasCustomAuthorizationHeader=!1,this.suppressGetSessionWarning=!1,this.lockAcquired=!1,this.pendingInLock=[],this.broadcastChannel=null,this.logger=console.log,this.instanceID=y.nextInstanceID,y.nextInstanceID+=1,this.instanceID>0&&(0,h.isBrowser)()&&console.warn("Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.");let s=Object.assign(Object.assign({},g),e);if(this.logDebugMessages=!!s.debug,"function"==typeof s.debug&&(this.logger=s.debug),this.persistSession=s.persistSession,this.storageKey=s.storageKey,this.autoRefreshToken=s.autoRefreshToken,this.admin=new o.default({url:s.url,headers:s.headers,fetch:s.fetch}),this.url=s.url,this.headers=s.headers,this.fetch=(0,h.resolveFetch)(s.fetch),this.lock=s.lock||m,this.detectSessionInUrl=s.detectSessionInUrl,this.flowType=s.flowType,this.hasCustomAuthorizationHeader=s.hasCustomAuthorizationHeader,s.lock?this.lock=s.lock:(0,h.isBrowser)()&&(null===(t=null==globalThis?void 0:globalThis.navigator)||void 0===t?void 0:t.locks)?this.lock=p.navigatorLock:this.lock=m,this.mfa={verify:this._verify.bind(this),enroll:this._enroll.bind(this),unenroll:this._unenroll.bind(this),challenge:this._challenge.bind(this),listFactors:this._listFactors.bind(this),challengeAndVerify:this._challengeAndVerify.bind(this),getAuthenticatorAssuranceLevel:this._getAuthenticatorAssuranceLevel.bind(this)},this.persistSession?s.storage?this.storage=s.storage:(0,h.supportsLocalStorage)()?this.storage=c.localStorageAdapter:(this.memoryStorage={},this.storage=(0,c.memoryLocalStorageAdapter)(this.memoryStorage)):(this.memoryStorage={},this.storage=(0,c.memoryLocalStorageAdapter)(this.memoryStorage)),(0,h.isBrowser)()&&globalThis.BroadcastChannel&&this.persistSession&&this.storageKey){try{this.broadcastChannel=new globalThis.BroadcastChannel(this.storageKey)}catch(e){console.error("Failed to create a new BroadcastChannel, multi-tab state changes will not be available",e)}null===(r=this.broadcastChannel)||void 0===r||r.addEventListener("message",async e=>{this._debug("received broadcast notification from other tab or client",e),await this._notifyAllSubscribers(e.data.event,e.data.session,!1)})}this.initialize()}_debug(...e){return this.logDebugMessages&&this.logger(`GoTrueClient@${this.instanceID} (${f.version}) ${new Date().toISOString()}`,...e),this}async initialize(){return this.initializePromise||(this.initializePromise=(async()=>await this._acquireLock(-1,async()=>await this._initialize()))()),await this.initializePromise}async _initialize(){try{let e=!!(0,h.isBrowser)()&&await this._isPKCEFlow();if(this._debug("#_initialize()","begin","is PKCE flow",e),e||this.detectSessionInUrl&&this._isImplicitGrantFlow()){let{data:t,error:r}=await this._getSessionFromURL(e);if(r){if(this._debug("#_initialize()","error detecting session from URL",r),(null==r?void 0:r.code)==="identity_already_exists")return{error:r};return await this._removeSession(),{error:r}}let{session:s,redirectType:n}=t;return this._debug("#_initialize()","detected session in URL",s,"redirect type",n),await this._saveSession(s),setTimeout(async()=>{"recovery"===n?await this._notifyAllSubscribers("PASSWORD_RECOVERY",s):await this._notifyAllSubscribers("SIGNED_IN",s)},0),{error:null}}return await this._recoverAndRefresh(),{error:null}}catch(e){if((0,l.isAuthError)(e))return{error:e};return{error:new l.AuthUnknownError("Unexpected error during initialization",e)}}finally{await this._handleVisibilityChange(),this._debug("#_initialize()","end")}}async signInAnonymously(e){var t,r,s;try{let{data:n,error:i}=await (0,u._request)(this.fetch,"POST",`${this.url}/signup`,{headers:this.headers,body:{data:null!==(r=null===(t=null==e?void 0:e.options)||void 0===t?void 0:t.data)&&void 0!==r?r:{},gotrue_meta_security:{captcha_token:null===(s=null==e?void 0:e.options)||void 0===s?void 0:s.captchaToken}},xform:u._sessionResponse});if(i||!n)return{data:{user:null,session:null},error:i};let o=n.session,a=n.user;return n.session&&(await this._saveSession(n.session),await this._notifyAllSubscribers("SIGNED_IN",o)),{data:{user:a,session:o},error:null}}catch(e){if((0,l.isAuthError)(e))return{data:{user:null,session:null},error:e};throw e}}async signUp(e){var t,r,s;try{let n;if("email"in e){let{email:r,password:s,options:i}=e,o=null,a=null;"pkce"===this.flowType&&([o,a]=await (0,h.getCodeChallengeAndMethod)(this.storage,this.storageKey)),n=await (0,u._request)(this.fetch,"POST",`${this.url}/signup`,{headers:this.headers,redirectTo:null==i?void 0:i.emailRedirectTo,body:{email:r,password:s,data:null!==(t=null==i?void 0:i.data)&&void 0!==t?t:{},gotrue_meta_security:{captcha_token:null==i?void 0:i.captchaToken},code_challenge:o,code_challenge_method:a},xform:u._sessionResponse})}else if("phone"in e){let{phone:t,password:i,options:o}=e;n=await (0,u._request)(this.fetch,"POST",`${this.url}/signup`,{headers:this.headers,body:{phone:t,password:i,data:null!==(r=null==o?void 0:o.data)&&void 0!==r?r:{},channel:null!==(s=null==o?void 0:o.channel)&&void 0!==s?s:"sms",gotrue_meta_security:{captcha_token:null==o?void 0:o.captchaToken}},xform:u._sessionResponse})}else throw new l.AuthInvalidCredentialsError("You must provide either an email or phone number and a password");let{data:i,error:o}=n;if(o||!i)return{data:{user:null,session:null},error:o};let a=i.session,c=i.user;return i.session&&(await this._saveSession(i.session),await this._notifyAllSubscribers("SIGNED_IN",a)),{data:{user:c,session:a},error:null}}catch(e){if((0,l.isAuthError)(e))return{data:{user:null,session:null},error:e};throw e}}async signInWithPassword(e){try{let t;if("email"in e){let{email:r,password:s,options:n}=e;t=await (0,u._request)(this.fetch,"POST",`${this.url}/token?grant_type=password`,{headers:this.headers,body:{email:r,password:s,gotrue_meta_security:{captcha_token:null==n?void 0:n.captchaToken}},xform:u._sessionResponsePassword})}else if("phone"in e){let{phone:r,password:s,options:n}=e;t=await (0,u._request)(this.fetch,"POST",`${this.url}/token?grant_type=password`,{headers:this.headers,body:{phone:r,password:s,gotrue_meta_security:{captcha_token:null==n?void 0:n.captchaToken}},xform:u._sessionResponsePassword})}else throw new l.AuthInvalidCredentialsError("You must provide either an email or phone number and a password");let{data:r,error:s}=t;if(s)return{data:{user:null,session:null},error:s};if(!r||!r.session||!r.user)return{data:{user:null,session:null},error:new l.AuthInvalidTokenResponseError};return r.session&&(await this._saveSession(r.session),await this._notifyAllSubscribers("SIGNED_IN",r.session)),{data:Object.assign({user:r.user,session:r.session},r.weak_password?{weakPassword:r.weak_password}:null),error:s}}catch(e){if((0,l.isAuthError)(e))return{data:{user:null,session:null},error:e};throw e}}async signInWithOAuth(e){var t,r,s,n;return await this._handleProviderSignIn(e.provider,{redirectTo:null===(t=e.options)||void 0===t?void 0:t.redirectTo,scopes:null===(r=e.options)||void 0===r?void 0:r.scopes,queryParams:null===(s=e.options)||void 0===s?void 0:s.queryParams,skipBrowserRedirect:null===(n=e.options)||void 0===n?void 0:n.skipBrowserRedirect})}async exchangeCodeForSession(e){return await this.initializePromise,this._acquireLock(-1,async()=>this._exchangeCodeForSession(e))}async _exchangeCodeForSession(e){let t=await (0,h.getItemAsync)(this.storage,`${this.storageKey}-code-verifier`),[r,s]=(null!=t?t:"").split("/");try{let{data:t,error:n}=await (0,u._request)(this.fetch,"POST",`${this.url}/token?grant_type=pkce`,{headers:this.headers,body:{auth_code:e,code_verifier:r},xform:u._sessionResponse});if(await (0,h.removeItemAsync)(this.storage,`${this.storageKey}-code-verifier`),n)throw n;if(!t||!t.session||!t.user)return{data:{user:null,session:null,redirectType:null},error:new l.AuthInvalidTokenResponseError};return t.session&&(await this._saveSession(t.session),await this._notifyAllSubscribers("SIGNED_IN",t.session)),{data:Object.assign(Object.assign({},t),{redirectType:null!=s?s:null}),error:n}}catch(e){if((0,l.isAuthError)(e))return{data:{user:null,session:null,redirectType:null},error:e};throw e}}async signInWithIdToken(e){try{let{options:t,provider:r,token:s,access_token:n,nonce:i}=e,{data:o,error:a}=await (0,u._request)(this.fetch,"POST",`${this.url}/token?grant_type=id_token`,{headers:this.headers,body:{provider:r,id_token:s,access_token:n,nonce:i,gotrue_meta_security:{captcha_token:null==t?void 0:t.captchaToken}},xform:u._sessionResponse});if(a)return{data:{user:null,session:null},error:a};if(!o||!o.session||!o.user)return{data:{user:null,session:null},error:new l.AuthInvalidTokenResponseError};return o.session&&(await this._saveSession(o.session),await this._notifyAllSubscribers("SIGNED_IN",o.session)),{data:o,error:a}}catch(e){if((0,l.isAuthError)(e))return{data:{user:null,session:null},error:e};throw e}}async signInWithOtp(e){var t,r,s,n,i;try{if("email"in e){let{email:s,options:n}=e,i=null,o=null;"pkce"===this.flowType&&([i,o]=await (0,h.getCodeChallengeAndMethod)(this.storage,this.storageKey));let{error:a}=await (0,u._request)(this.fetch,"POST",`${this.url}/otp`,{headers:this.headers,body:{email:s,data:null!==(t=null==n?void 0:n.data)&&void 0!==t?t:{},create_user:null===(r=null==n?void 0:n.shouldCreateUser)||void 0===r||r,gotrue_meta_security:{captcha_token:null==n?void 0:n.captchaToken},code_challenge:i,code_challenge_method:o},redirectTo:null==n?void 0:n.emailRedirectTo});return{data:{user:null,session:null},error:a}}if("phone"in e){let{phone:t,options:r}=e,{data:o,error:a}=await (0,u._request)(this.fetch,"POST",`${this.url}/otp`,{headers:this.headers,body:{phone:t,data:null!==(s=null==r?void 0:r.data)&&void 0!==s?s:{},create_user:null===(n=null==r?void 0:r.shouldCreateUser)||void 0===n||n,gotrue_meta_security:{captcha_token:null==r?void 0:r.captchaToken},channel:null!==(i=null==r?void 0:r.channel)&&void 0!==i?i:"sms"}});return{data:{user:null,session:null,messageId:null==o?void 0:o.message_id},error:a}}throw new l.AuthInvalidCredentialsError("You must provide either an email or phone number.")}catch(e){if((0,l.isAuthError)(e))return{data:{user:null,session:null},error:e};throw e}}async verifyOtp(e){var t,r;try{let s,n;"options"in e&&(s=null===(t=e.options)||void 0===t?void 0:t.redirectTo,n=null===(r=e.options)||void 0===r?void 0:r.captchaToken);let{data:i,error:o}=await (0,u._request)(this.fetch,"POST",`${this.url}/verify`,{headers:this.headers,body:Object.assign(Object.assign({},e),{gotrue_meta_security:{captcha_token:n}}),redirectTo:s,xform:u._sessionResponse});if(o)throw o;if(!i)throw Error("An error occurred on token verification.");let a=i.session,l=i.user;return(null==a?void 0:a.access_token)&&(await this._saveSession(a),await this._notifyAllSubscribers("recovery"==e.type?"PASSWORD_RECOVERY":"SIGNED_IN",a)),{data:{user:l,session:a},error:null}}catch(e){if((0,l.isAuthError)(e))return{data:{user:null,session:null},error:e};throw e}}async signInWithSSO(e){var t,r,s;try{let n=null,i=null;return"pkce"===this.flowType&&([n,i]=await (0,h.getCodeChallengeAndMethod)(this.storage,this.storageKey)),await (0,u._request)(this.fetch,"POST",`${this.url}/sso`,{body:Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({},"providerId"in e?{provider_id:e.providerId}:null),"domain"in e?{domain:e.domain}:null),{redirect_to:null!==(r=null===(t=e.options)||void 0===t?void 0:t.redirectTo)&&void 0!==r?r:void 0}),(null===(s=null==e?void 0:e.options)||void 0===s?void 0:s.captchaToken)?{gotrue_meta_security:{captcha_token:e.options.captchaToken}}:null),{skip_http_redirect:!0,code_challenge:n,code_challenge_method:i}),headers:this.headers,xform:u._ssoResponse})}catch(e){if((0,l.isAuthError)(e))return{data:null,error:e};throw e}}async reauthenticate(){return await this.initializePromise,await this._acquireLock(-1,async()=>await this._reauthenticate())}async _reauthenticate(){try{return await this._useSession(async e=>{let{data:{session:t},error:r}=e;if(r)throw r;if(!t)throw new l.AuthSessionMissingError;let{error:s}=await (0,u._request)(this.fetch,"GET",`${this.url}/reauthenticate`,{headers:this.headers,jwt:t.access_token});return{data:{user:null,session:null},error:s}})}catch(e){if((0,l.isAuthError)(e))return{data:{user:null,session:null},error:e};throw e}}async resend(e){try{let t=`${this.url}/resend`;if("email"in e){let{email:r,type:s,options:n}=e,{error:i}=await (0,u._request)(this.fetch,"POST",t,{headers:this.headers,body:{email:r,type:s,gotrue_meta_security:{captcha_token:null==n?void 0:n.captchaToken}},redirectTo:null==n?void 0:n.emailRedirectTo});return{data:{user:null,session:null},error:i}}if("phone"in e){let{phone:r,type:s,options:n}=e,{data:i,error:o}=await (0,u._request)(this.fetch,"POST",t,{headers:this.headers,body:{phone:r,type:s,gotrue_meta_security:{captcha_token:null==n?void 0:n.captchaToken}}});return{data:{user:null,session:null,messageId:null==i?void 0:i.message_id},error:o}}throw new l.AuthInvalidCredentialsError("You must provide either an email or phone number and a type")}catch(e){if((0,l.isAuthError)(e))return{data:{user:null,session:null},error:e};throw e}}async getSession(){return await this.initializePromise,await this._acquireLock(-1,async()=>this._useSession(async e=>e))}async _acquireLock(e,t){this._debug("#_acquireLock","begin",e);try{if(this.lockAcquired){let e=this.pendingInLock.length?this.pendingInLock[this.pendingInLock.length-1]:Promise.resolve(),r=(async()=>(await e,await t()))();return this.pendingInLock.push((async()=>{try{await r}catch(e){}})()),r}return await this.lock(`lock:${this.storageKey}`,e,async()=>{this._debug("#_acquireLock","lock acquired for storage key",this.storageKey);try{this.lockAcquired=!0;let e=t();for(this.pendingInLock.push((async()=>{try{await e}catch(e){}})()),await e;this.pendingInLock.length;){let e=[...this.pendingInLock];await Promise.all(e),this.pendingInLock.splice(0,e.length)}return await e}finally{this._debug("#_acquireLock","lock released for storage key",this.storageKey),this.lockAcquired=!1}})}finally{this._debug("#_acquireLock","end")}}async _useSession(e){this._debug("#_useSession","begin");try{let t=await this.__loadSession();return await e(t)}finally{this._debug("#_useSession","end")}}async __loadSession(){this._debug("#__loadSession()","begin"),this.lockAcquired||this._debug("#__loadSession()","used outside of an acquired lock!",Error().stack);try{let e=null,t=await (0,h.getItemAsync)(this.storage,this.storageKey);if(this._debug("#getSession()","session from storage",t),null!==t&&(this._isValidSession(t)?e=t:(this._debug("#getSession()","session from storage is not valid"),await this._removeSession())),!e)return{data:{session:null},error:null};let r=!!e.expires_at&&e.expires_at<=Date.now()/1e3;if(this._debug("#__loadSession()",`session has${r?"":" not"} expired`,"expires_at",e.expires_at),!r){if(this.storage.isServer){let t=this.suppressGetSessionWarning;e=new Proxy(e,{get:(e,r,s)=>(t||"user"!==r||(console.warn("Using the user object as returned from supabase.auth.getSession() or from some supabase.auth.onAuthStateChange() events could be insecure! This value comes directly from the storage medium (usually cookies on the server) and many not be authentic. Use supabase.auth.getUser() instead which authenticates the data by contacting the Supabase Auth server."),t=!0,this.suppressGetSessionWarning=!0),Reflect.get(e,r,s))})}return{data:{session:e},error:null}}let{session:s,error:n}=await this._callRefreshToken(e.refresh_token);if(n)return{data:{session:null},error:n};return{data:{session:s},error:null}}finally{this._debug("#__loadSession()","end")}}async getUser(e){return e?await this._getUser(e):(await this.initializePromise,await this._acquireLock(-1,async()=>await this._getUser()))}async _getUser(e){try{if(e)return await (0,u._request)(this.fetch,"GET",`${this.url}/user`,{headers:this.headers,jwt:e,xform:u._userResponse});return await this._useSession(async e=>{var t,r,s;let{data:n,error:i}=e;if(i)throw i;return(null===(t=n.session)||void 0===t?void 0:t.access_token)||this.hasCustomAuthorizationHeader?await (0,u._request)(this.fetch,"GET",`${this.url}/user`,{headers:this.headers,jwt:null!==(s=null===(r=n.session)||void 0===r?void 0:r.access_token)&&void 0!==s?s:void 0,xform:u._userResponse}):{data:{user:null},error:new l.AuthSessionMissingError}})}catch(e){if((0,l.isAuthError)(e))return(0,l.isAuthSessionMissingError)(e)&&(await this._removeSession(),await (0,h.removeItemAsync)(this.storage,`${this.storageKey}-code-verifier`)),{data:{user:null},error:e};throw e}}async updateUser(e,t={}){return await this.initializePromise,await this._acquireLock(-1,async()=>await this._updateUser(e,t))}async _updateUser(e,t={}){try{return await this._useSession(async r=>{let{data:s,error:n}=r;if(n)throw n;if(!s.session)throw new l.AuthSessionMissingError;let i=s.session,o=null,a=null;"pkce"===this.flowType&&null!=e.email&&([o,a]=await (0,h.getCodeChallengeAndMethod)(this.storage,this.storageKey));let{data:c,error:d}=await (0,u._request)(this.fetch,"PUT",`${this.url}/user`,{headers:this.headers,redirectTo:null==t?void 0:t.emailRedirectTo,body:Object.assign(Object.assign({},e),{code_challenge:o,code_challenge_method:a}),jwt:i.access_token,xform:u._userResponse});if(d)throw d;return i.user=c.user,await this._saveSession(i),await this._notifyAllSubscribers("USER_UPDATED",i),{data:{user:i.user},error:null}})}catch(e){if((0,l.isAuthError)(e))return{data:{user:null},error:e};throw e}}_decodeJWT(e){return(0,h.decodeJWTPayload)(e)}async setSession(e){return await this.initializePromise,await this._acquireLock(-1,async()=>await this._setSession(e))}async _setSession(e){try{if(!e.access_token||!e.refresh_token)throw new l.AuthSessionMissingError;let t=Date.now()/1e3,r=t,s=!0,n=null,i=(0,h.decodeJWTPayload)(e.access_token);if(i.exp&&(s=(r=i.exp)<=t),s){let{session:t,error:r}=await this._callRefreshToken(e.refresh_token);if(r)return{data:{user:null,session:null},error:r};if(!t)return{data:{user:null,session:null},error:null};n=t}else{let{data:s,error:i}=await this._getUser(e.access_token);if(i)throw i;n={access_token:e.access_token,refresh_token:e.refresh_token,user:s.user,token_type:"bearer",expires_in:r-t,expires_at:r},await this._saveSession(n),await this._notifyAllSubscribers("SIGNED_IN",n)}return{data:{user:n.user,session:n},error:null}}catch(e){if((0,l.isAuthError)(e))return{data:{session:null,user:null},error:e};throw e}}async refreshSession(e){return await this.initializePromise,await this._acquireLock(-1,async()=>await this._refreshSession(e))}async _refreshSession(e){try{return await this._useSession(async t=>{var r;if(!e){let{data:s,error:n}=t;if(n)throw n;e=null!==(r=s.session)&&void 0!==r?r:void 0}if(!(null==e?void 0:e.refresh_token))throw new l.AuthSessionMissingError;let{session:s,error:n}=await this._callRefreshToken(e.refresh_token);return n?{data:{user:null,session:null},error:n}:s?{data:{user:s.user,session:s},error:null}:{data:{user:null,session:null},error:null}})}catch(e){if((0,l.isAuthError)(e))return{data:{user:null,session:null},error:e};throw e}}async _getSessionFromURL(e){try{if(!(0,h.isBrowser)())throw new l.AuthImplicitGrantRedirectError("No browser detected.");if("implicit"!==this.flowType||this._isImplicitGrantFlow()){if("pkce"==this.flowType&&!e)throw new l.AuthPKCEGrantCodeExchangeError("Not a valid PKCE flow url.")}else throw new l.AuthImplicitGrantRedirectError("Not a valid implicit grant flow url.");let t=(0,h.parseParametersFromURL)(window.location.href);if(e){if(!t.code)throw new l.AuthPKCEGrantCodeExchangeError("No code detected.");let{data:e,error:r}=await this._exchangeCodeForSession(t.code);if(r)throw r;let s=new URL(window.location.href);return s.searchParams.delete("code"),window.history.replaceState(window.history.state,"",s.toString()),{data:{session:e.session,redirectType:null},error:null}}if(t.error||t.error_description||t.error_code)throw new l.AuthImplicitGrantRedirectError(t.error_description||"Error in URL with unspecified error_description",{error:t.error||"unspecified_error",code:t.error_code||"unspecified_code"});let{provider_token:r,provider_refresh_token:s,access_token:n,refresh_token:i,expires_in:o,expires_at:a,token_type:u}=t;if(!n||!o||!i||!u)throw new l.AuthImplicitGrantRedirectError("No session defined in URL");let c=Math.round(Date.now()/1e3),d=parseInt(o),f=c+d;a&&(f=parseInt(a));let p=f-c;1e3*p<=3e4&&console.warn(`@supabase/gotrue-js: Session as retrieved from URL expires in ${p}s, should have been closer to ${d}s`);let g=f-d;c-g>=120?console.warn("@supabase/gotrue-js: Session as retrieved from URL was issued over 120s ago, URL could be stale",g,f,c):c-g<0&&console.warn("@supabase/gotrue-js: Session as retrieved from URL was issued in the future? Check the device clock for skew",g,f,c);let{data:m,error:y}=await this._getUser(n);if(y)throw y;let b={provider_token:r,provider_refresh_token:s,access_token:n,expires_in:d,expires_at:f,refresh_token:i,token_type:u,user:m.user};return window.location.hash="",this._debug("#_getSessionFromURL()","clearing window.location.hash"),{data:{session:b,redirectType:t.type},error:null}}catch(e){if((0,l.isAuthError)(e))return{data:{session:null,redirectType:null},error:e};throw e}}_isImplicitGrantFlow(){let e=(0,h.parseParametersFromURL)(window.location.href);return!!((0,h.isBrowser)()&&(e.access_token||e.error_description))}async _isPKCEFlow(){let e=(0,h.parseParametersFromURL)(window.location.href),t=await (0,h.getItemAsync)(this.storage,`${this.storageKey}-code-verifier`);return!!(e.code&&t)}async signOut(e={scope:"global"}){return await this.initializePromise,await this._acquireLock(-1,async()=>await this._signOut(e))}async _signOut({scope:e}={scope:"global"}){return await this._useSession(async t=>{var r;let{data:s,error:n}=t;if(n)return{error:n};let i=null===(r=s.session)||void 0===r?void 0:r.access_token;if(i){let{error:t}=await this.admin.signOut(i,e);if(t&&!((0,l.isAuthApiError)(t)&&(404===t.status||401===t.status||403===t.status)))return{error:t}}return"others"!==e&&(await this._removeSession(),await (0,h.removeItemAsync)(this.storage,`${this.storageKey}-code-verifier`)),{error:null}})}onAuthStateChange(e){let t=(0,h.uuid)(),r={id:t,callback:e,unsubscribe:()=>{this._debug("#unsubscribe()","state change callback with id removed",t),this.stateChangeEmitters.delete(t)}};return this._debug("#onAuthStateChange()","registered callback with id",t),this.stateChangeEmitters.set(t,r),(async()=>{await this.initializePromise,await this._acquireLock(-1,async()=>{this._emitInitialSession(t)})})(),{data:{subscription:r}}}async _emitInitialSession(e){return await this._useSession(async t=>{var r,s;try{let{data:{session:s},error:n}=t;if(n)throw n;await (null===(r=this.stateChangeEmitters.get(e))||void 0===r?void 0:r.callback("INITIAL_SESSION",s)),this._debug("INITIAL_SESSION","callback id",e,"session",s)}catch(t){await (null===(s=this.stateChangeEmitters.get(e))||void 0===s?void 0:s.callback("INITIAL_SESSION",null)),this._debug("INITIAL_SESSION","callback id",e,"error",t),console.error(t)}})}async resetPasswordForEmail(e,t={}){let r=null,s=null;"pkce"===this.flowType&&([r,s]=await (0,h.getCodeChallengeAndMethod)(this.storage,this.storageKey,!0));try{return await (0,u._request)(this.fetch,"POST",`${this.url}/recover`,{body:{email:e,code_challenge:r,code_challenge_method:s,gotrue_meta_security:{captcha_token:t.captchaToken}},headers:this.headers,redirectTo:t.redirectTo})}catch(e){if((0,l.isAuthError)(e))return{data:null,error:e};throw e}}async getUserIdentities(){var e;try{let{data:t,error:r}=await this.getUser();if(r)throw r;return{data:{identities:null!==(e=t.user.identities)&&void 0!==e?e:[]},error:null}}catch(e){if((0,l.isAuthError)(e))return{data:null,error:e};throw e}}async linkIdentity(e){var t;try{let{data:r,error:s}=await this._useSession(async t=>{var r,s,n,i,o;let{data:a,error:l}=t;if(l)throw l;let h=await this._getUrlForProvider(`${this.url}/user/identities/authorize`,e.provider,{redirectTo:null===(r=e.options)||void 0===r?void 0:r.redirectTo,scopes:null===(s=e.options)||void 0===s?void 0:s.scopes,queryParams:null===(n=e.options)||void 0===n?void 0:n.queryParams,skipBrowserRedirect:!0});return await (0,u._request)(this.fetch,"GET",h,{headers:this.headers,jwt:null!==(o=null===(i=a.session)||void 0===i?void 0:i.access_token)&&void 0!==o?o:void 0})});if(s)throw s;return!(0,h.isBrowser)()||(null===(t=e.options)||void 0===t?void 0:t.skipBrowserRedirect)||window.location.assign(null==r?void 0:r.url),{data:{provider:e.provider,url:null==r?void 0:r.url},error:null}}catch(t){if((0,l.isAuthError)(t))return{data:{provider:e.provider,url:null},error:t};throw t}}async unlinkIdentity(e){try{return await this._useSession(async t=>{var r,s;let{data:n,error:i}=t;if(i)throw i;return await (0,u._request)(this.fetch,"DELETE",`${this.url}/user/identities/${e.identity_id}`,{headers:this.headers,jwt:null!==(s=null===(r=n.session)||void 0===r?void 0:r.access_token)&&void 0!==s?s:void 0})})}catch(e){if((0,l.isAuthError)(e))return{data:null,error:e};throw e}}async _refreshAccessToken(e){let t=`#_refreshAccessToken(${e.substring(0,5)}...)`;this._debug(t,"begin");try{let r=Date.now();return await (0,h.retryable)(async r=>(r>0&&await (0,h.sleep)(200*Math.pow(2,r-1)),this._debug(t,"refreshing attempt",r),await (0,u._request)(this.fetch,"POST",`${this.url}/token?grant_type=refresh_token`,{body:{refresh_token:e},headers:this.headers,xform:u._sessionResponse})),(e,t)=>{let s=200*Math.pow(2,e);return t&&(0,l.isAuthRetryableFetchError)(t)&&Date.now()+s-r<3e4})}catch(e){if(this._debug(t,"error",e),(0,l.isAuthError)(e))return{data:{session:null,user:null},error:e};throw e}finally{this._debug(t,"end")}}_isValidSession(e){return"object"==typeof e&&null!==e&&"access_token"in e&&"refresh_token"in e&&"expires_at"in e}async _handleProviderSignIn(e,t){let r=await this._getUrlForProvider(`${this.url}/authorize`,e,{redirectTo:t.redirectTo,scopes:t.scopes,queryParams:t.queryParams});return this._debug("#_handleProviderSignIn()","provider",e,"options",t,"url",r),(0,h.isBrowser)()&&!t.skipBrowserRedirect&&window.location.assign(r),{data:{provider:e,url:r},error:null}}async _recoverAndRefresh(){var e;let t="#_recoverAndRefresh()";this._debug(t,"begin");try{let r=await (0,h.getItemAsync)(this.storage,this.storageKey);if(this._debug(t,"session from storage",r),!this._isValidSession(r)){this._debug(t,"session is not valid"),null!==r&&await this._removeSession();return}let s=Math.round(Date.now()/1e3),n=(null!==(e=r.expires_at)&&void 0!==e?e:1/0)<s+a.EXPIRY_MARGIN;if(this._debug(t,`session has${n?"":" not"} expired with margin of ${a.EXPIRY_MARGIN}s`),n){if(this.autoRefreshToken&&r.refresh_token){let{error:e}=await this._callRefreshToken(r.refresh_token);e&&(console.error(e),(0,l.isAuthRetryableFetchError)(e)||(this._debug(t,"refresh failed with a non-retryable error, removing the session",e),await this._removeSession()))}}else await this._notifyAllSubscribers("SIGNED_IN",r)}catch(e){this._debug(t,"error",e),console.error(e);return}finally{this._debug(t,"end")}}async _callRefreshToken(e){var t,r;if(!e)throw new l.AuthSessionMissingError;if(this.refreshingDeferred)return this.refreshingDeferred.promise;let s=`#_callRefreshToken(${e.substring(0,5)}...)`;this._debug(s,"begin");try{this.refreshingDeferred=new h.Deferred;let{data:t,error:r}=await this._refreshAccessToken(e);if(r)throw r;if(!t.session)throw new l.AuthSessionMissingError;await this._saveSession(t.session),await this._notifyAllSubscribers("TOKEN_REFRESHED",t.session);let s={session:t.session,error:null};return this.refreshingDeferred.resolve(s),s}catch(e){if(this._debug(s,"error",e),(0,l.isAuthError)(e)){let r={session:null,error:e};return(0,l.isAuthRetryableFetchError)(e)||await this._removeSession(),null===(t=this.refreshingDeferred)||void 0===t||t.resolve(r),r}throw null===(r=this.refreshingDeferred)||void 0===r||r.reject(e),e}finally{this.refreshingDeferred=null,this._debug(s,"end")}}async _notifyAllSubscribers(e,t,r=!0){let s=`#_notifyAllSubscribers(${e})`;this._debug(s,"begin",t,`broadcast = ${r}`);try{this.broadcastChannel&&r&&this.broadcastChannel.postMessage({event:e,session:t});let s=[],n=Array.from(this.stateChangeEmitters.values()).map(async r=>{try{await r.callback(e,t)}catch(e){s.push(e)}});if(await Promise.all(n),s.length>0){for(let e=0;e<s.length;e+=1)console.error(s[e]);throw s[0]}}finally{this._debug(s,"end")}}async _saveSession(e){this._debug("#_saveSession()",e),this.suppressGetSessionWarning=!0,await (0,h.setItemAsync)(this.storage,this.storageKey,e)}async _removeSession(){this._debug("#_removeSession()"),await (0,h.removeItemAsync)(this.storage,this.storageKey),await this._notifyAllSubscribers("SIGNED_OUT",null)}_removeVisibilityChangedCallback(){this._debug("#_removeVisibilityChangedCallback()");let e=this.visibilityChangedCallback;this.visibilityChangedCallback=null;try{e&&(0,h.isBrowser)()&&(null==window?void 0:window.removeEventListener)&&window.removeEventListener("visibilitychange",e)}catch(e){console.error("removing visibilitychange callback failed",e)}}async _startAutoRefresh(){await this._stopAutoRefresh(),this._debug("#_startAutoRefresh()");let e=setInterval(()=>this._autoRefreshTokenTick(),3e4);this.autoRefreshTicker=e,e&&"object"==typeof e&&"function"==typeof e.unref?e.unref():"undefined"!=typeof Deno&&"function"==typeof Deno.unrefTimer&&Deno.unrefTimer(e),setTimeout(async()=>{await this.initializePromise,await this._autoRefreshTokenTick()},0)}async _stopAutoRefresh(){this._debug("#_stopAutoRefresh()");let e=this.autoRefreshTicker;this.autoRefreshTicker=null,e&&clearInterval(e)}async startAutoRefresh(){this._removeVisibilityChangedCallback(),await this._startAutoRefresh()}async stopAutoRefresh(){this._removeVisibilityChangedCallback(),await this._stopAutoRefresh()}async _autoRefreshTokenTick(){this._debug("#_autoRefreshTokenTick()","begin");try{await this._acquireLock(0,async()=>{try{let e=Date.now();try{return await this._useSession(async t=>{let{data:{session:r}}=t;if(!r||!r.refresh_token||!r.expires_at){this._debug("#_autoRefreshTokenTick()","no session");return}let s=Math.floor((1e3*r.expires_at-e)/3e4);this._debug("#_autoRefreshTokenTick()",`access token expires in ${s} ticks, a tick lasts 30000ms, refresh threshold is 3 ticks`),s<=3&&await this._callRefreshToken(r.refresh_token)})}catch(e){console.error("Auto refresh tick failed with error. This is likely a transient error.",e)}}finally{this._debug("#_autoRefreshTokenTick()","end")}})}catch(e){if(e.isAcquireTimeout||e instanceof p.LockAcquireTimeoutError)this._debug("auto refresh token tick lock not available");else throw e}}async _handleVisibilityChange(){if(this._debug("#_handleVisibilityChange()"),!(0,h.isBrowser)()||!(null==window?void 0:window.addEventListener))return this.autoRefreshToken&&this.startAutoRefresh(),!1;try{this.visibilityChangedCallback=async()=>await this._onVisibilityChanged(!1),null==window||window.addEventListener("visibilitychange",this.visibilityChangedCallback),await this._onVisibilityChanged(!0)}catch(e){console.error("_handleVisibilityChange",e)}}async _onVisibilityChanged(e){let t=`#_onVisibilityChanged(${e})`;this._debug(t,"visibilityState",document.visibilityState),"visible"===document.visibilityState?(this.autoRefreshToken&&this._startAutoRefresh(),e||(await this.initializePromise,await this._acquireLock(-1,async()=>{if("visible"!==document.visibilityState){this._debug(t,"acquired the lock to recover the session, but the browser visibilityState is no longer visible, aborting");return}await this._recoverAndRefresh()}))):"hidden"===document.visibilityState&&this.autoRefreshToken&&this._stopAutoRefresh()}async _getUrlForProvider(e,t,r){let s=[`provider=${encodeURIComponent(t)}`];if((null==r?void 0:r.redirectTo)&&s.push(`redirect_to=${encodeURIComponent(r.redirectTo)}`),(null==r?void 0:r.scopes)&&s.push(`scopes=${encodeURIComponent(r.scopes)}`),"pkce"===this.flowType){let[e,t]=await (0,h.getCodeChallengeAndMethod)(this.storage,this.storageKey),r=new URLSearchParams({code_challenge:`${encodeURIComponent(e)}`,code_challenge_method:`${encodeURIComponent(t)}`});s.push(r.toString())}if(null==r?void 0:r.queryParams){let e=new URLSearchParams(r.queryParams);s.push(e.toString())}return(null==r?void 0:r.skipBrowserRedirect)&&s.push(`skip_http_redirect=${r.skipBrowserRedirect}`),`${e}?${s.join("&")}`}async _unenroll(e){try{return await this._useSession(async t=>{var r;let{data:s,error:n}=t;return n?{data:null,error:n}:await (0,u._request)(this.fetch,"DELETE",`${this.url}/factors/${e.factorId}`,{headers:this.headers,jwt:null===(r=null==s?void 0:s.session)||void 0===r?void 0:r.access_token})})}catch(e){if((0,l.isAuthError)(e))return{data:null,error:e};throw e}}async _enroll(e){try{return await this._useSession(async t=>{var r,s;let{data:n,error:i}=t;if(i)return{data:null,error:i};let o=Object.assign({friendly_name:e.friendlyName,factor_type:e.factorType},"phone"===e.factorType?{phone:e.phone}:{issuer:e.issuer}),{data:a,error:l}=await (0,u._request)(this.fetch,"POST",`${this.url}/factors`,{body:o,headers:this.headers,jwt:null===(r=null==n?void 0:n.session)||void 0===r?void 0:r.access_token});return l?{data:null,error:l}:("totp"===e.factorType&&(null===(s=null==a?void 0:a.totp)||void 0===s?void 0:s.qr_code)&&(a.totp.qr_code=`data:image/svg+xml;utf-8,${a.totp.qr_code}`),{data:a,error:null})})}catch(e){if((0,l.isAuthError)(e))return{data:null,error:e};throw e}}async _verify(e){return this._acquireLock(-1,async()=>{try{return await this._useSession(async t=>{var r;let{data:s,error:n}=t;if(n)return{data:null,error:n};let{data:i,error:o}=await (0,u._request)(this.fetch,"POST",`${this.url}/factors/${e.factorId}/verify`,{body:{code:e.code,challenge_id:e.challengeId},headers:this.headers,jwt:null===(r=null==s?void 0:s.session)||void 0===r?void 0:r.access_token});return o?{data:null,error:o}:(await this._saveSession(Object.assign({expires_at:Math.round(Date.now()/1e3)+i.expires_in},i)),await this._notifyAllSubscribers("MFA_CHALLENGE_VERIFIED",i),{data:i,error:o})})}catch(e){if((0,l.isAuthError)(e))return{data:null,error:e};throw e}})}async _challenge(e){return this._acquireLock(-1,async()=>{try{return await this._useSession(async t=>{var r;let{data:s,error:n}=t;return n?{data:null,error:n}:await (0,u._request)(this.fetch,"POST",`${this.url}/factors/${e.factorId}/challenge`,{body:{channel:e.channel},headers:this.headers,jwt:null===(r=null==s?void 0:s.session)||void 0===r?void 0:r.access_token})})}catch(e){if((0,l.isAuthError)(e))return{data:null,error:e};throw e}})}async _challengeAndVerify(e){let{data:t,error:r}=await this._challenge({factorId:e.factorId});return r?{data:null,error:r}:await this._verify({factorId:e.factorId,challengeId:t.id,code:e.code})}async _listFactors(){let{data:{user:e},error:t}=await this.getUser();if(t)return{data:null,error:t};let r=(null==e?void 0:e.factors)||[],s=r.filter(e=>"totp"===e.factor_type&&"verified"===e.status),n=r.filter(e=>"phone"===e.factor_type&&"verified"===e.status);return{data:{all:r,totp:s,phone:n},error:null}}async _getAuthenticatorAssuranceLevel(){return this._acquireLock(-1,async()=>await this._useSession(async e=>{var t,r;let{data:{session:s},error:n}=e;if(n)return{data:null,error:n};if(!s)return{data:{currentLevel:null,nextLevel:null,currentAuthenticationMethods:[]},error:null};let i=this._decodeJWT(s.access_token),o=null;i.aal&&(o=i.aal);let a=o;return(null!==(r=null===(t=s.user.factors)||void 0===t?void 0:t.filter(e=>"verified"===e.status))&&void 0!==r?r:[]).length>0&&(a="aal2"),{data:{currentLevel:o,nextLevel:a,currentAuthenticationMethods:i.amr||[]},error:null}}))}}r.default=y,y.nextInstanceID=0},{"./GoTrueAdminApi":"5bmQV","./lib/constants":"5kgHI","./lib/errors":"8RHqO","./lib/fetch":"dOWmM","./lib/helpers":"lQJ1C","./lib/local-storage":"ej9PT","./lib/polyfills":"9gKt7","./lib/version":"gfN29","./lib/locks":"4RjEn","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],ej9PT:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"localStorageAdapter",()=>o),n.export(r,"memoryLocalStorageAdapter",()=>a);var i=e("./helpers");let o={getItem:e=>(0,i.supportsLocalStorage)()?globalThis.localStorage.getItem(e):null,setItem:(e,t)=>{(0,i.supportsLocalStorage)()&&globalThis.localStorage.setItem(e,t)},removeItem:e=>{(0,i.supportsLocalStorage)()&&globalThis.localStorage.removeItem(e)}};function a(e={}){return{getItem:t=>e[t]||null,setItem:(t,r)=>{e[t]=r},removeItem:t=>{delete e[t]}}}},{"./helpers":"lQJ1C","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"9gKt7":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");function i(){if("object"!=typeof globalThis)try{Object.defineProperty(Object.prototype,"__magic__",{get:function(){return this},configurable:!0}),__magic__.globalThis=__magic__,delete Object.prototype.__magic__}catch(e){"undefined"!=typeof self&&(self.globalThis=self)}}n.defineInteropFlag(r),n.export(r,"polyfillGlobalThis",()=>i)},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"4RjEn":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"internals",()=>o),n.export(r,"LockAcquireTimeoutError",()=>a),n.export(r,"NavigatorLockAcquireTimeoutError",()=>l),n.export(r,"navigatorLock",()=>u);var i=e("./helpers");let o={debug:!!(globalThis&&(0,i.supportsLocalStorage)()&&globalThis.localStorage&&"true"===globalThis.localStorage.getItem("supabase.gotrue-js.locks.debug"))};class a extends Error{constructor(e){super(e),this.isAcquireTimeout=!0}}class l extends a{}async function u(e,t,r){o.debug&&console.log("@supabase/gotrue-js: navigatorLock: acquire lock",e,t);let s=new globalThis.AbortController;return t>0&&setTimeout(()=>{s.abort(),o.debug&&console.log("@supabase/gotrue-js: navigatorLock acquire timed out",e)},t),await globalThis.navigator.locks.request(e,0===t?{mode:"exclusive",ifAvailable:!0}:{mode:"exclusive",signal:s.signal},async s=>{if(s){o.debug&&console.log("@supabase/gotrue-js: navigatorLock: acquired",e,s.name);try{return await r()}finally{o.debug&&console.log("@supabase/gotrue-js: navigatorLock: released",e,s.name)}}else if(0===t)throw o.debug&&console.log("@supabase/gotrue-js: navigatorLock: not immediately available",e),new l(`Acquiring an exclusive Navigator LockManager lock "${e}" immediately failed`);else{if(o.debug)try{let e=await globalThis.navigator.locks.query();console.log("@supabase/gotrue-js: Navigator LockManager state",JSON.stringify(e,null,"  "))}catch(e){console.warn("@supabase/gotrue-js: Error when querying Navigator LockManager state",e)}return console.warn("@supabase/gotrue-js: Navigator LockManager returned a null lock when using #request without ifAvailable set to true, it appears this browser is not following the LockManager spec https://developer.mozilla.org/en-US/docs/Web/API/LockManager/request"),await r()}})}},{"./helpers":"lQJ1C","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],dTWKm:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r);var i=e("./GoTrueAdminApi");let o=n.interopDefault(i).default;r.default=o},{"./GoTrueAdminApi":"5bmQV","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],itpDP:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r);var i=e("./GoTrueClient");let o=n.interopDefault(i).default;r.default=o},{"./GoTrueClient":"8QbFP","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],aKMd1:[function(e,t,r,s){e("@parcel/transformer-js/src/esmodule-helpers.js").defineInteropFlag(r)},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],apxUl:[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"userAuth",()=>l),n.export(r,"setUser",()=>u),n.export(r,"logout",()=>h),n.export(r,"userMiddleware",()=>c);var i=e("@xatom/core"),o=e("../supabase"),a=n.interopDefault(o);let l=new i.WFAuth;l.setRole("GUEST");let u=(e,t)=>{l.setUser({fullName:e,email:t}),l.setRole("USER")},h=()=>{(0,a.default).auth.signOut().then(()=>{l.logout(),(0,i.navigate)("/sign-in")})},c=new i.WFAuthMiddleware(l)},{"@xatom/core":"5eqAK","../supabase":"gSvrO","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"2uPfR":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"app",()=>l);var i=e("@xatom/core"),o=e("../modules/auth"),a=e("../config");let l=()=>{new(0,i.WFRoute)((0,a.USER_PATHS).landing).execute(()=>e("bbc6c1c285582157").then(({landing:e})=>{e()})),new(0,i.WFRoute)((0,a.USER_PATHS).authRoute).withMiddleware(o.userMiddleware,"GUEST","allow",{onError:()=>{(0,i.navigate)(a.USER_PATHS.tripDesigner)}}).execute(()=>{new(0,i.WFRoute)((0,a.USER_PATHS).signIn).execute(()=>{e("9b9ca3d1f354f9").then(({signIn:e})=>{e()})}),new(0,i.WFRoute)((0,a.USER_PATHS).signUp).execute(()=>{e("8dff4a7369311fc").then(({signUp:e})=>{e()})}),new(0,i.WFRoute)((0,a.USER_PATHS).verification).execute(()=>{e("d2ff0736bf12c1b5").then(({verify:e})=>{e()})})}),new(0,i.WFRoute)((0,a.USER_PATHS).appRoute).withMiddleware(o.userMiddleware,"USER","allow",{onError:()=>{(0,i.navigate)(a.USER_PATHS.landing)}}).execute(()=>{new(0,i.WFRoute)((0,a.USER_PATHS).tripDesigner).execute(()=>{e("9e60bf79a1b8d5a0").then(({overview:e})=>{e()})})})}},{"@xatom/core":"5eqAK","../modules/auth":"apxUl","../config":"7sZNr",bbc6c1c285582157:"l739q","9b9ca3d1f354f9":"jPuQu","8dff4a7369311fc":"26IT8",d2ff0736bf12c1b5:"hveJJ","9e60bf79a1b8d5a0":"BPSdO","@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],"7sZNr":[function(e,t,r,s){var n=e("@parcel/transformer-js/src/esmodule-helpers.js");n.defineInteropFlag(r),n.export(r,"USER_PATHS",()=>i);let i={landing:"",authRoute:"/auth/(.*)",signIn:"/auth/sign-in",signUp:"/auth/sign-up",verification:"/auth/verify",forgotPassword:"/auth/forgot-password",resetPassword:"/auth/reset-password",appRoute:"/app/(.*)",tripDesigner:"/app/trip",likes:"/app/likes",myTrips:"/app/my-trips",accountSettings:"/app/settings"}},{"@parcel/transformer-js/src/esmodule-helpers.js":"jiucr"}],l739q:[function(e,t,r,s){t.exports=e("b0a9cf2817057afa")(e("c6883855fd165e1d").resolve("gDIGd")).then(()=>t.bundle.root("4ghqF"))},{b0a9cf2817057afa:"9wKyf",c6883855fd165e1d:"gSiLw"}],jPuQu:[function(e,t,r,s){t.exports=e("20b79d4d228401a1")(e("999a3a16fd5a81d5").resolve("hNOg1")).then(()=>t.bundle.root("jOZyB"))},{"20b79d4d228401a1":"9wKyf","999a3a16fd5a81d5":"gSiLw"}],"26IT8":[function(e,t,r,s){t.exports=e("85db02754529df6e")(e("91f5d6cf276d039f").resolve("8JkDf")).then(()=>t.bundle.root("dzqwq"))},{"85db02754529df6e":"9wKyf","91f5d6cf276d039f":"gSiLw"}],hveJJ:[function(e,t,r,s){t.exports=e("b802cee3dcf8d6cf")(e("c8d08bf9b81ca96c").resolve("4o371")).then(()=>t.bundle.root("dRyYX"))},{b802cee3dcf8d6cf:"9wKyf",c8d08bf9b81ca96c:"gSiLw"}],BPSdO:[function(e,t,r,s){t.exports=e("1869aed25bd16926")(e("8a50707ce711d436").resolve("ahPzY")).then(()=>t.bundle.root("aQqNH"))},{"1869aed25bd16926":"9wKyf","8a50707ce711d436":"gSiLw"}]},["1cfbo","83hJF"],"83hJF","parcelRequire94c2");
+
+    return cache[name].exports;
+
+    function localRequire(x) {
+      var res = localRequire.resolve(x);
+      return res === false ? {} : newRequire(res);
+    }
+
+    function resolve(x) {
+      var id = modules[name][1][x];
+      return id != null ? id : x;
+    }
+  }
+
+  function Module(moduleName) {
+    this.id = moduleName;
+    this.bundle = newRequire;
+    this.exports = {};
+  }
+
+  newRequire.isParcelRequire = true;
+  newRequire.Module = Module;
+  newRequire.modules = modules;
+  newRequire.cache = cache;
+  newRequire.parent = previousRequire;
+  newRequire.register = function (id, exports) {
+    modules[id] = [
+      function (require, module) {
+        module.exports = exports;
+      },
+      {},
+    ];
+  };
+
+  Object.defineProperty(newRequire, 'root', {
+    get: function () {
+      return globalObject[parcelRequireName];
+    },
+  });
+
+  globalObject[parcelRequireName] = newRequire;
+
+  for (var i = 0; i < entry.length; i++) {
+    newRequire(entry[i]);
+  }
+
+  if (mainEntry) {
+    // Expose entry point to Node, AMD or browser globals
+    // Based on https://github.com/ForbesLindesay/umd/blob/master/template.js
+    var mainExports = newRequire(mainEntry);
+
+    // CommonJS
+    if (typeof exports === 'object' && typeof module !== 'undefined') {
+      module.exports = mainExports;
+
+      // RequireJS
+    } else if (typeof define === 'function' && define.amd) {
+      define(function () {
+        return mainExports;
+      });
+
+      // <script>
+    } else if (globalName) {
+      this[globalName] = mainExports;
+    }
+  }
+})({"jeTtx":[function(require,module,exports,__globalThis) {
+var _core = require("@xatom/core");
+// import { initSupabase } from "./modules/supabase";
+var _routes = require("./routes");
+window.WFDebug = true;
+(0, _core.onReady)(()=>{
+    (0, _routes.app)();
+// initSupabase(() => {
+// })
+});
+
+},{"@xatom/core":"8w4K8","./routes":"fnEL6"}],"8w4K8":[function(require,module,exports,__globalThis) {
+var $iEn1Z$uuid = require("116fc168c31b637d");
+function $parcel$exportWildcard(dest, source) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function get() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+}
+function $parcel$export(e, n, v, s) {
+    Object.defineProperty(e, n, {
+        get: v,
+        set: s,
+        enumerable: true,
+        configurable: true
+    });
+}
+var $90b1e0f272b5544a$exports = {};
+$parcel$export($90b1e0f272b5544a$exports, "WFAuth", ()=>$90b1e0f272b5544a$export$cb2138cd710ea58a);
+class $90b1e0f272b5544a$export$cb2138cd710ea58a {
+    constructor(config = {}){
+        this.config = config;
+    }
+    isLoggedIn() {
+        return !!this.user;
+    }
+    getRole() {
+        return this.role;
+    }
+    getUser() {
+        return this.user;
+    }
+    getConfig() {
+        return this.config;
+    }
+    logout() {
+        this.user = null;
+        this.role = null;
+        this.config = null;
+    }
+    setUser(user) {
+        this.user = user;
+    }
+    setRole(role) {
+        this.role = role;
+    }
+    setConfig(config) {
+        this.config = config;
+    }
+}
+var $336c7a32b438dc35$exports = {};
+$parcel$export($336c7a32b438dc35$exports, "WFAuthMiddleware", ()=>$336c7a32b438dc35$export$42f600804a30f397);
+class $336c7a32b438dc35$export$42f600804a30f397 {
+    constructor(auth){
+        this.auth = auth;
+    }
+    allowTo(role) {
+        return this.auth.getRole() === role;
+    }
+    disallowedTo(role) {
+        return this.auth.getRole() !== role;
+    }
+    getAuth() {
+        return this.auth;
+    }
+}
+var $5ce0995b4e579efe$exports = {};
+$parcel$export($5ce0995b4e579efe$exports, "WFComponent", ()=>$5ce0995b4e579efe$export$b8941e06d24ae728);
+var $30d957643bf2e67a$exports = {};
+var $62881ab850a57a38$exports = {};
+$parcel$export($62881ab850a57a38$exports, "debug", ()=>$62881ab850a57a38$export$1c9f709888824e05);
+const $62881ab850a57a38$export$1c9f709888824e05 = (...args)=>{
+    if (window.WFDebug) console.log(...args);
+};
+var $9e73fdbf37a9aa00$exports = {};
+$parcel$export($9e73fdbf37a9aa00$exports, "getElementByXPath", ()=>$9e73fdbf37a9aa00$export$7ffef3582c93037b);
+function $9e73fdbf37a9aa00$export$7ffef3582c93037b(xpath, parent) {
+    const result = document.evaluate(xpath, parent, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+    return result.singleNodeValue;
+}
+var $100caf27c28c32c0$exports = {};
+$parcel$export($100caf27c28c32c0$exports, "getRouteQueryParams", ()=>$100caf27c28c32c0$export$1346b4a9ff9b6881);
+const $100caf27c28c32c0$export$1346b4a9ff9b6881 = ()=>{
+    const _data = {};
+    new URLSearchParams(location.search).forEach((val, key)=>{
+        _data[key] = val;
+    });
+    return _data;
+};
+var $e533c87ae7d96e3e$exports = {};
+$parcel$export($e533c87ae7d96e3e$exports, "getXPathForChangedChild", ()=>$e533c87ae7d96e3e$export$5fe4b019801f5ef1);
+function $e533c87ae7d96e3e$export$5fe4b019801f5ef1(node, parent) {
+    const xpathParts = [];
+    // Traverse up the DOM tree from the node and generate an XPath expression for each parent element
+    while(node && node !== parent && node.nodeType === Node.ELEMENT_NODE){
+        let xpath = node.nodeName.toLowerCase();
+        // If the element has an ID attribute, add it to the XPath expression
+        if (node.hasAttribute("id")) xpath += '[@id="' + node.getAttribute("id") + '"]';
+        else if (node.hasAttribute("class")) xpath += '[@class="' + node.getAttribute("class") + '"]';
+        // Add the XPath expression for this element to the list
+        xpathParts.unshift(xpath);
+        // Move up to the parent element
+        node = node.parentNode;
+    }
+    // Combine the XPath parts into a single XPath expression
+    return xpathParts.join("/");
+}
+var $4117225480b0cc44$exports = {};
+$parcel$export($4117225480b0cc44$exports, "navigate", ()=>$4117225480b0cc44$export$ff7962acd6052c28);
+const $4117225480b0cc44$export$ff7962acd6052c28 = (arg)=>{
+    if (typeof arg === "string") window.location.assign(arg);
+    else if (typeof arg === "object" && arg.type === "replace") window.location.replace(arg.to);
+    else if (typeof arg === "object" && arg.type === "reload") window.location.reload();
+};
+var $0b3f70b8f06eedca$exports = {};
+$parcel$export($0b3f70b8f06eedca$exports, "parse", ()=>$0b3f70b8f06eedca$export$98e6a39c04603d36);
+$parcel$export($0b3f70b8f06eedca$exports, "compile", ()=>$0b3f70b8f06eedca$export$ef7acd7185315e22);
+$parcel$export($0b3f70b8f06eedca$exports, "tokensToFunction", ()=>$0b3f70b8f06eedca$export$5b9bad9e403cf3d9);
+$parcel$export($0b3f70b8f06eedca$exports, "match", ()=>$0b3f70b8f06eedca$export$4659b591c19bdf3d);
+$parcel$export($0b3f70b8f06eedca$exports, "pathToRegexp", ()=>$0b3f70b8f06eedca$export$71304158c7e35877);
+$parcel$export($0b3f70b8f06eedca$exports, "regexpToFunction", ()=>$0b3f70b8f06eedca$export$968e97c88708237a);
+$parcel$export($0b3f70b8f06eedca$exports, "tokensToRegexp", ()=>$0b3f70b8f06eedca$export$9a9303716def6456);
+$parcel$export($0b3f70b8f06eedca$exports, "routeMatch", ()=>$0b3f70b8f06eedca$export$6c50148cf1d992bd);
+/**
+ * Tokenizer results.
+ */ /**
+ * Tokenize input string.
+ */ function $0b3f70b8f06eedca$var$lexer(str) {
+    const tokens = [];
+    let i = 0;
+    while(i < str.length){
+        const char = str[i];
+        if (char === "*" || char === "+" || char === "?") {
+            tokens.push({
+                type: "MODIFIER",
+                index: i,
+                value: str[i++]
+            });
+            continue;
+        }
+        if (char === "\\") {
+            tokens.push({
+                type: "ESCAPED_CHAR",
+                index: i++,
+                value: str[i++]
+            });
+            continue;
+        }
+        if (char === "{") {
+            tokens.push({
+                type: "OPEN",
+                index: i,
+                value: str[i++]
+            });
+            continue;
+        }
+        if (char === "}") {
+            tokens.push({
+                type: "CLOSE",
+                index: i,
+                value: str[i++]
+            });
+            continue;
+        }
+        if (char === ":") {
+            let name = "";
+            let j = i + 1;
+            while(j < str.length){
+                const code = str.charCodeAt(j);
+                if (code >= 48 && code <= 57 || // `A-Z`
+                code >= 65 && code <= 90 || // `a-z`
+                code >= 97 && code <= 122 || // `_`
+                code === 95) {
+                    name += str[j++];
+                    continue;
+                }
+                break;
+            }
+            if (!name) throw new TypeError(`Missing parameter name at ${i}`);
+            tokens.push({
+                type: "NAME",
+                index: i,
+                value: name
+            });
+            i = j;
+            continue;
+        }
+        if (char === "(") {
+            let count = 1;
+            let pattern = "";
+            let j = i + 1;
+            if (str[j] === "?") throw new TypeError(`Pattern cannot start with "?" at ${j}`);
+            while(j < str.length){
+                if (str[j] === "\\") {
+                    pattern += str[j++] + str[j++];
+                    continue;
+                }
+                if (str[j] === ")") {
+                    count--;
+                    if (count === 0) {
+                        j++;
+                        break;
+                    }
+                } else if (str[j] === "(") {
+                    count++;
+                    if (str[j + 1] !== "?") throw new TypeError(`Capturing groups are not allowed at ${j}`);
+                }
+                pattern += str[j++];
+            }
+            if (count) throw new TypeError(`Unbalanced pattern at ${i}`);
+            if (!pattern) throw new TypeError(`Missing pattern at ${i}`);
+            tokens.push({
+                type: "PATTERN",
+                index: i,
+                value: pattern
+            });
+            i = j;
+            continue;
+        }
+        tokens.push({
+            type: "CHAR",
+            index: i,
+            value: str[i++]
+        });
+    }
+    tokens.push({
+        type: "END",
+        index: i,
+        value: ""
+    });
+    return tokens;
+}
+function $0b3f70b8f06eedca$export$98e6a39c04603d36(str, options = {}) {
+    const tokens = $0b3f70b8f06eedca$var$lexer(str);
+    const { prefixes: prefixes = "./" } = options;
+    const defaultPattern = `[^${$0b3f70b8f06eedca$var$escapeString(options.delimiter || "/#?")}]+?`;
+    const result = [];
+    let key = 0;
+    let i = 0;
+    let path = "";
+    const tryConsume = (type)=>{
+        if (i < tokens.length && tokens[i].type === type) return tokens[i++].value;
+    };
+    const mustConsume = (type)=>{
+        const value = tryConsume(type);
+        if (value !== undefined) return value;
+        const { type: nextType, index: index } = tokens[i];
+        throw new TypeError(`Unexpected ${nextType} at ${index}, expected ${type}`);
+    };
+    const consumeText = ()=>{
+        let result = "";
+        let value;
+        while(value = tryConsume("CHAR") || tryConsume("ESCAPED_CHAR"))result += value;
+        return result;
+    };
+    while(i < tokens.length){
+        const char = tryConsume("CHAR");
+        const name = tryConsume("NAME");
+        const pattern = tryConsume("PATTERN");
+        if (name || pattern) {
+            let prefix = char || "";
+            if (prefixes.indexOf(prefix) === -1) {
+                path += prefix;
+                prefix = "";
+            }
+            if (path) {
+                result.push(path);
+                path = "";
+            }
+            result.push({
+                name: name || key++,
+                prefix: prefix,
+                suffix: "",
+                pattern: pattern || defaultPattern,
+                modifier: tryConsume("MODIFIER") || ""
+            });
+            continue;
+        }
+        const value = char || tryConsume("ESCAPED_CHAR");
+        if (value) {
+            path += value;
+            continue;
+        }
+        if (path) {
+            result.push(path);
+            path = "";
+        }
+        const open = tryConsume("OPEN");
+        if (open) {
+            const prefix = consumeText();
+            const name = tryConsume("NAME") || "";
+            const pattern = tryConsume("PATTERN") || "";
+            const suffix = consumeText();
+            mustConsume("CLOSE");
+            result.push({
+                name: name || (pattern ? key++ : ""),
+                pattern: name && !pattern ? defaultPattern : pattern,
+                prefix: prefix,
+                suffix: suffix,
+                modifier: tryConsume("MODIFIER") || ""
+            });
+            continue;
+        }
+        mustConsume("END");
+    }
+    return result;
+}
+function $0b3f70b8f06eedca$export$ef7acd7185315e22(str, options) {
+    return $0b3f70b8f06eedca$export$5b9bad9e403cf3d9($0b3f70b8f06eedca$export$98e6a39c04603d36(str, options), options);
+}
+function $0b3f70b8f06eedca$export$5b9bad9e403cf3d9(tokens, options = {}) {
+    const reFlags = $0b3f70b8f06eedca$var$flags(options);
+    const { encode: encode = (x)=>x, validate: validate = true } = options;
+    // Compile all the tokens into regexps.
+    const matches = tokens.map((token)=>{
+        if (typeof token === "object") return new RegExp(`^(?:${token.pattern})$`, reFlags);
+    });
+    return (data)=>{
+        let path = "";
+        for(let i = 0; i < tokens.length; i++){
+            const token = tokens[i];
+            if (typeof token === "string") {
+                path += token;
+                continue;
+            }
+            const value = data ? data[token.name] : undefined;
+            const optional = token.modifier === "?" || token.modifier === "*";
+            const repeat = token.modifier === "*" || token.modifier === "+";
+            if (Array.isArray(value)) {
+                if (!repeat) throw new TypeError(`Expected "${token.name}" to not repeat, but got an array`);
+                if (value.length === 0) {
+                    if (optional) continue;
+                    throw new TypeError(`Expected "${token.name}" to not be empty`);
+                }
+                for(let j = 0; j < value.length; j++){
+                    const segment = encode(value[j], token);
+                    if (validate && !matches[i].test(segment)) throw new TypeError(`Expected all "${token.name}" to match "${token.pattern}", but got "${segment}"`);
+                    path += token.prefix + segment + token.suffix;
+                }
+                continue;
+            }
+            if (typeof value === "string" || typeof value === "number") {
+                const segment = encode(String(value), token);
+                if (validate && !matches[i].test(segment)) throw new TypeError(`Expected "${token.name}" to match "${token.pattern}", but got "${segment}"`);
+                path += token.prefix + segment + token.suffix;
+                continue;
+            }
+            if (optional) continue;
+            const typeOfMessage = repeat ? "an array" : "a string";
+            throw new TypeError(`Expected "${token.name}" to be ${typeOfMessage}`);
+        }
+        return path;
+    };
+}
+function $0b3f70b8f06eedca$export$4659b591c19bdf3d(str, options) {
+    const keys = [];
+    const re = $0b3f70b8f06eedca$export$71304158c7e35877(str, keys, options);
+    return $0b3f70b8f06eedca$export$968e97c88708237a(re, keys, options);
+}
+function $0b3f70b8f06eedca$export$968e97c88708237a(re, keys, options = {}) {
+    const { decode: decode = (x)=>x } = options;
+    return function(pathname) {
+        const m = re.exec(pathname);
+        if (!m) return false;
+        const { 0: path, index: index } = m;
+        const params = Object.create(null);
+        for(let i = 1; i < m.length; i++){
+            if (m[i] === undefined) continue;
+            const key = keys[i - 1];
+            if (key.modifier === "*" || key.modifier === "+") params[key.name] = m[i].split(key.prefix + key.suffix).map((value)=>{
+                return decode(value, key);
+            });
+            else params[key.name] = decode(m[i], key);
+        }
+        return {
+            path: path,
+            index: index,
+            params: params
+        };
+    };
+}
+/**
+ * Escape a regular expression string.
+ */ function $0b3f70b8f06eedca$var$escapeString(str) {
+    return str.replace(/([.+*?=^!:${}()[\]|/\\])/g, "\\$1");
+}
+/**
+ * Get the flags for a regexp from the options.
+ */ function $0b3f70b8f06eedca$var$flags(options) {
+    return options && options.sensitive ? "" : "i";
+}
+/**
+ * Pull out keys from a regexp.
+ */ function $0b3f70b8f06eedca$var$regexpToRegexp(path, keys) {
+    if (!keys) return path;
+    const groupsRegex = /\((?:\?<(.*?)>)?(?!\?)/g;
+    let index = 0;
+    let execResult = groupsRegex.exec(path.source);
+    while(execResult){
+        keys.push({
+            // Use parenthesized substring match if available, index otherwise
+            name: execResult[1] || index++,
+            prefix: "",
+            suffix: "",
+            modifier: "",
+            pattern: ""
+        });
+        execResult = groupsRegex.exec(path.source);
+    }
+    return path;
+}
+/**
+ * Transform an array into a regexp.
+ */ function $0b3f70b8f06eedca$var$arrayToRegexp(paths, keys, options) {
+    const parts = paths.map((path)=>$0b3f70b8f06eedca$export$71304158c7e35877(path, keys, options).source);
+    return new RegExp(`(?:${parts.join("|")})`, $0b3f70b8f06eedca$var$flags(options));
+}
+/**
+ * Create a path regexp from string input.
+ */ function $0b3f70b8f06eedca$var$stringToRegexp(path, keys, options) {
+    return $0b3f70b8f06eedca$export$9a9303716def6456($0b3f70b8f06eedca$export$98e6a39c04603d36(path, options), keys, options);
+}
+function $0b3f70b8f06eedca$export$9a9303716def6456(tokens, keys, options = {}) {
+    const { strict: strict = false, start: start = true, end: end = true, encode: encode = (x)=>x, delimiter: delimiter = "/#?", endsWith: endsWith = "" } = options;
+    const endsWithRe = `[${$0b3f70b8f06eedca$var$escapeString(endsWith)}]|$`;
+    const delimiterRe = `[${$0b3f70b8f06eedca$var$escapeString(delimiter)}]`;
+    let route = start ? "^" : "";
+    // Iterate over the tokens and create our regexp string.
+    for (const token of tokens)if (typeof token === "string") route += $0b3f70b8f06eedca$var$escapeString(encode(token));
+    else {
+        const prefix = $0b3f70b8f06eedca$var$escapeString(encode(token.prefix));
+        const suffix = $0b3f70b8f06eedca$var$escapeString(encode(token.suffix));
+        if (token.pattern) {
+            if (keys) keys.push(token);
+            if (prefix || suffix) {
+                if (token.modifier === "+" || token.modifier === "*") {
+                    const mod = token.modifier === "*" ? "?" : "";
+                    route += `(?:${prefix}((?:${token.pattern})(?:${suffix}${prefix}(?:${token.pattern}))*)${suffix})${mod}`;
+                } else route += `(?:${prefix}(${token.pattern})${suffix})${token.modifier}`;
+            } else if (token.modifier === "+" || token.modifier === "*") route += `((?:${token.pattern})${token.modifier})`;
+            else route += `(${token.pattern})${token.modifier}`;
+        } else route += `(?:${prefix}${suffix})${token.modifier}`;
+    }
+    if (end) {
+        if (!strict) route += `${delimiterRe}?`;
+        route += !options.endsWith ? "$" : `(?=${endsWithRe})`;
+    } else {
+        const endToken = tokens[tokens.length - 1];
+        const isEndDelimited = typeof endToken === "string" ? delimiterRe.indexOf(endToken[endToken.length - 1]) > -1 : endToken === undefined;
+        if (!strict) route += `(?:${delimiterRe}(?=${endsWithRe}))?`;
+        if (!isEndDelimited) route += `(?=${delimiterRe}|${endsWithRe})`;
+    }
+    return new RegExp(route, $0b3f70b8f06eedca$var$flags(options));
+}
+function $0b3f70b8f06eedca$export$71304158c7e35877(path, keys, options) {
+    if (path instanceof RegExp) return $0b3f70b8f06eedca$var$regexpToRegexp(path, keys);
+    if (Array.isArray(path)) return $0b3f70b8f06eedca$var$arrayToRegexp(path, keys, options);
+    return $0b3f70b8f06eedca$var$stringToRegexp(path, keys, options);
+}
+function $0b3f70b8f06eedca$var$pathMatch(options = {}) {
+    return function(path) {
+        var keys = [];
+        var re = $0b3f70b8f06eedca$export$71304158c7e35877(path, keys, options);
+        return function(pathname, params) {
+            var m = re.exec(pathname);
+            if (!m) return false;
+            params = params || {};
+            var key, param;
+            for(var i = 0; i < keys.length; i++){
+                key = keys[i];
+                param = m[i + 1];
+                if (!param) continue;
+                params[key.name] = $0b3f70b8f06eedca$var$decodeParam(param);
+                if (key.repeat) params[key.name] = params[key.name].split(key.delimiter);
+            }
+            return params;
+        };
+    };
+}
+const $0b3f70b8f06eedca$export$6c50148cf1d992bd = (routeToMatch, route, defaultParams = {}, options = {})=>{
+    return $0b3f70b8f06eedca$var$pathMatch(options)(routeToMatch)(route, defaultParams);
+};
+function $0b3f70b8f06eedca$var$decodeParam(param) {
+    try {
+        return decodeURIComponent(param);
+    } catch (_) {
+        throw new Error('failed to decode param "' + param + '"');
+    }
+}
+var $36bdd128d4111a37$exports = {};
+$parcel$export($36bdd128d4111a37$exports, "createComponent", ()=>$36bdd128d4111a37$export$60e54eaca7e7fb38);
+const $36bdd128d4111a37$export$60e54eaca7e7fb38 = (type)=>{
+    return new $5ce0995b4e579efe$export$b8941e06d24ae728(document.createElement(type));
+};
+$parcel$exportWildcard($30d957643bf2e67a$exports, $62881ab850a57a38$exports);
+$parcel$exportWildcard($30d957643bf2e67a$exports, $9e73fdbf37a9aa00$exports);
+$parcel$exportWildcard($30d957643bf2e67a$exports, $100caf27c28c32c0$exports);
+$parcel$exportWildcard($30d957643bf2e67a$exports, $e533c87ae7d96e3e$exports);
+$parcel$exportWildcard($30d957643bf2e67a$exports, $4117225480b0cc44$exports);
+$parcel$exportWildcard($30d957643bf2e67a$exports, $0b3f70b8f06eedca$exports);
+$parcel$exportWildcard($30d957643bf2e67a$exports, $36bdd128d4111a37$exports);
+class $5ce0995b4e579efe$export$b8941e06d24ae728 {
+    constructor(query){
+        if (typeof query === "string") {
+            const el = document.querySelector(query);
+            if (el) {
+                this.element = el;
+                this.updateClone();
+            } else throw new Error(`Could not find ${query}`);
+        } else if (typeof query === "object" && query instanceof HTMLElement) {
+            this.element = query;
+            this.updateClone();
+        } else if (typeof query === "object" && query instanceof SVGSVGElement) {
+            this.element = query;
+            this.updateClone();
+        } else if (query instanceof $5ce0995b4e579efe$export$b8941e06d24ae728) {
+            this.element = query.getElement();
+            this.updateClone();
+        } else throw new Error(`Could not find ${query}`);
+    }
+    updateClone() {
+        this.cloneEl = this.element.cloneNode(true);
+    }
+    getElement() {
+        return this.element;
+    }
+    updateTextViaAttrVar(keyPair) {
+        const fields = {};
+        const addEl = (key, val)=>{
+            if (!(key in fields)) fields[key] = [];
+            fields[key].push(val);
+        };
+        if (this.hasAttribute("xa-var")) addEl(this.getAttribute("xa-var"), this.getElement());
+        const _els = this.getChildAsComponents(`[xa-var]`);
+        _els.forEach((el)=>{
+            addEl(el.getAttribute("xa-var"), el.getElement());
+        });
+        Object.keys(keyPair).forEach((key)=>{
+            if (key in fields) fields[key].forEach((d)=>{
+                d.textContent = keyPair[key].toString();
+            });
+        });
+    }
+    updateTextVariable(keyPair) {
+        if (this.cloneEl.childNodes.length === 1 && this.cloneEl.firstChild instanceof Text) Object.keys(keyPair).forEach((key)=>{
+            if (this.cloneEl.textContent.includes(`{{${key}}}`)) this.element.textContent = this.cloneEl.textContent.replace(`{{${key}}}`, keyPair[key].toString());
+        });
+        else {
+            const els = Array.from(this.cloneEl.querySelectorAll("*")).map((el)=>Array.from(el.childNodes).filter((node)=>node instanceof Text && node.textContent.trim().length > 0)).flat();
+            // console.log(els, this.cloneEl);
+            Object.keys(keyPair).forEach((key)=>{
+                els.filter((el)=>el.textContent.includes(`{{${key}}}`)).forEach((el)=>{
+                    const path = $e533c87ae7d96e3e$export$5fe4b019801f5ef1(el.parentElement, this.cloneEl);
+                    const _el = $9e73fdbf37a9aa00$export$7ffef3582c93037b(path, this.element);
+                    // console.log(
+                    //   el,
+                    //   _el,
+                    //   " found",
+                    //   path,
+                    //   el.parentElement,
+                    //   this
+                    // );
+                    if (_el) _el.textContent = el.textContent.replace(`{{${key}}}`, keyPair[key].toString());
+                    else console.log(el, _el, "not found", path, el.parentElement, this);
+                });
+            });
+        }
+    }
+    setAttribute(key, value) {
+        this.element.setAttribute(key, value);
+    }
+    removeAttribute(key) {
+        this.element.removeAttribute(key);
+    }
+    getAttribute(key) {
+        return this.element.getAttribute(key);
+    }
+    hasAttribute(key) {
+        return this.element.hasAttribute(key);
+    }
+    getChildAsComponents(selector) {
+        return Array.from(this.element.querySelectorAll(selector)).map((el)=>new $5ce0995b4e579efe$export$b8941e06d24ae728(el));
+    }
+    getChildAsComponent(selector) {
+        return new $5ce0995b4e579efe$export$b8941e06d24ae728(this.element.querySelector(selector));
+    }
+    getManyChildAsComponents(selectors) {
+        let _els = {};
+        Object.keys(selectors).forEach((key)=>{
+            _els[key] = new $5ce0995b4e579efe$export$b8941e06d24ae728(this.element.querySelector(selectors[key]));
+        });
+        return _els;
+    }
+    getCssClass() {
+        return Array.from(this.element.classList);
+    }
+    addCssClass(className) {
+        this.element.classList.add(className);
+        this.cloneEl.classList.add(className);
+    }
+    removeCssClass(className) {
+        this.element.classList.remove(className);
+        this.cloneEl.classList.remove(className);
+    }
+    replaceCssClass(className, newClassName) {
+        this.element.classList.replace(className, newClassName);
+        this.cloneEl.classList.replace(className, newClassName);
+    }
+    toggleCssClass(className) {
+        this.element.classList.toggle(className);
+        this.cloneEl.classList.toggle(className);
+    }
+    on(type, listener, options) {
+        this.element.addEventListener(type, listener, options);
+    }
+    off(type, listener, options) {
+        this.element.removeEventListener(type, listener, options);
+    }
+    setText(text) {
+        this.getElement().innerText = text.toString();
+    }
+    getText() {
+        return this.getElement().innerText;
+    }
+    setTextContent(text) {
+        this.getElement().textContent = text;
+    }
+    getTextContent() {
+        return this.getElement().textContent;
+    }
+    setHTML(htmlText) {
+        this.getElement().innerHTML = htmlText;
+    }
+    getHTML() {
+        return this.getElement().innerHTML;
+    }
+    getCloneAsComponent() {
+        return new $5ce0995b4e579efe$export$b8941e06d24ae728(this.cloneEl.cloneNode(true));
+    }
+    setStyle(style = {}) {
+        Object.keys(style).forEach((key)=>{
+            this.element.style[key] = style[key];
+        });
+    }
+    getStyle() {
+        return window.getComputedStyle(this.element);
+    }
+    appendChild(child) {
+        this.element.appendChild(new $5ce0995b4e579efe$export$b8941e06d24ae728(child).getElement());
+    }
+    remove() {
+        this.element.remove();
+    }
+    removeAllChildren() {
+        this.element.replaceChildren();
+    }
+}
+var $0105599dd5ebe189$exports = {};
+$parcel$export($0105599dd5ebe189$exports, "WFDynamicList", ()=>$0105599dd5ebe189$export$688e73055717bd51);
+class $0105599dd5ebe189$export$688e73055717bd51 extends $5ce0995b4e579efe$export$b8941e06d24ae728 {
+    showLoadingState = false;
+    constructor(query, config){
+        super(query);
+        if (typeof config.rowSelector === "string") this.rowComponent = this.getChildAsComponent(config.rowSelector);
+        else this.rowComponent = new $5ce0995b4e579efe$export$b8941e06d24ae728(config.rowSelector);
+        this.rowComponent.remove();
+        if (config.loaderSelector) {
+            if (typeof config.loaderSelector === "string") this.loaderComponent = this.getChildAsComponent(config.loaderSelector);
+            else this.loaderComponent = new $5ce0995b4e579efe$export$b8941e06d24ae728(config.loaderSelector);
+            this.loaderComponent.remove();
+        }
+        if (config.emptySelector) {
+            if (typeof config.emptySelector === "string") this.emptyComponent = this.getChildAsComponent(config.emptySelector);
+            else this.emptyComponent = new $5ce0995b4e579efe$export$b8941e06d24ae728(config.emptySelector);
+            this.emptyComponent.remove();
+        }
+    }
+    rowRenderer(cb) {
+        this.rowRendererCB = cb;
+    }
+    emptyRenderer(cb) {
+        this.emptyRendererCB = cb;
+    }
+    loaderRenderer(cb) {
+        this.loaderRendererCB = cb;
+    }
+    setData(data) {
+        this.data = data;
+        this.render();
+    }
+    render() {
+        if (!this.rowRendererCB) throw new Error("Unable to find renderer");
+        this.hideLoading();
+        this.removeAllChildren();
+        if (this.data.length === 0 && this.emptyComponent) this.showEmpty();
+        this.data.map((rowData, index, data)=>this.rowRendererCB({
+                index: index,
+                rowData: rowData,
+                rowElement: this.rowComponent.getCloneAsComponent(),
+                data: data
+            })).filter((d)=>d).forEach((d)=>{
+            this.appendChild(d);
+        });
+        if (this.showLoadingState) this.showLoading();
+    }
+    changeLoadingStatus(state) {
+        this.showLoadingState = state;
+        if (state) this.showLoading();
+        else this.hideLoading();
+    }
+    showLoading() {
+        this.hideLoading();
+        if (!this.loaderComponent) return;
+        if (this.loaderRendererCB) {
+            this.lastLoadingComponent = this.loaderRendererCB(this.loaderComponent.getCloneAsComponent());
+            this.appendChild(this.lastLoadingComponent);
+        } else {
+            this.lastLoadingComponent = this.loaderComponent.getCloneAsComponent();
+            this.appendChild(this.lastLoadingComponent);
+        }
+    }
+    showEmpty() {
+        this.hideEmpty();
+        if (this.emptyRendererCB) {
+            this.lastEmptyComponent = this.emptyRendererCB(this.emptyComponent.getCloneAsComponent());
+            this.appendChild(this.lastEmptyComponent);
+        } else {
+            this.lastEmptyComponent = this.emptyComponent.getCloneAsComponent();
+            this.appendChild(this.lastEmptyComponent);
+        }
+    }
+    hideLoading() {
+        if (this.lastLoadingComponent) this.lastLoadingComponent.remove();
+    }
+    hideEmpty() {
+        if (this.lastEmptyComponent) this.lastEmptyComponent.remove();
+    }
+    forceRender() {
+        this.render();
+    }
+}
+var $ce18c18667e54846$exports = {};
+$parcel$export($ce18c18667e54846$exports, "WFFormComponent", ()=>$ce18c18667e54846$export$e7173e584c7cbeff);
+class $ce18c18667e54846$export$e7173e584c7cbeff extends $5ce0995b4e579efe$export$b8941e06d24ae728 {
+    defaultFormDisplayStyle = "";
+    constructor(query){
+        super(query);
+        this.formComponent = this.getChildAsComponents("form")[0];
+        this.defaultFormDisplayStyle = window.getComputedStyle(this.formComponent.getElement()).display;
+    }
+    getFormData() {
+        const _data = {};
+        new FormData(this.formComponent.getElement()).forEach((val, key)=>{
+            if (_data[key]) _data[key] = [
+                _data[key],
+                val
+            ].flat();
+            else _data[key] = val;
+        });
+        return _data;
+    }
+    setFromData(data) {
+        Object.keys(data).forEach((key)=>{
+            this.getFormComponent().getElement().querySelector(`[name="${key}"]`).value = data[key];
+        });
+    }
+    onFormSubmit(cb) {
+        this.formComponent.getElement().onsubmit = (ev)=>{
+            ev.preventDefault();
+            ev.stopPropagation();
+            ev.stopImmediatePropagation();
+            cb(this.getFormData(), ev);
+        };
+    }
+    submitWebflowForm() {
+        const wfForm = Object.keys(this.formComponent.getElement()).filter((d)=>d.includes("jQuery")).map((d)=>this.formComponent.getElement()[d]).filter((d)=>typeof d === "object" && ".wForm" in d).map((d)=>d[".wForm"]).reduce((d)=>d);
+        if (wfForm && wfForm.handler) wfForm.handler(wfForm);
+        else if (wfForm && wfForm.action) this.formComponent.getElement().submit();
+    }
+    getFormComponent() {
+        return this.formComponent;
+    }
+    getSuccessComponent() {
+        return this.getChildAsComponents(".w-form-done")[0];
+    }
+    getErrorComponent() {
+        return this.getChildAsComponents(".w-form-fail")[0];
+    }
+    showSuccessState() {
+        this.formComponent.getElement().style.display = "none";
+        this.getErrorComponent().getElement().style.display = "none";
+        this.getSuccessComponent().getElement().style.display = "block";
+    }
+    showErrorState() {
+        this.getSuccessComponent().getElement().style.display = "none";
+        this.getErrorComponent().getElement().style.display = "block";
+        this.formComponent.getElement().style.display = this.defaultFormDisplayStyle;
+    }
+    showForm() {
+        this.getErrorComponent().getElement().style.display = "none";
+        this.getSuccessComponent().getElement().style.display = "none";
+        this.formComponent.getElement().style.display = this.defaultFormDisplayStyle;
+    }
+    disableForm() {
+        const _els = this.formComponent.getElement().querySelectorAll("input, select, option, textarea, button");
+        Array.from(_els).forEach((el)=>{
+            el.setAttribute("disabled", "disabled");
+        });
+    }
+    enableForm() {
+        const _els = this.formComponent.getElement().querySelectorAll("input, select, option, textarea, button");
+        Array.from(_els).forEach((el)=>{
+            el.removeAttribute("disabled");
+        });
+    }
+    getSubmitButton() {
+        return this.formComponent.getChildAsComponents(`[type="submit"]`)[0];
+    }
+    resetForm() {
+        this.formComponent.getElement().reset();
+    }
+    updateSubmitButtonText(text) {
+        this.getSubmitButton().setAttribute("value", text);
+    }
+}
+var $b73002af79232c1a$exports = {};
+$parcel$export($b73002af79232c1a$exports, "WFRoute", ()=>$b73002af79232c1a$export$4e1b92c1162557be);
+class $b73002af79232c1a$export$4e1b92c1162557be {
+    middlewareAllowExecutionOnFail = false;
+    constructor(route){
+        this.route = route;
+    }
+    withMiddleware(middleware, role, type = "allow", options = {}) {
+        this.middleware = middleware;
+        this.middlewareRole = role;
+        this.middlewareType = type;
+        if ("allowExecutionOnFail" in options) this.middlewareAllowExecutionOnFail = options.allowExecutionOnFail === true;
+        if ("onError" in options) this.middlewareErrorFn = options.onError;
+        return this;
+    }
+    validateRole() {
+        return this.middlewareType === "allow" ? this.middleware.allowTo(this.middlewareRole) : this.middleware.disallowedTo(this.middlewareRole);
+    }
+    execute(fn) {
+        const _match = $0b3f70b8f06eedca$export$6c50148cf1d992bd(this.route, location.pathname);
+        if (_match) {
+            $62881ab850a57a38$export$1c9f709888824e05("matched fn start", this.route, location.pathname);
+            if (this.middleware) {
+                const canAccess = this.validateRole();
+                $62881ab850a57a38$export$1c9f709888824e05("checking access role", this.route, this.middlewareRole, this.middlewareType, "canAccess", canAccess, this.middlewareAllowExecutionOnFail);
+                if (canAccess || this.middlewareAllowExecutionOnFail) fn({
+                    ..._match,
+                    ...$100caf27c28c32c0$export$1346b4a9ff9b6881()
+                }, canAccess, this.middleware.getAuth());
+                else this.middlewareErrorFn && this.middlewareErrorFn();
+            } else fn({
+                ..._match,
+                ...$100caf27c28c32c0$export$1346b4a9ff9b6881()
+            }, true);
+            $62881ab850a57a38$export$1c9f709888824e05("matched fn end", this.route, location.pathname);
+        } else $62881ab850a57a38$export$1c9f709888824e05("did not match", this.route, location.pathname);
+        return this;
+    }
+}
+var $16d2504bbe4bb459$exports = {};
+$parcel$export($16d2504bbe4bb459$exports, "onReady", ()=>$16d2504bbe4bb459$export$ef1639a4b889352d);
+/**
+ * @description execute code when the page is loaded
+ * @param cb callback function
+ */ const $16d2504bbe4bb459$export$ef1639a4b889352d = (cb)=>{
+    window.Webflow ||= [];
+    window.Webflow.push(()=>{
+        cb();
+    });
+};
+var $78395a99ad91c494$exports = {};
+$parcel$export($78395a99ad91c494$exports, "WFInvisibleForm", ()=>$78395a99ad91c494$export$bc36999d76b95c72);
+class $78395a99ad91c494$export$bc36999d76b95c72 {
+    loading = false;
+    loadingListener = new Map();
+    successListener = new Map();
+    errorListener = new Map();
+    constructor(formName = ""){
+        this.fromName = formName;
+        this.siteId = document.querySelector("html").getAttribute("data-wf-site") || "";
+    }
+    setFormName(formName) {
+        this.fromName = formName;
+    }
+    getFormName() {
+        return this.fromName;
+    }
+    setFormData(data) {
+        this.data = data;
+    }
+    getFormData() {
+        return this.data;
+    }
+    isLoading() {
+        return this.loading;
+    }
+    onLoadingChange(fn) {
+        const _id = (0, $iEn1Z$uuid.v4)();
+        this.loadingListener.set(_id, fn);
+        return ()=>{
+            this.loadingListener.delete(_id);
+        };
+    }
+    onSuccess(fn) {
+        const _id = (0, $iEn1Z$uuid.v4)();
+        this.successListener.set(_id, fn);
+        return ()=>{
+            this.successListener.delete(_id);
+        };
+    }
+    onError(fn) {
+        const _id = (0, $iEn1Z$uuid.v4)();
+        this.errorListener.set(_id, fn);
+        return ()=>{
+            this.errorListener.delete(_id);
+        };
+    }
+    updateLoadingState(state) {
+        this.loading = state;
+        this.loadingListener.forEach((fn)=>{
+            fn(this.loading);
+        });
+    }
+    formSubmitted() {
+        this.successListener.forEach((fn)=>{
+            fn();
+        });
+    }
+    formFailed() {
+        this.errorListener.forEach((fn)=>{
+            fn();
+        });
+    }
+    submitForm() {
+        const _updateStatus = (state)=>{
+            this.updateLoadingState(state);
+        };
+        const onFailed = ()=>{
+            this.formFailed();
+        };
+        const onDone = ()=>{
+            this.formSubmitted();
+        };
+        _updateStatus(true);
+        window["jQuery"].ajax({
+            url: `https://webflow.com/api/v1/form/${this.siteId}`,
+            type: "POST",
+            data: {
+                name: this.fromName || "Untitled Form",
+                source: location.href,
+                test: false,
+                fields: this.data,
+                dolphin: false
+            },
+            dataType: "json",
+            crossDomain: true
+        }).done(function(response) {
+            _updateStatus(false);
+            if (response && response.code === 200) onDone();
+            else onFailed();
+        }).fail(function() {
+            _updateStatus(false);
+            onFailed();
+        });
+    }
+}
+$parcel$exportWildcard(module.exports, $90b1e0f272b5544a$exports);
+$parcel$exportWildcard(module.exports, $336c7a32b438dc35$exports);
+$parcel$exportWildcard(module.exports, $5ce0995b4e579efe$exports);
+$parcel$exportWildcard(module.exports, $0105599dd5ebe189$exports);
+$parcel$exportWildcard(module.exports, $ce18c18667e54846$exports);
+$parcel$exportWildcard(module.exports, $b73002af79232c1a$exports);
+$parcel$exportWildcard(module.exports, $30d957643bf2e67a$exports);
+$parcel$exportWildcard(module.exports, $16d2504bbe4bb459$exports);
+$parcel$exportWildcard(module.exports, $78395a99ad91c494$exports);
+
+},{"116fc168c31b637d":"ggZPL"}],"ggZPL":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "v1", ()=>(0, _v1JsDefault.default));
+parcelHelpers.export(exports, "v3", ()=>(0, _v3JsDefault.default));
+parcelHelpers.export(exports, "v4", ()=>(0, _v4JsDefault.default));
+parcelHelpers.export(exports, "v5", ()=>(0, _v5JsDefault.default));
+parcelHelpers.export(exports, "NIL", ()=>(0, _nilJsDefault.default));
+parcelHelpers.export(exports, "version", ()=>(0, _versionJsDefault.default));
+parcelHelpers.export(exports, "validate", ()=>(0, _validateJsDefault.default));
+parcelHelpers.export(exports, "stringify", ()=>(0, _stringifyJsDefault.default));
+parcelHelpers.export(exports, "parse", ()=>(0, _parseJsDefault.default));
+var _v1Js = require("./v1.js");
+var _v1JsDefault = parcelHelpers.interopDefault(_v1Js);
+var _v3Js = require("./v3.js");
+var _v3JsDefault = parcelHelpers.interopDefault(_v3Js);
+var _v4Js = require("./v4.js");
+var _v4JsDefault = parcelHelpers.interopDefault(_v4Js);
+var _v5Js = require("./v5.js");
+var _v5JsDefault = parcelHelpers.interopDefault(_v5Js);
+var _nilJs = require("./nil.js");
+var _nilJsDefault = parcelHelpers.interopDefault(_nilJs);
+var _versionJs = require("./version.js");
+var _versionJsDefault = parcelHelpers.interopDefault(_versionJs);
+var _validateJs = require("./validate.js");
+var _validateJsDefault = parcelHelpers.interopDefault(_validateJs);
+var _stringifyJs = require("./stringify.js");
+var _stringifyJsDefault = parcelHelpers.interopDefault(_stringifyJs);
+var _parseJs = require("./parse.js");
+var _parseJsDefault = parcelHelpers.interopDefault(_parseJs);
+
+},{"./v1.js":"jG1dk","./v3.js":"ap9Ro","./v4.js":"6RfIs","./v5.js":"eBz2t","./nil.js":"8sEtz","./version.js":"4vEj5","./validate.js":"dfZI5","./stringify.js":"bFRkJ","./parse.js":"1KoND","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"jG1dk":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _rngJs = require("./rng.js");
+var _rngJsDefault = parcelHelpers.interopDefault(_rngJs);
+var _stringifyJs = require("./stringify.js"); // **`v1()` - Generate time-based UUID**
+//
+// Inspired by https://github.com/LiosK/UUID.js
+// and http://docs.python.org/library/uuid.html
+let _nodeId;
+let _clockseq; // Previous uuid creation time
+let _lastMSecs = 0;
+let _lastNSecs = 0; // See https://github.com/uuidjs/uuid for API details
+function v1(options, buf, offset) {
+    let i = buf && offset || 0;
+    const b = buf || new Array(16);
+    options = options || {};
+    let node = options.node || _nodeId;
+    let clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq; // node and clockseq need to be initialized to random values if they're not
+    // specified.  We do this lazily to minimize issues related to insufficient
+    // system entropy.  See #189
+    if (node == null || clockseq == null) {
+        const seedBytes = options.random || (options.rng || (0, _rngJsDefault.default))();
+        if (node == null) // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+        node = _nodeId = [
+            seedBytes[0] | 0x01,
+            seedBytes[1],
+            seedBytes[2],
+            seedBytes[3],
+            seedBytes[4],
+            seedBytes[5]
+        ];
+        if (clockseq == null) // Per 4.2.2, randomize (14 bit) clockseq
+        clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 0x3fff;
+    } // UUID timestamps are 100 nano-second units since the Gregorian epoch,
+    // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
+    // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
+    // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
+    let msecs = options.msecs !== undefined ? options.msecs : Date.now(); // Per 4.2.1.2, use count of uuid's generated during the current clock
+    // cycle to simulate higher resolution clock
+    let nsecs = options.nsecs !== undefined ? options.nsecs : _lastNSecs + 1; // Time since last uuid creation (in msecs)
+    const dt = msecs - _lastMSecs + (nsecs - _lastNSecs) / 10000; // Per 4.2.1.2, Bump clockseq on clock regression
+    if (dt < 0 && options.clockseq === undefined) clockseq = clockseq + 1 & 0x3fff;
+     // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
+    // time interval
+    if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === undefined) nsecs = 0;
+     // Per 4.2.1.2 Throw error if too many uuids are requested
+    if (nsecs >= 10000) throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");
+    _lastMSecs = msecs;
+    _lastNSecs = nsecs;
+    _clockseq = clockseq; // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
+    msecs += 12219292800000; // `time_low`
+    const tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
+    b[i++] = tl >>> 24 & 0xff;
+    b[i++] = tl >>> 16 & 0xff;
+    b[i++] = tl >>> 8 & 0xff;
+    b[i++] = tl & 0xff; // `time_mid`
+    const tmh = msecs / 0x100000000 * 10000 & 0xfffffff;
+    b[i++] = tmh >>> 8 & 0xff;
+    b[i++] = tmh & 0xff; // `time_high_and_version`
+    b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
+    b[i++] = tmh >>> 16 & 0xff; // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
+    b[i++] = clockseq >>> 8 | 0x80; // `clock_seq_low`
+    b[i++] = clockseq & 0xff; // `node`
+    for(let n = 0; n < 6; ++n)b[i + n] = node[n];
+    return buf || (0, _stringifyJs.unsafeStringify)(b);
+}
+exports.default = v1;
+
+},{"./rng.js":"cHt7R","./stringify.js":"bFRkJ","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"cHt7R":[function(require,module,exports,__globalThis) {
+// Unique ID creation requires a high quality random # generator. In the browser we therefore
+// require the crypto API and do not support built-in fallback to lower quality random number
+// generators (like Math.random()).
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>rng);
+let getRandomValues;
+const rnds8 = new Uint8Array(16);
+function rng() {
+    // lazy load so that environments that need to polyfill have a chance to do so
+    if (!getRandomValues) {
+        // getRandomValues needs to be invoked in a context where "this" is a Crypto implementation.
+        getRandomValues = typeof crypto !== 'undefined' && crypto.getRandomValues && crypto.getRandomValues.bind(crypto);
+        if (!getRandomValues) throw new Error('crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported');
+    }
+    return getRandomValues(rnds8);
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"5oERU":[function(require,module,exports,__globalThis) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"bFRkJ":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "unsafeStringify", ()=>unsafeStringify);
+var _validateJs = require("./validate.js");
+var _validateJsDefault = parcelHelpers.interopDefault(_validateJs);
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */ const byteToHex = [];
+for(let i = 0; i < 256; ++i)byteToHex.push((i + 0x100).toString(16).slice(1));
+function unsafeStringify(arr, offset = 0) {
+    // Note: Be careful editing this code!  It's been tuned for performance
+    // and works in ways you may not expect. See https://github.com/uuidjs/uuid/pull/434
+    return byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + '-' + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + '-' + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + '-' + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + '-' + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]];
+}
+function stringify(arr, offset = 0) {
+    const uuid = unsafeStringify(arr, offset); // Consistency check for valid UUID.  If this throws, it's likely due to one
+    // of the following:
+    // - One or more input array values don't map to a hex octet (leading to
+    // "undefined" in the uuid)
+    // - Invalid input values for the RFC `version` or `variant` fields
+    if (!(0, _validateJsDefault.default)(uuid)) throw TypeError('Stringified UUID is invalid');
+    return uuid;
+}
+exports.default = stringify;
+
+},{"./validate.js":"dfZI5","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"dfZI5":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _regexJs = require("./regex.js");
+var _regexJsDefault = parcelHelpers.interopDefault(_regexJs);
+function validate(uuid) {
+    return typeof uuid === 'string' && (0, _regexJsDefault.default).test(uuid);
+}
+exports.default = validate;
+
+},{"./regex.js":"5bk3T","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"5bk3T":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"ap9Ro":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _v35Js = require("./v35.js");
+var _v35JsDefault = parcelHelpers.interopDefault(_v35Js);
+var _md5Js = require("./md5.js");
+var _md5JsDefault = parcelHelpers.interopDefault(_md5Js);
+const v3 = (0, _v35JsDefault.default)('v3', 0x30, (0, _md5JsDefault.default));
+exports.default = v3;
+
+},{"./v35.js":"asOV2","./md5.js":"ieSzG","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"asOV2":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "DNS", ()=>DNS);
+parcelHelpers.export(exports, "URL", ()=>URL);
+parcelHelpers.export(exports, "default", ()=>v35);
+var _stringifyJs = require("./stringify.js");
+var _parseJs = require("./parse.js");
+var _parseJsDefault = parcelHelpers.interopDefault(_parseJs);
+function stringToBytes(str) {
+    str = unescape(encodeURIComponent(str)); // UTF8 escape
+    const bytes = [];
+    for(let i = 0; i < str.length; ++i)bytes.push(str.charCodeAt(i));
+    return bytes;
+}
+const DNS = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
+const URL = '6ba7b811-9dad-11d1-80b4-00c04fd430c8';
+function v35(name, version, hashfunc) {
+    function generateUUID(value, namespace, buf, offset) {
+        var _namespace;
+        if (typeof value === 'string') value = stringToBytes(value);
+        if (typeof namespace === 'string') namespace = (0, _parseJsDefault.default)(namespace);
+        if (((_namespace = namespace) === null || _namespace === void 0 ? void 0 : _namespace.length) !== 16) throw TypeError('Namespace must be array-like (16 iterable integer values, 0-255)');
+         // Compute hash of namespace and value, Per 4.3
+        // Future: Use spread syntax when supported on all platforms, e.g. `bytes =
+        // hashfunc([...namespace, ... value])`
+        let bytes = new Uint8Array(16 + value.length);
+        bytes.set(namespace);
+        bytes.set(value, namespace.length);
+        bytes = hashfunc(bytes);
+        bytes[6] = bytes[6] & 0x0f | version;
+        bytes[8] = bytes[8] & 0x3f | 0x80;
+        if (buf) {
+            offset = offset || 0;
+            for(let i = 0; i < 16; ++i)buf[offset + i] = bytes[i];
+            return buf;
+        }
+        return (0, _stringifyJs.unsafeStringify)(bytes);
+    } // Function#name is not settable on some platforms (#270)
+    try {
+        generateUUID.name = name; // eslint-disable-next-line no-empty
+    } catch (err) {} // For CommonJS default export support
+    generateUUID.DNS = DNS;
+    generateUUID.URL = URL;
+    return generateUUID;
+}
+
+},{"./stringify.js":"bFRkJ","./parse.js":"1KoND","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"1KoND":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _validateJs = require("./validate.js");
+var _validateJsDefault = parcelHelpers.interopDefault(_validateJs);
+function parse(uuid) {
+    if (!(0, _validateJsDefault.default)(uuid)) throw TypeError('Invalid UUID');
+    let v;
+    const arr = new Uint8Array(16); // Parse ########-....-....-....-............
+    arr[0] = (v = parseInt(uuid.slice(0, 8), 16)) >>> 24;
+    arr[1] = v >>> 16 & 0xff;
+    arr[2] = v >>> 8 & 0xff;
+    arr[3] = v & 0xff; // Parse ........-####-....-....-............
+    arr[4] = (v = parseInt(uuid.slice(9, 13), 16)) >>> 8;
+    arr[5] = v & 0xff; // Parse ........-....-####-....-............
+    arr[6] = (v = parseInt(uuid.slice(14, 18), 16)) >>> 8;
+    arr[7] = v & 0xff; // Parse ........-....-....-####-............
+    arr[8] = (v = parseInt(uuid.slice(19, 23), 16)) >>> 8;
+    arr[9] = v & 0xff; // Parse ........-....-....-....-############
+    // (Use "/" to avoid 32-bit truncation when bit-shifting high-order bytes)
+    arr[10] = (v = parseInt(uuid.slice(24, 36), 16)) / 0x10000000000 & 0xff;
+    arr[11] = v / 0x100000000 & 0xff;
+    arr[12] = v >>> 24 & 0xff;
+    arr[13] = v >>> 16 & 0xff;
+    arr[14] = v >>> 8 & 0xff;
+    arr[15] = v & 0xff;
+    return arr;
+}
+exports.default = parse;
+
+},{"./validate.js":"dfZI5","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"ieSzG":[function(require,module,exports,__globalThis) {
+/*
+ * Browser-compatible JavaScript MD5
+ *
+ * Modification of JavaScript MD5
+ * https://github.com/blueimp/JavaScript-MD5
+ *
+ * Copyright 2011, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * https://opensource.org/licenses/MIT
+ *
+ * Based on
+ * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
+ * Digest Algorithm, as defined in RFC 1321.
+ * Version 2.2 Copyright (C) Paul Johnston 1999 - 2009
+ * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
+ * Distributed under the BSD License
+ * See http://pajhome.org.uk/crypt/md5 for more info.
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function md5(bytes) {
+    if (typeof bytes === 'string') {
+        const msg = unescape(encodeURIComponent(bytes)); // UTF8 escape
+        bytes = new Uint8Array(msg.length);
+        for(let i = 0; i < msg.length; ++i)bytes[i] = msg.charCodeAt(i);
+    }
+    return md5ToHexEncodedArray(wordsToMd5(bytesToWords(bytes), bytes.length * 8));
+}
+/*
+ * Convert an array of little-endian words to an array of bytes
+ */ function md5ToHexEncodedArray(input) {
+    const output = [];
+    const length32 = input.length * 32;
+    const hexTab = '0123456789abcdef';
+    for(let i = 0; i < length32; i += 8){
+        const x = input[i >> 5] >>> i % 32 & 0xff;
+        const hex = parseInt(hexTab.charAt(x >>> 4 & 0x0f) + hexTab.charAt(x & 0x0f), 16);
+        output.push(hex);
+    }
+    return output;
+}
+/**
+ * Calculate output length with padding and bit length
+ */ function getOutputLength(inputLength8) {
+    return (inputLength8 + 64 >>> 9 << 4) + 14 + 1;
+}
+/*
+ * Calculate the MD5 of an array of little-endian words, and a bit length.
+ */ function wordsToMd5(x, len) {
+    /* append padding */ x[len >> 5] |= 0x80 << len % 32;
+    x[getOutputLength(len) - 1] = len;
+    let a = 1732584193;
+    let b = -271733879;
+    let c = -1732584194;
+    let d = 271733878;
+    for(let i = 0; i < x.length; i += 16){
+        const olda = a;
+        const oldb = b;
+        const oldc = c;
+        const oldd = d;
+        a = md5ff(a, b, c, d, x[i], 7, -680876936);
+        d = md5ff(d, a, b, c, x[i + 1], 12, -389564586);
+        c = md5ff(c, d, a, b, x[i + 2], 17, 606105819);
+        b = md5ff(b, c, d, a, x[i + 3], 22, -1044525330);
+        a = md5ff(a, b, c, d, x[i + 4], 7, -176418897);
+        d = md5ff(d, a, b, c, x[i + 5], 12, 1200080426);
+        c = md5ff(c, d, a, b, x[i + 6], 17, -1473231341);
+        b = md5ff(b, c, d, a, x[i + 7], 22, -45705983);
+        a = md5ff(a, b, c, d, x[i + 8], 7, 1770035416);
+        d = md5ff(d, a, b, c, x[i + 9], 12, -1958414417);
+        c = md5ff(c, d, a, b, x[i + 10], 17, -42063);
+        b = md5ff(b, c, d, a, x[i + 11], 22, -1990404162);
+        a = md5ff(a, b, c, d, x[i + 12], 7, 1804603682);
+        d = md5ff(d, a, b, c, x[i + 13], 12, -40341101);
+        c = md5ff(c, d, a, b, x[i + 14], 17, -1502002290);
+        b = md5ff(b, c, d, a, x[i + 15], 22, 1236535329);
+        a = md5gg(a, b, c, d, x[i + 1], 5, -165796510);
+        d = md5gg(d, a, b, c, x[i + 6], 9, -1069501632);
+        c = md5gg(c, d, a, b, x[i + 11], 14, 643717713);
+        b = md5gg(b, c, d, a, x[i], 20, -373897302);
+        a = md5gg(a, b, c, d, x[i + 5], 5, -701558691);
+        d = md5gg(d, a, b, c, x[i + 10], 9, 38016083);
+        c = md5gg(c, d, a, b, x[i + 15], 14, -660478335);
+        b = md5gg(b, c, d, a, x[i + 4], 20, -405537848);
+        a = md5gg(a, b, c, d, x[i + 9], 5, 568446438);
+        d = md5gg(d, a, b, c, x[i + 14], 9, -1019803690);
+        c = md5gg(c, d, a, b, x[i + 3], 14, -187363961);
+        b = md5gg(b, c, d, a, x[i + 8], 20, 1163531501);
+        a = md5gg(a, b, c, d, x[i + 13], 5, -1444681467);
+        d = md5gg(d, a, b, c, x[i + 2], 9, -51403784);
+        c = md5gg(c, d, a, b, x[i + 7], 14, 1735328473);
+        b = md5gg(b, c, d, a, x[i + 12], 20, -1926607734);
+        a = md5hh(a, b, c, d, x[i + 5], 4, -378558);
+        d = md5hh(d, a, b, c, x[i + 8], 11, -2022574463);
+        c = md5hh(c, d, a, b, x[i + 11], 16, 1839030562);
+        b = md5hh(b, c, d, a, x[i + 14], 23, -35309556);
+        a = md5hh(a, b, c, d, x[i + 1], 4, -1530992060);
+        d = md5hh(d, a, b, c, x[i + 4], 11, 1272893353);
+        c = md5hh(c, d, a, b, x[i + 7], 16, -155497632);
+        b = md5hh(b, c, d, a, x[i + 10], 23, -1094730640);
+        a = md5hh(a, b, c, d, x[i + 13], 4, 681279174);
+        d = md5hh(d, a, b, c, x[i], 11, -358537222);
+        c = md5hh(c, d, a, b, x[i + 3], 16, -722521979);
+        b = md5hh(b, c, d, a, x[i + 6], 23, 76029189);
+        a = md5hh(a, b, c, d, x[i + 9], 4, -640364487);
+        d = md5hh(d, a, b, c, x[i + 12], 11, -421815835);
+        c = md5hh(c, d, a, b, x[i + 15], 16, 530742520);
+        b = md5hh(b, c, d, a, x[i + 2], 23, -995338651);
+        a = md5ii(a, b, c, d, x[i], 6, -198630844);
+        d = md5ii(d, a, b, c, x[i + 7], 10, 1126891415);
+        c = md5ii(c, d, a, b, x[i + 14], 15, -1416354905);
+        b = md5ii(b, c, d, a, x[i + 5], 21, -57434055);
+        a = md5ii(a, b, c, d, x[i + 12], 6, 1700485571);
+        d = md5ii(d, a, b, c, x[i + 3], 10, -1894986606);
+        c = md5ii(c, d, a, b, x[i + 10], 15, -1051523);
+        b = md5ii(b, c, d, a, x[i + 1], 21, -2054922799);
+        a = md5ii(a, b, c, d, x[i + 8], 6, 1873313359);
+        d = md5ii(d, a, b, c, x[i + 15], 10, -30611744);
+        c = md5ii(c, d, a, b, x[i + 6], 15, -1560198380);
+        b = md5ii(b, c, d, a, x[i + 13], 21, 1309151649);
+        a = md5ii(a, b, c, d, x[i + 4], 6, -145523070);
+        d = md5ii(d, a, b, c, x[i + 11], 10, -1120210379);
+        c = md5ii(c, d, a, b, x[i + 2], 15, 718787259);
+        b = md5ii(b, c, d, a, x[i + 9], 21, -343485551);
+        a = safeAdd(a, olda);
+        b = safeAdd(b, oldb);
+        c = safeAdd(c, oldc);
+        d = safeAdd(d, oldd);
+    }
+    return [
+        a,
+        b,
+        c,
+        d
+    ];
+}
+/*
+ * Convert an array bytes to an array of little-endian words
+ * Characters >255 have their high-byte silently ignored.
+ */ function bytesToWords(input) {
+    if (input.length === 0) return [];
+    const length8 = input.length * 8;
+    const output = new Uint32Array(getOutputLength(length8));
+    for(let i = 0; i < length8; i += 8)output[i >> 5] |= (input[i / 8] & 0xff) << i % 32;
+    return output;
+}
+/*
+ * Add integers, wrapping at 2^32. This uses 16-bit operations internally
+ * to work around bugs in some JS interpreters.
+ */ function safeAdd(x, y) {
+    const lsw = (x & 0xffff) + (y & 0xffff);
+    const msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+    return msw << 16 | lsw & 0xffff;
+}
+/*
+ * Bitwise rotate a 32-bit number to the left.
+ */ function bitRotateLeft(num, cnt) {
+    return num << cnt | num >>> 32 - cnt;
+}
+/*
+ * These functions implement the four basic operations the algorithm uses.
+ */ function md5cmn(q, a, b, x, s, t) {
+    return safeAdd(bitRotateLeft(safeAdd(safeAdd(a, q), safeAdd(x, t)), s), b);
+}
+function md5ff(a, b, c, d, x, s, t) {
+    return md5cmn(b & c | ~b & d, a, b, x, s, t);
+}
+function md5gg(a, b, c, d, x, s, t) {
+    return md5cmn(b & d | c & ~d, a, b, x, s, t);
+}
+function md5hh(a, b, c, d, x, s, t) {
+    return md5cmn(b ^ c ^ d, a, b, x, s, t);
+}
+function md5ii(a, b, c, d, x, s, t) {
+    return md5cmn(c ^ (b | ~d), a, b, x, s, t);
+}
+exports.default = md5;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"6RfIs":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _nativeJs = require("./native.js");
+var _nativeJsDefault = parcelHelpers.interopDefault(_nativeJs);
+var _rngJs = require("./rng.js");
+var _rngJsDefault = parcelHelpers.interopDefault(_rngJs);
+var _stringifyJs = require("./stringify.js");
+function v4(options, buf, offset) {
+    if ((0, _nativeJsDefault.default).randomUUID && !buf && !options) return (0, _nativeJsDefault.default).randomUUID();
+    options = options || {};
+    const rnds = options.random || (options.rng || (0, _rngJsDefault.default))(); // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+    rnds[6] = rnds[6] & 0x0f | 0x40;
+    rnds[8] = rnds[8] & 0x3f | 0x80; // Copy bytes to buffer, if provided
+    if (buf) {
+        offset = offset || 0;
+        for(let i = 0; i < 16; ++i)buf[offset + i] = rnds[i];
+        return buf;
+    }
+    return (0, _stringifyJs.unsafeStringify)(rnds);
+}
+exports.default = v4;
+
+},{"./native.js":"8mdcZ","./rng.js":"cHt7R","./stringify.js":"bFRkJ","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"8mdcZ":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const randomUUID = typeof crypto !== 'undefined' && crypto.randomUUID && crypto.randomUUID.bind(crypto);
+exports.default = {
+    randomUUID
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"eBz2t":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _v35Js = require("./v35.js");
+var _v35JsDefault = parcelHelpers.interopDefault(_v35Js);
+var _sha1Js = require("./sha1.js");
+var _sha1JsDefault = parcelHelpers.interopDefault(_sha1Js);
+const v5 = (0, _v35JsDefault.default)('v5', 0x50, (0, _sha1JsDefault.default));
+exports.default = v5;
+
+},{"./v35.js":"asOV2","./sha1.js":"lger1","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"lger1":[function(require,module,exports,__globalThis) {
+// Adapted from Chris Veness' SHA1 code at
+// http://www.movable-type.co.uk/scripts/sha1.html
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function f(s, x, y, z) {
+    switch(s){
+        case 0:
+            return x & y ^ ~x & z;
+        case 1:
+            return x ^ y ^ z;
+        case 2:
+            return x & y ^ x & z ^ y & z;
+        case 3:
+            return x ^ y ^ z;
+    }
+}
+function ROTL(x, n) {
+    return x << n | x >>> 32 - n;
+}
+function sha1(bytes) {
+    const K = [
+        0x5a827999,
+        0x6ed9eba1,
+        0x8f1bbcdc,
+        0xca62c1d6
+    ];
+    const H = [
+        0x67452301,
+        0xefcdab89,
+        0x98badcfe,
+        0x10325476,
+        0xc3d2e1f0
+    ];
+    if (typeof bytes === 'string') {
+        const msg = unescape(encodeURIComponent(bytes)); // UTF8 escape
+        bytes = [];
+        for(let i = 0; i < msg.length; ++i)bytes.push(msg.charCodeAt(i));
+    } else if (!Array.isArray(bytes)) // Convert Array-like to Array
+    bytes = Array.prototype.slice.call(bytes);
+    bytes.push(0x80);
+    const l = bytes.length / 4 + 2;
+    const N = Math.ceil(l / 16);
+    const M = new Array(N);
+    for(let i = 0; i < N; ++i){
+        const arr = new Uint32Array(16);
+        for(let j = 0; j < 16; ++j)arr[j] = bytes[i * 64 + j * 4] << 24 | bytes[i * 64 + j * 4 + 1] << 16 | bytes[i * 64 + j * 4 + 2] << 8 | bytes[i * 64 + j * 4 + 3];
+        M[i] = arr;
+    }
+    M[N - 1][14] = (bytes.length - 1) * 8 / Math.pow(2, 32);
+    M[N - 1][14] = Math.floor(M[N - 1][14]);
+    M[N - 1][15] = (bytes.length - 1) * 8 & 0xffffffff;
+    for(let i = 0; i < N; ++i){
+        const W = new Uint32Array(80);
+        for(let t = 0; t < 16; ++t)W[t] = M[i][t];
+        for(let t = 16; t < 80; ++t)W[t] = ROTL(W[t - 3] ^ W[t - 8] ^ W[t - 14] ^ W[t - 16], 1);
+        let a = H[0];
+        let b = H[1];
+        let c = H[2];
+        let d = H[3];
+        let e = H[4];
+        for(let t = 0; t < 80; ++t){
+            const s = Math.floor(t / 20);
+            const T = ROTL(a, 5) + f(s, b, c, d) + e + K[s] + W[t] >>> 0;
+            e = d;
+            d = c;
+            c = ROTL(b, 30) >>> 0;
+            b = a;
+            a = T;
+        }
+        H[0] = H[0] + a >>> 0;
+        H[1] = H[1] + b >>> 0;
+        H[2] = H[2] + c >>> 0;
+        H[3] = H[3] + d >>> 0;
+        H[4] = H[4] + e >>> 0;
+    }
+    return [
+        H[0] >> 24 & 0xff,
+        H[0] >> 16 & 0xff,
+        H[0] >> 8 & 0xff,
+        H[0] & 0xff,
+        H[1] >> 24 & 0xff,
+        H[1] >> 16 & 0xff,
+        H[1] >> 8 & 0xff,
+        H[1] & 0xff,
+        H[2] >> 24 & 0xff,
+        H[2] >> 16 & 0xff,
+        H[2] >> 8 & 0xff,
+        H[2] & 0xff,
+        H[3] >> 24 & 0xff,
+        H[3] >> 16 & 0xff,
+        H[3] >> 8 & 0xff,
+        H[3] & 0xff,
+        H[4] >> 24 & 0xff,
+        H[4] >> 16 & 0xff,
+        H[4] >> 8 & 0xff,
+        H[4] & 0xff
+    ];
+}
+exports.default = sha1;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"8sEtz":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = '00000000-0000-0000-0000-000000000000';
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"4vEj5":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _validateJs = require("./validate.js");
+var _validateJsDefault = parcelHelpers.interopDefault(_validateJs);
+function version(uuid) {
+    if (!(0, _validateJsDefault.default)(uuid)) throw TypeError('Invalid UUID');
+    return parseInt(uuid.slice(14, 15), 16);
+}
+exports.default = version;
+
+},{"./validate.js":"dfZI5","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"fnEL6":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "app", ()=>app);
+var _core = require("@xatom/core");
+var _auth = require("../modules/auth");
+var _config = require("../config");
+const app = ()=>{
+    new (0, _core.WFRoute)((0, _config.USER_PATHS).landing).execute(()=>require("bbc6c1c285582157").then(({ landing })=>{
+            landing();
+        }));
+    new (0, _core.WFRoute)((0, _config.USER_PATHS).authRoute).withMiddleware((0, _auth.userMiddleware), "GUEST", "allow", {
+        onError: ()=>{
+            (0, _core.navigate)((0, _config.USER_PATHS).tripDesigner);
+        }
+    }).execute(()=>{
+        new (0, _core.WFRoute)((0, _config.USER_PATHS).signIn).execute(()=>{
+            require("9b9ca3d1f354f9").then(({ signIn })=>{
+                signIn();
+            });
+        });
+        new (0, _core.WFRoute)((0, _config.USER_PATHS).signUp).execute(()=>{
+            require("8dff4a7369311fc").then(({ signUp })=>{
+                signUp();
+            });
+        });
+        new (0, _core.WFRoute)((0, _config.USER_PATHS).verification).execute(()=>{
+            require("d2ff0736bf12c1b5").then(({ verify })=>{
+                verify();
+            });
+        });
+    });
+    new (0, _core.WFRoute)((0, _config.USER_PATHS).appRoute).withMiddleware((0, _auth.userMiddleware), "USER", "allow", {
+        onError: ()=>{
+            (0, _core.navigate)((0, _config.USER_PATHS).landing);
+        }
+    }).execute(()=>{
+        new (0, _core.WFRoute)((0, _config.USER_PATHS).tripDesigner).execute(()=>{
+            require("9e60bf79a1b8d5a0").then(({ overview })=>{
+                overview();
+            });
+        });
+    });
+};
+
+},{"@xatom/core":"8w4K8","../modules/auth":"du3Bh","../config":"bxoGo","bbc6c1c285582157":"lzBrm","9b9ca3d1f354f9":"cON7G","8dff4a7369311fc":"45rSL","d2ff0736bf12c1b5":"h3aRF","9e60bf79a1b8d5a0":"g8wOg","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"du3Bh":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "userAuth", ()=>userAuth);
+parcelHelpers.export(exports, "setUser", ()=>setUser);
+parcelHelpers.export(exports, "logout", ()=>logout);
+parcelHelpers.export(exports, "userMiddleware", ()=>userMiddleware);
+var _core = require("@xatom/core");
+var _supabase = require("../supabase");
+var _supabaseDefault = parcelHelpers.interopDefault(_supabase);
+const userAuth = new (0, _core.WFAuth)();
+/**
+ * Set default user role
+ */ userAuth.setRole("GUEST");
+const setUser = (fullName, email)=>{
+    userAuth.setUser({
+        fullName,
+        email
+    });
+    userAuth.setRole("USER");
+};
+const logout = ()=>{
+    (0, _supabaseDefault.default).auth.signOut().then(()=>{
+        userAuth.logout();
+        (0, _core.navigate)("/sign-in");
+    });
+};
+const userMiddleware = new (0, _core.WFAuthMiddleware)(userAuth);
+
+},{"@xatom/core":"8w4K8","../supabase":"eAmGG","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"eAmGG":[function(require,module,exports,__globalThis) {
+// import { createClient, SupabaseClientOptions } from "@supabase/supabase-js";
+// import { setUser } from "../auth";
+// const options: SupabaseClientOptions<string> = {
+//     db: {
+//         schema: "public",
+//     },
+//     auth: {
+//         autoRefreshToken: true,
+//         persistSession: true,
+//         detectSessionInUrl: true
+//     }
+// }
+// const supabaseURL = process.env.SUPABASE_URL;
+// const supabaseKey = process.env.SUPABASE_KEY;
+// const supabase = createClient(supabaseURL, supabaseKey, options);
+// export const initSupabase = (cb: () => void) => {
+//     supabase.auth.getSession().
+//     then((data) => {
+//         if (!data.error && data.data && data.data.session) {
+//             setUser(
+//                 data.data.session.user.user_metadata.fullName,
+//                 data.data.session.user.email
+//             )
+//         }
+//     }).catch((err) => {
+//         console.log(err);
+//     }).finally(cb);
+//     // supabase.auth.getSession().
+//     // then((data) => { console.log(data); }).
+//     // catch((err) => { console.log(err); })
+// }
+// export default supabase;
+
+},{}],"bxoGo":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "USER_PATHS", ()=>USER_PATHS);
+const USER_PATHS = {
+    landing: "",
+    authRoute: "/auth/(.*)",
+    signIn: "/auth/sign-in",
+    signUp: "/auth/sign-up",
+    verification: "/auth/verify",
+    forgotPassword: "/auth/forgot-password",
+    resetPassword: "/auth/reset-password",
+    appRoute: "/app/(.*)",
+    tripDesigner: "/app/trip",
+    likes: "/app/likes",
+    myTrips: "/app/my-trips",
+    accountSettings: "/app/settings"
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"lzBrm":[function(require,module,exports,__globalThis) {
+module.exports = require("e88e8e0a5fde1b48")(require("130359097654a689").getBundleURL('1Q55w') + "landing.380a3937.js").catch((err)=>{
+    delete module.bundle.cache[module.id];
+    throw err;
+}).then(()=>module.bundle.root('5pobz'));
+
+},{"e88e8e0a5fde1b48":"3dDkg","130359097654a689":"jkqJ4"}],"3dDkg":[function(require,module,exports,__globalThis) {
+"use strict";
+var cacheLoader = require("ca2a84f7fa4a3bb0");
+module.exports = cacheLoader(function(bundle) {
+    return new Promise(function(resolve, reject) {
+        // Don't insert the same script twice (e.g. if it was already in the HTML)
+        var existingScripts = document.getElementsByTagName('script');
+        if ([].concat(existingScripts).some(function(script) {
+            return script.src === bundle;
+        })) {
+            resolve();
+            return;
+        }
+        var preloadLink = document.createElement('link');
+        preloadLink.href = bundle;
+        preloadLink.rel = 'preload';
+        preloadLink.as = 'script';
+        document.head.appendChild(preloadLink);
+        var script = document.createElement('script');
+        script.async = true;
+        script.type = 'text/javascript';
+        script.src = bundle;
+        script.onerror = function(e) {
+            var error = new TypeError("Failed to fetch dynamically imported module: ".concat(bundle, ". Error: ").concat(e.message));
+            script.onerror = script.onload = null;
+            script.remove();
+            reject(error);
+        };
+        script.onload = function() {
+            script.onerror = script.onload = null;
+            resolve();
+        };
+        document.getElementsByTagName('head')[0].appendChild(script);
+    });
+});
+
+},{"ca2a84f7fa4a3bb0":"khH0r"}],"khH0r":[function(require,module,exports,__globalThis) {
+"use strict";
+var cachedBundles = {};
+var cachedPreloads = {};
+var cachedPrefetches = {};
+function getCache(type) {
+    switch(type){
+        case 'preload':
+            return cachedPreloads;
+        case 'prefetch':
+            return cachedPrefetches;
+        default:
+            return cachedBundles;
+    }
+}
+module.exports = function(loader, type) {
+    return function(bundle) {
+        var cache = getCache(type);
+        if (cache[bundle]) return cache[bundle];
+        return cache[bundle] = loader.apply(null, arguments).catch(function(e) {
+            delete cache[bundle];
+            throw e;
+        });
+    };
+};
+
+},{}],"jkqJ4":[function(require,module,exports,__globalThis) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ('' + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return '/';
+}
+function getBaseURL(url) {
+    return ('' + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ('' + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error('Origin not found');
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"cON7G":[function(require,module,exports,__globalThis) {
+module.exports = require("b5cc2a95523abb33")(require("8e29b32d3878b504").getBundleURL('1Q55w') + "signIn.e51c192a.js").catch((err)=>{
+    delete module.bundle.cache[module.id];
+    throw err;
+}).then(()=>module.bundle.root('cbLdP'));
+
+},{"b5cc2a95523abb33":"3dDkg","8e29b32d3878b504":"jkqJ4"}],"45rSL":[function(require,module,exports,__globalThis) {
+module.exports = require("272c49fdeb253d8")(require("e9e7ea642b859d74").getBundleURL('1Q55w') + "signUp.bcb13ab7.js").catch((err)=>{
+    delete module.bundle.cache[module.id];
+    throw err;
+}).then(()=>module.bundle.root('gVOPx'));
+
+},{"272c49fdeb253d8":"3dDkg","e9e7ea642b859d74":"jkqJ4"}],"h3aRF":[function(require,module,exports,__globalThis) {
+module.exports = require("626a573d4497bc9c")(require("b433eb1d4c66108").getBundleURL('1Q55w') + "verify.6491b9a1.js").catch((err)=>{
+    delete module.bundle.cache[module.id];
+    throw err;
+}).then(()=>module.bundle.root('9UBEU'));
+
+},{"626a573d4497bc9c":"3dDkg","b433eb1d4c66108":"jkqJ4"}],"g8wOg":[function(require,module,exports,__globalThis) {
+module.exports = require("eef9d1ed383e9155")(require("a34ac05127b66812").getBundleURL('1Q55w') + "tripDesigner.bd023ed3.js").catch((err)=>{
+    delete module.bundle.cache[module.id];
+    throw err;
+}).then(()=>module.bundle.root('5KI2x'));
+
+},{"eef9d1ed383e9155":"3dDkg","a34ac05127b66812":"jkqJ4"}]},["jeTtx"], "jeTtx", "parcelRequire94c2")
+
 //# sourceMappingURL=app.js.map
