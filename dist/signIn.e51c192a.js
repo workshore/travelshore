@@ -152,6 +152,7 @@ const signIn = async ()=>{
     const form = new (0, _core.WFFormComponent)(`[xa-type="signin-form"]`);
     const submitButton = form.getChildAsComponent(`[xa-type="signin-btn"]`);
     const submitButtonWrapper = form.getChildAsComponent(`.form-button-wrapper`);
+    // accepted current change
     submitButton.setAttribute("value", "Continue");
     submitButton.removeAttribute("disabled");
     submitButton.removeCssClass("is-disabled");
@@ -192,7 +193,7 @@ const signIn = async ()=>{
                 };
                 localStorage.setItem('@bw-user-auth', JSON.stringify(userInfo));
                 form.updateSubmitButtonText("Redirecting...");
-                (0, _core.navigate)((0, _config.USER_PATHS).tripDesigner);
+                (0, _core.navigate)((0, _config.USER_PATHS).chatDemo);
             }).catch((error)=>{
                 form.updateTextViaAttrVar({
                     error: error.message || "Unable to login. Please try again."

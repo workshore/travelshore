@@ -14,11 +14,6 @@ const options: SupabaseClientOptions<string> = {
     }
 }
 
-// const supabaseURL = process.env.SUPABASE_URL;
-// const supabaseKey = process.env.SUPABASE_KEY;
-
-// const supabase = createClient(supabaseURL, supabaseKey, options);
-
 export const initSupabase = (cb: () => void) => {
     const localSessionInfo = JSON.parse(localStorage.getItem("@bw-user-auth"));
 
@@ -36,7 +31,7 @@ export const initSupabase = (cb: () => void) => {
                 console.log("User session active", data);
                 setUser(
                     `${data.user.user_metadata.firstName} ${data.user.user_metadata.lastName}`,
-                    data.user.email
+                     data.user.email
                 );
             }
         }).catch((err) => {
@@ -45,22 +40,4 @@ export const initSupabase = (cb: () => void) => {
     } else {
         cb();
     }
-
-    // supabase.auth.getSession().
-    // then((data) => {
-    //     if (!data.error && data.data && data.data.session) {
-    //         setUser(
-    //             data.data.session.user.user_metadata.fullName,
-    //             data.data.session.user.email
-    //         )
-    //     }
-    // }).catch((err) => {
-    //     console.log(err);
-    // }).finally(cb);
-
-    // supabase.auth.getSession().
-    // then((data) => { console.log(data); }).
-    // catch((err) => { console.log(err); })
 }
-
-// export default supabase;

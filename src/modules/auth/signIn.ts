@@ -54,7 +54,7 @@ export const signIn = async () => {
                 }
                 localStorage.setItem('@bw-user-auth', JSON.stringify(userInfo));
                 form.updateSubmitButtonText("Redirecting...");
-                navigate(USER_PATHS.tripDesigner);
+                navigate(USER_PATHS.chatDemo);
             }).
                 catch((error) => {
                     form.updateTextViaAttrVar({

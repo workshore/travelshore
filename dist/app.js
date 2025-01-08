@@ -1790,45 +1790,9 @@ const initSupabase = (cb)=>{
         (0, _auth.logout)();
     }).finally(cb);
     else cb();
-// supabase.auth.getSession().
-// then((data) => {
-//     if (!data.error && data.data && data.data.session) {
-//         setUser(
-//             data.data.session.user.user_metadata.fullName,
-//             data.data.session.user.email
-//         )
-//     }
-// }).catch((err) => {
-//     console.log(err);
-// }).finally(cb);
-// supabase.auth.getSession().
-// then((data) => { console.log(data); }).
-// catch((err) => { console.log(err); })
-} // export default supabase;
-;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU","../../config":"bxoGo","../auth":"du3Bh"}],"bxoGo":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "USER_PATHS", ()=>USER_PATHS);
-parcelHelpers.export(exports, "BACKEND_BASE_URL", ()=>BACKEND_BASE_URL);
-const USER_PATHS = {
-    landing: "",
-    authRoute: "/auth/(.*)",
-    signIn: "/auth/sign-in",
-    signUp: "/auth/sign-up",
-    verification: "/auth/verify",
-    forgotPassword: "/auth/forgot-password",
-    resetPassword: "/auth/reset-password",
-    appRoute: "/app/(.*)",
-    tripDesigner: "/app/trip",
-    likes: "/app/likes",
-    myTrips: "/app/my-trips",
-    accountSettings: "/app/settings"
 };
-const BACKEND_BASE_URL = 'https://travelshore-backend-proxy.vercel.app/api';
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"du3Bh":[function(require,module,exports,__globalThis) {
+},{"../auth":"du3Bh","../../config":"bxoGo","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"du3Bh":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "userAuth", ()=>userAuth);
@@ -1866,7 +1830,29 @@ const logout = ()=>{
 };
 const userMiddleware = new (0, _core.WFAuthMiddleware)(userAuth);
 
-},{"@xatom/core":"8w4K8","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU","../../config":"bxoGo"}],"fnEL6":[function(require,module,exports,__globalThis) {
+},{"@xatom/core":"8w4K8","../../config":"bxoGo","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"bxoGo":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "USER_PATHS", ()=>USER_PATHS);
+parcelHelpers.export(exports, "BACKEND_BASE_URL", ()=>BACKEND_BASE_URL);
+const USER_PATHS = {
+    landing: "",
+    authRoute: "/auth/(.*)",
+    signIn: "/auth/sign-in",
+    signUp: "/auth/sign-up",
+    verification: "/auth/verify",
+    forgotPassword: "/auth/forgot-password",
+    resetPassword: "/auth/reset-password",
+    appRoute: "/app/(.*)",
+    tripDesigner: "/app/trip",
+    likes: "/app/likes",
+    myTrips: "/app/my-trips",
+    accountSettings: "/app/settings",
+    chatDemo: '/app/chatbot-demo'
+};
+const BACKEND_BASE_URL = 'https://travelshore-backend-proxy.vercel.app/api';
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"fnEL6":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "app", ()=>app);
@@ -1875,12 +1861,16 @@ var _auth = require("../modules/auth");
 var _config = require("../config");
 var _sidebar = require("../modules/app/sidebar");
 const app = ()=>{
-    new (0, _core.WFRoute)((0, _config.USER_PATHS).landing).execute(()=>require("bbc6c1c285582157").then(({ landing })=>{
+    new (0, _core.WFRoute)((0, _config.USER_PATHS).landing).withMiddleware((0, _auth.userMiddleware), "GUEST", "allow", {
+        onError: ()=>{
+            (0, _core.navigate)((0, _config.USER_PATHS).chatDemo);
+        }
+    }).execute(()=>require("bbc6c1c285582157").then(({ landing })=>{
             landing();
         }));
     new (0, _core.WFRoute)((0, _config.USER_PATHS).authRoute).withMiddleware((0, _auth.userMiddleware), "GUEST", "allow", {
         onError: ()=>{
-            (0, _core.navigate)((0, _config.USER_PATHS).tripDesigner);
+            (0, _core.navigate)((0, _config.USER_PATHS).chatDemo);
         }
     }).execute(()=>{
         new (0, _core.WFRoute)((0, _config.USER_PATHS).signIn).execute(()=>{
@@ -1910,10 +1900,33 @@ const app = ()=>{
                 overview();
             });
         });
+        new (0, _core.WFRoute)((0, _config.USER_PATHS).chatDemo).execute(()=>{
+            require("3ec28be65cebfd6d").then(({ chatbot })=>{
+                chatbot();
+            });
+        });
     });
 };
 
-},{"@xatom/core":"8w4K8","../modules/auth":"du3Bh","../config":"bxoGo","bbc6c1c285582157":"lzBrm","9b9ca3d1f354f9":"cON7G","8dff4a7369311fc":"45rSL","d2ff0736bf12c1b5":"h3aRF","9e60bf79a1b8d5a0":"g8wOg","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU","../modules/app/sidebar":"2AjHf"}],"lzBrm":[function(require,module,exports,__globalThis) {
+},{"@xatom/core":"8w4K8","../modules/auth":"du3Bh","../config":"bxoGo","../modules/app/sidebar":"2AjHf","bbc6c1c285582157":"lzBrm","9b9ca3d1f354f9":"cON7G","8dff4a7369311fc":"45rSL","d2ff0736bf12c1b5":"h3aRF","9e60bf79a1b8d5a0":"g8wOg","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU","3ec28be65cebfd6d":"fe8FJ"}],"2AjHf":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "sidebar", ()=>sidebar);
+var _core = require("@xatom/core");
+var _auth = require("../auth");
+const sidebar = ()=>{
+    const sidebar = new (0, _core.WFComponent)(`[xa-type='sidebar']`);
+    const logOut = sidebar.getChildAsComponent(`[xa-type='logout']`);
+    // update user name
+    sidebar.updateTextViaAttrVar({
+        name: (0, _auth.userAuth).getUser().fullName
+    });
+    logOut.on("click", ()=>{
+        (0, _auth.logout)();
+    });
+};
+
+},{"@xatom/core":"8w4K8","../auth":"du3Bh","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"lzBrm":[function(require,module,exports,__globalThis) {
 module.exports = require("e88e8e0a5fde1b48")(require("130359097654a689").getBundleURL('1Q55w') + "landing.380a3937.js").catch((err)=>{
     delete module.bundle.cache[module.id];
     throw err;
@@ -2040,20 +2053,12 @@ module.exports = require("eef9d1ed383e9155")(require("a34ac05127b66812").getBund
     throw err;
 }).then(()=>module.bundle.root('5KI2x'));
 
-},{"eef9d1ed383e9155":"3dDkg","a34ac05127b66812":"jkqJ4"}],"2AjHf":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "sidebar", ()=>sidebar);
-var _core = require("@xatom/core");
-var _auth = require("../auth");
-const sidebar = ()=>{
-    const sidebar = new (0, _core.WFComponent)(`[xa-type='sidebar']`);
-    const logOut = sidebar.getChildAsComponent(`[xa-type='logout']`);
-    logOut.on("click", ()=>{
-        (0, _auth.logout)();
-    });
-};
+},{"eef9d1ed383e9155":"3dDkg","a34ac05127b66812":"jkqJ4"}],"fe8FJ":[function(require,module,exports,__globalThis) {
+module.exports = require("6ec2dabfa07bf1e6")(require("795a6c01d2766b75").getBundleURL('1Q55w') + "chatbot.7825be57.js").catch((err)=>{
+    delete module.bundle.cache[module.id];
+    throw err;
+}).then(()=>module.bundle.root('3zBgH'));
 
-},{"@xatom/core":"8w4K8","../auth":"du3Bh","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}]},["jeTtx"], "jeTtx", "parcelRequire94c2")
+},{"6ec2dabfa07bf1e6":"3dDkg","795a6c01d2766b75":"jkqJ4"}]},["jeTtx"], "jeTtx", "parcelRequire94c2")
 
 //# sourceMappingURL=app.js.map

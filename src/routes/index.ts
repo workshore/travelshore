@@ -4,11 +4,15 @@ import { USER_PATHS } from "../config";
 import { sidebar } from "../modules/app/sidebar";
 
 export const app = () => {
-    new WFRoute(USER_PATHS.landing).execute(() => import("../modules/landing/index").then(({ landing }) => { landing() }));
+    new WFRoute(USER_PATHS.landing).withMiddleware(userMiddleware, "GUEST", "allow", {
+        onError: () => {
+            navigate(USER_PATHS.chatDemo);
+        },
+    }).execute(() => import("../modules/landing/index").then(({ landing }) => { landing() }));
 
     new WFRoute(USER_PATHS.authRoute).withMiddleware(userMiddleware, "GUEST", "allow", {
         onError: () => {
-            navigate(USER_PATHS.tripDesigner);
+            navigate(USER_PATHS.chatDemo);
         },
     }).execute(() => {
         new WFRoute(USER_PATHS.signIn).execute(() => {
@@ -38,14 +42,21 @@ export const app = () => {
             navigate(USER_PATHS.landing);
         }
     }).execute(() => {
-        if(userAuth.isLoggedIn()) {
+        if (userAuth.isLoggedIn()) {
             sidebar();
         }
         new WFRoute(USER_PATHS.tripDesigner).execute(() => {
             import("../modules/app/tripDesigner").
-            then(({ overview }) => {
-                overview();
-            })
+                then(({ overview }) => {
+                    overview();
+                })
+        });
+
+        new WFRoute(USER_PATHS.chatDemo).execute(() => {
+            import("../modules/app/chatbot").
+                then(({ chatbot}) => {
+                    chatbot();
+                })
         });
     });
 }

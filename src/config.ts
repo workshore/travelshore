@@ -11,11 +11,7 @@ export const USER_PATHS = {
     likes: "/app/likes", 
     myTrips: "/app/my-trips",
     accountSettings: "/app/settings",
+    chatDemo: '/app/chatbot-demo'
 }
 
 export const BACKEND_BASE_URL = 'https://travelshore-backend-proxy.vercel.app/api';
-
-interface LoginData {
-    email: string;
-    password: string;
-  }
