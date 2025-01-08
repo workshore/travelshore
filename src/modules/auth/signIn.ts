@@ -12,6 +12,8 @@ export const signIn = async () => {
     const submitButton = form.getChildAsComponent(`[xa-type="signin-btn"]`);
     const submitButtonWrapper = form.getChildAsComponent(`.form-button-wrapper`);
 
+
+    // accepted current change
     submitButton.setAttribute("value", "Continue");
     submitButton.removeAttribute("disabled");
     submitButton.removeCssClass("is-disabled");
