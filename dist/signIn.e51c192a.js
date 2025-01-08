@@ -146,61 +146,67 @@
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "signIn", ()=>signIn);
+var _core = require("@xatom/core");
+var _config = require("../../config");
 const signIn = async ()=>{
-    console.log("sign in executes");
-    const email = 'hari.kishore@workshore.io';
-    const password = 'Test1';
-    const response = await fetch('https://travelshore-backend-proxy.vercel.app/api/auth/login', {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            email,
-            password
-        })
+    const form = new (0, _core.WFFormComponent)(`[xa-type="signin-form"]`);
+    const submitButton = form.getChildAsComponent(`[xa-type="signin-btn"]`);
+    const submitButtonWrapper = form.getChildAsComponent(`.form-button-wrapper`);
+    submitButton.setAttribute("value", "Continue");
+    submitButton.removeAttribute("disabled");
+    submitButton.removeCssClass("is-disabled");
+    submitButtonWrapper.removeCssClass("is-disabled");
+    form.removeCssClass("pointer-events-off");
+    form.onFormSubmit((data)=>{
+        form.showForm();
+        form.disableForm();
+        form.updateSubmitButtonText("Please wait...");
+        if (data && data["email"] !== '' && data["password"] !== '') {
+            let email = data["email"], password = data['password'];
+            console.log(email, password);
+            fetch(`${(0, _config.BACKEND_BASE_URL)}/auth/login`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            }).then(async (data)=>{
+                if (!data.ok) {
+                    form.updateTextViaAttrVar({
+                        error: "Unable to login. Please try again."
+                    });
+                    form.showErrorState();
+                    form.updateSubmitButtonText("Login");
+                    return;
+                }
+                const res = await data.json();
+                console.log(res);
+                const userInfo = {
+                    "email": res.data.session.user.email,
+                    "firstName": res.data.user.user_metadata.firstName,
+                    "lastName": res.data.user.user_metadata.lastName,
+                    "token": res.data.session.access_token
+                };
+                localStorage.setItem('@bw-user-auth', JSON.stringify(userInfo));
+                form.updateSubmitButtonText("Redirecting...");
+                (0, _core.navigate)((0, _config.USER_PATHS).tripDesigner);
+            }).catch((error)=>{
+                form.updateTextViaAttrVar({
+                    error: error.message || "Unable to login. Please try again."
+                });
+                form.showErrorState();
+                form.updateSubmitButtonText("Login");
+                return;
+            }).finally(()=>{
+                form.enableForm();
+            });
+        }
     });
-// const form = new WFFormComponent<{
-//     email: string;
-//     password: string;
-// }>(`[xa-type="sign-in-form"]`);
-// form.onFormSubmit((data) => {
-//     form.showForm();
-//     form.disableForm();
-//     form.updateSubmitButtonText("Please wait...");
-//     supabase.auth.
-//     signInWithPassword({
-//         email: data.email,
-//         password: data.password
-//     }).
-//     then((data) => {
-//         if (data.error) {
-//             form.updateTextViaAttrVar({
-//                 error: data.error.message ||
-//                 "Unable to login. Please try again."
-//             });
-//             form.showErrorState();
-//             form.updateSubmitButtonText("Login");
-//             return;
-//         }
-//         form.updateSubmitButtonText("Redirecting...");
-//         navigate("/dashboard/overview");
-//     }).
-//     catch((error) => {
-//         form.updateTextViaAttrVar({
-//             error: error.message ||
-//             "Unable to login. Please try again."
-//         });
-//         form.showErrorState();
-//         form.updateSubmitButtonText("Login");
-//         return;
-//     }).
-//     finally(() => {
-//         form.enableForm();
-//     });
-// })
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}]},[], null, "parcelRequire94c2")
+},{"@xatom/core":"8w4K8","../../config":"bxoGo","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}]},[], null, "parcelRequire94c2")
 
 //# sourceMappingURL=signIn.e51c192a.js.map

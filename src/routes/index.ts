@@ -1,6 +1,7 @@
 import { navigate, WFRoute } from "@xatom/core";
-import { userMiddleware } from "../modules/auth";
+import { userAuth, userMiddleware } from "../modules/auth";
 import { USER_PATHS } from "../config";
+import { sidebar } from "../modules/app/sidebar";
 
 export const app = () => {
     new WFRoute(USER_PATHS.landing).execute(() => import("../modules/landing/index").then(({ landing }) => { landing() }));
@@ -37,6 +38,9 @@ export const app = () => {
             navigate(USER_PATHS.landing);
         }
     }).execute(() => {
+        if(userAuth.isLoggedIn()) {
+            sidebar();
+        }
         new WFRoute(USER_PATHS.tripDesigner).execute(() => {
             import("../modules/app/tripDesigner").
             then(({ overview }) => {

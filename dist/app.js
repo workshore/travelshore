@@ -144,16 +144,16 @@
   }
 })({"jeTtx":[function(require,module,exports,__globalThis) {
 var _core = require("@xatom/core");
-// import { initSupabase } from "./modules/supabase";
+var _supabase = require("./modules/supabase");
 var _routes = require("./routes");
 window.WFDebug = true;
 (0, _core.onReady)(()=>{
-    (0, _routes.app)();
-// initSupabase(() => {
-// })
+    (0, _supabase.initSupabase)(()=>{
+        (0, _routes.app)();
+    });
 });
 
-},{"@xatom/core":"8w4K8","./routes":"fnEL6"}],"8w4K8":[function(require,module,exports,__globalThis) {
+},{"@xatom/core":"8w4K8","./modules/supabase":"eAmGG","./routes":"fnEL6"}],"8w4K8":[function(require,module,exports,__globalThis) {
 var $iEn1Z$uuid = require("116fc168c31b637d");
 function $parcel$exportWildcard(dest, source) {
     Object.keys(source).forEach(function(key) {
@@ -1755,13 +1755,125 @@ function version(uuid) {
 }
 exports.default = version;
 
-},{"./validate.js":"dfZI5","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"fnEL6":[function(require,module,exports,__globalThis) {
+},{"./validate.js":"dfZI5","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"eAmGG":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "initSupabase", ()=>initSupabase);
+var _auth = require("../auth");
+var _config = require("../../config");
+const options = {
+    db: {
+        schema: "public"
+    },
+    auth: {
+        autoRefreshToken: true,
+        persistSession: true,
+        detectSessionInUrl: true
+    }
+};
+const initSupabase = (cb)=>{
+    const localSessionInfo = JSON.parse(localStorage.getItem("@bw-user-auth"));
+    if (localSessionInfo) fetch(`${(0, _config.BACKEND_BASE_URL)}/auth/getSession`, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localSessionInfo.token}`
+        }
+    }).then(async (res)=>{
+        if (!res.ok) throw new Error("Invalid session");
+        if (res.ok) {
+            const data = await res.json();
+            console.log("User session active", data);
+            (0, _auth.setUser)(`${data.user.user_metadata.firstName} ${data.user.user_metadata.lastName}`, data.user.email);
+        }
+    }).catch((err)=>{
+        (0, _auth.logout)();
+    }).finally(cb);
+    else cb();
+// supabase.auth.getSession().
+// then((data) => {
+//     if (!data.error && data.data && data.data.session) {
+//         setUser(
+//             data.data.session.user.user_metadata.fullName,
+//             data.data.session.user.email
+//         )
+//     }
+// }).catch((err) => {
+//     console.log(err);
+// }).finally(cb);
+// supabase.auth.getSession().
+// then((data) => { console.log(data); }).
+// catch((err) => { console.log(err); })
+} // export default supabase;
+;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU","../../config":"bxoGo","../auth":"du3Bh"}],"bxoGo":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "USER_PATHS", ()=>USER_PATHS);
+parcelHelpers.export(exports, "BACKEND_BASE_URL", ()=>BACKEND_BASE_URL);
+const USER_PATHS = {
+    landing: "",
+    authRoute: "/auth/(.*)",
+    signIn: "/auth/sign-in",
+    signUp: "/auth/sign-up",
+    verification: "/auth/verify",
+    forgotPassword: "/auth/forgot-password",
+    resetPassword: "/auth/reset-password",
+    appRoute: "/app/(.*)",
+    tripDesigner: "/app/trip",
+    likes: "/app/likes",
+    myTrips: "/app/my-trips",
+    accountSettings: "/app/settings"
+};
+const BACKEND_BASE_URL = 'https://travelshore-backend-proxy.vercel.app/api';
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"du3Bh":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "userAuth", ()=>userAuth);
+parcelHelpers.export(exports, "setUser", ()=>setUser);
+parcelHelpers.export(exports, "logout", ()=>logout);
+parcelHelpers.export(exports, "userMiddleware", ()=>userMiddleware);
+var _core = require("@xatom/core");
+var _config = require("../../config");
+const userAuth = new (0, _core.WFAuth)();
+/**
+ * Set default user role
+ */ userAuth.setRole("GUEST");
+const setUser = (fullName, email)=>{
+    userAuth.setUser({
+        fullName,
+        email
+    });
+    userAuth.setRole("USER");
+};
+const logout = ()=>{
+    const localSessionInfo = JSON.parse(localStorage.getItem("@bw-user-auth"));
+    fetch(`${(0, _config.BACKEND_BASE_URL)}/auth/signout`, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localSessionInfo.token}`
+        }
+    }).then(async (res)=>{
+        localStorage.removeItem("@bw-user-auth");
+        userAuth.logout();
+        (0, _core.navigate)((0, _config.USER_PATHS).signIn);
+    }).catch((err)=>{
+        console.log("Error while logging out", err.message);
+    });
+};
+const userMiddleware = new (0, _core.WFAuthMiddleware)(userAuth);
+
+},{"@xatom/core":"8w4K8","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU","../../config":"bxoGo"}],"fnEL6":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "app", ()=>app);
 var _core = require("@xatom/core");
 var _auth = require("../modules/auth");
 var _config = require("../config");
+var _sidebar = require("../modules/app/sidebar");
 const app = ()=>{
     new (0, _core.WFRoute)((0, _config.USER_PATHS).landing).execute(()=>require("bbc6c1c285582157").then(({ landing })=>{
             landing();
@@ -1792,6 +1904,7 @@ const app = ()=>{
             (0, _core.navigate)((0, _config.USER_PATHS).landing);
         }
     }).execute(()=>{
+        if ((0, _auth.userAuth).isLoggedIn()) (0, _sidebar.sidebar)();
         new (0, _core.WFRoute)((0, _config.USER_PATHS).tripDesigner).execute(()=>{
             require("9e60bf79a1b8d5a0").then(({ overview })=>{
                 overview();
@@ -1800,89 +1913,7 @@ const app = ()=>{
     });
 };
 
-},{"@xatom/core":"8w4K8","../modules/auth":"du3Bh","../config":"bxoGo","bbc6c1c285582157":"lzBrm","9b9ca3d1f354f9":"cON7G","8dff4a7369311fc":"45rSL","d2ff0736bf12c1b5":"h3aRF","9e60bf79a1b8d5a0":"g8wOg","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"du3Bh":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "userAuth", ()=>userAuth);
-parcelHelpers.export(exports, "setUser", ()=>setUser);
-parcelHelpers.export(exports, "logout", ()=>logout);
-parcelHelpers.export(exports, "userMiddleware", ()=>userMiddleware);
-var _core = require("@xatom/core");
-var _supabase = require("../supabase");
-var _supabaseDefault = parcelHelpers.interopDefault(_supabase);
-const userAuth = new (0, _core.WFAuth)();
-/**
- * Set default user role
- */ userAuth.setRole("GUEST");
-const setUser = (fullName, email)=>{
-    userAuth.setUser({
-        fullName,
-        email
-    });
-    userAuth.setRole("USER");
-};
-const logout = ()=>{
-    (0, _supabaseDefault.default).auth.signOut().then(()=>{
-        userAuth.logout();
-        (0, _core.navigate)("/sign-in");
-    });
-};
-const userMiddleware = new (0, _core.WFAuthMiddleware)(userAuth);
-
-},{"@xatom/core":"8w4K8","../supabase":"eAmGG","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"eAmGG":[function(require,module,exports,__globalThis) {
-// import { createClient, SupabaseClientOptions } from "@supabase/supabase-js";
-// import { setUser } from "../auth";
-// const options: SupabaseClientOptions<string> = {
-//     db: {
-//         schema: "public",
-//     },
-//     auth: {
-//         autoRefreshToken: true,
-//         persistSession: true,
-//         detectSessionInUrl: true
-//     }
-// }
-// const supabaseURL = process.env.SUPABASE_URL;
-// const supabaseKey = process.env.SUPABASE_KEY;
-// const supabase = createClient(supabaseURL, supabaseKey, options);
-// export const initSupabase = (cb: () => void) => {
-//     supabase.auth.getSession().
-//     then((data) => {
-//         if (!data.error && data.data && data.data.session) {
-//             setUser(
-//                 data.data.session.user.user_metadata.fullName,
-//                 data.data.session.user.email
-//             )
-//         }
-//     }).catch((err) => {
-//         console.log(err);
-//     }).finally(cb);
-//     // supabase.auth.getSession().
-//     // then((data) => { console.log(data); }).
-//     // catch((err) => { console.log(err); })
-// }
-// export default supabase;
-
-},{}],"bxoGo":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "USER_PATHS", ()=>USER_PATHS);
-const USER_PATHS = {
-    landing: "",
-    authRoute: "/auth/(.*)",
-    signIn: "/auth/sign-in",
-    signUp: "/auth/sign-up",
-    verification: "/auth/verify",
-    forgotPassword: "/auth/forgot-password",
-    resetPassword: "/auth/reset-password",
-    appRoute: "/app/(.*)",
-    tripDesigner: "/app/trip",
-    likes: "/app/likes",
-    myTrips: "/app/my-trips",
-    accountSettings: "/app/settings"
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"lzBrm":[function(require,module,exports,__globalThis) {
+},{"@xatom/core":"8w4K8","../modules/auth":"du3Bh","../config":"bxoGo","bbc6c1c285582157":"lzBrm","9b9ca3d1f354f9":"cON7G","8dff4a7369311fc":"45rSL","d2ff0736bf12c1b5":"h3aRF","9e60bf79a1b8d5a0":"g8wOg","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU","../modules/app/sidebar":"2AjHf"}],"lzBrm":[function(require,module,exports,__globalThis) {
 module.exports = require("e88e8e0a5fde1b48")(require("130359097654a689").getBundleURL('1Q55w') + "landing.380a3937.js").catch((err)=>{
     delete module.bundle.cache[module.id];
     throw err;
@@ -2009,6 +2040,20 @@ module.exports = require("eef9d1ed383e9155")(require("a34ac05127b66812").getBund
     throw err;
 }).then(()=>module.bundle.root('5KI2x'));
 
-},{"eef9d1ed383e9155":"3dDkg","a34ac05127b66812":"jkqJ4"}]},["jeTtx"], "jeTtx", "parcelRequire94c2")
+},{"eef9d1ed383e9155":"3dDkg","a34ac05127b66812":"jkqJ4"}],"2AjHf":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "sidebar", ()=>sidebar);
+var _core = require("@xatom/core");
+var _auth = require("../auth");
+const sidebar = ()=>{
+    const sidebar = new (0, _core.WFComponent)(`[xa-type='sidebar']`);
+    const logOut = sidebar.getChildAsComponent(`[xa-type='logout']`);
+    logOut.on("click", ()=>{
+        (0, _auth.logout)();
+    });
+};
+
+},{"@xatom/core":"8w4K8","../auth":"du3Bh","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}]},["jeTtx"], "jeTtx", "parcelRequire94c2")
 
 //# sourceMappingURL=app.js.map

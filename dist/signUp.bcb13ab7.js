@@ -146,40 +146,47 @@
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "signUp", ()=>signUp);
-var _core = require("@xatom/core");
-var _supabase = require("../supabase");
-var _supabaseDefault = parcelHelpers.interopDefault(_supabase);
 const signUp = ()=>{
-    const form = new (0, _core.WFFormComponent)(`[xa-type="sign-up-form"]`);
-    form.onFormSubmit((data)=>{
-        form.showForm();
-        form.disableForm();
-        form.updateSubmitButtonText("Please wait...");
-        (0, _supabaseDefault.default).auth.signUp({
-            email: data.email,
-            password: data.password
-        }).then((data)=>{
-            if (data.error) {
-                form.updateTextViaAttrVar({
-                    error: data.error.message || "Unable to create account please try again"
-                });
-                form.showErrorState();
-                form.updateSubmitButtonText("Create Account");
-                return;
-            }
-            form.showSuccessState();
-        }).catch((err)=>{
-            form.updateTextViaAttrVar({
-                error: err.message || "Unable to create account please try again"
-            });
-            form.showErrorState();
-            form.updateSubmitButtonText("Create Account");
-        }).finally(()=>{
-            form.enableForm();
-        });
-    });
+// const form = new WFFormComponent<{
+//     email: string;
+//     password: string;
+// }>(`[xa-type="sign-up-form"]`);
+// form.onFormSubmit((data) => {
+//     form.showForm();
+//     form.disableForm();
+//     form.updateSubmitButtonText("Please wait...");
+//     supabase.auth.signUp({
+//         email: data.email,
+//         password: data.password
+//     })
+//     .then((data) => {
+//         if (data.error) {
+//             form.updateTextViaAttrVar({
+//                 error:
+//                   data.error.message ||
+//                   "Unable to create account please try again",
+//               });
+//               form.showErrorState();
+//               form.updateSubmitButtonText("Create Account");
+//               return;
+//         }
+//         form.showSuccessState();
+//     })
+//     .catch((err) => {
+//         form.updateTextViaAttrVar({
+//             error:
+//               err.message ||
+//               "Unable to create account please try again",
+//           });
+//           form.showErrorState();
+//           form.updateSubmitButtonText("Create Account");
+//     })
+//     .finally(() => {
+//         form.enableForm();
+//     })
+// })
 };
 
-},{"@xatom/core":"8w4K8","../supabase":"eAmGG","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}]},[], null, "parcelRequire94c2")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}]},[], null, "parcelRequire94c2")
 
 //# sourceMappingURL=signUp.bcb13ab7.js.map

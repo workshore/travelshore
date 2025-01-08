@@ -1,5 +1,7 @@
 import { navigate, WFAuth, WFAuthMiddleware } from "@xatom/core";
-import supabase from "../supabase";
+import { BACKEND_BASE_URL, USER_PATHS } from "../../config";
+import { app } from "../../routes";
+// import supabase from "../supabase";
 
 /**
  * Initialise WFAuth Instance with user data, roles & config
@@ -37,10 +39,20 @@ export const setUser = (
  * Logout method to logout and navigate to login page.
  */
 export const logout = () => {
-    supabase.auth.signOut().then(() => {
+    const localSessionInfo = JSON.parse(localStorage.getItem("@bw-user-auth"));
+    fetch(`${BACKEND_BASE_URL}/auth/signout`, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localSessionInfo.token}`
+        },
+    }).then(async (res) => {
+        localStorage.removeItem("@bw-user-auth");
         userAuth.logout();
-        navigate("/sign-in");
-    })
+        navigate(USER_PATHS.signIn);
+    }).catch((err) => {
+        console.log("Error while logging out", err.message);
+    });
 }
 
 

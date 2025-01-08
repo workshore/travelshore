@@ -1014,6 +1014,14 @@
   dependencies:
     "@types/node" "*"
 
+"@xatom/axios@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@xatom/axios/-/axios-1.0.4.tgz#4f9b5a2f5de858673b9eb5b75477683c35d4840f"
+  integrity sha512-99oBnU15LSRTDEHw7zIy9m7sG/ordfaHEAAaB/Y6CLcmt6XlC2l9wU8ay4OsG/+DJ1TKtLc06gd6eMEDMKa10Q==
+  dependencies:
+    axios "^1.5.1"
+    uuid "^9.0.0"
+
 "@xatom/build-tool@1.0.5":
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@xatom/build-tool/-/build-tool-1.0.5.tgz#b3aea9c4459cb8047e5b628fb05a72feb81a8c47"
@@ -1076,7 +1084,7 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-axios@^1.4.0:
+axios@^1.4.0, axios@^1.5.1:
   version "1.7.9"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.9.tgz#d7d071380c132a24accda1b2cfc1535b79ec650a"
   integrity sha512-LhLcE7Hbiryz8oMDdDptSrWowmB4Bl6RCt6sIJKpRB4XtVf0iEgewX3au/pJqm+Py1kCASkb/FFKjxQaLtxJvw==
@@ -2033,6 +2041,11 @@ posthtml@^0.16.4, posthtml@^0.16.5:
   dependencies:
     posthtml-parser "^0.11.0"
     posthtml-render "^3.0.0"
+
+process@^0.11.10:
+  version "0.11.10"
+  resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
+  integrity sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==
 
 proxy-addr@~2.0.7:
   version "2.0.7"

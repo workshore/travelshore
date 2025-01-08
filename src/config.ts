@@ -12,3 +12,10 @@ export const USER_PATHS = {
     myTrips: "/app/my-trips",
     accountSettings: "/app/settings",
 }
+
+export const BACKEND_BASE_URL = 'https://travelshore-backend-proxy.vercel.app/api';
+
+interface LoginData {
+    email: string;
+    password: string;
+  }
