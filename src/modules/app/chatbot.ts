@@ -296,8 +296,6 @@ const downloadLatestItinerary = (itineraries: Array<any>) => {
     // Set font size
     doc.setFontSize(12);
 
-    console.log(latestItinerary.itineraryBody);
-
     // Replace this string with your actual content
     const content = latestItinerary.itineraryBody.replace(/\*\*(.*?)\*\*/g, '$1').replace(/\*(.*?)\*/g, '$1');
 
