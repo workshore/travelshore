@@ -14,13 +14,13 @@ export const USER_PATHS = {
     chatDemo: '/app/chatbot-demo'
 }
 
-// export const BACKEND_BASE_URL = 'https://travelshore-backend-proxy.vercel.app/api';
+export const BACKEND_BASE_URL = 'https://travelshore-backend-proxy.vercel.app/api';
 
-// export const BACKEND_PROTECTED_BASE_URL = 'https://travelshore-backend-proxy.vercel.app/api/protected';
+export const BACKEND_PROTECTED_BASE_URL = 'https://travelshore-backend-proxy.vercel.app/api/protected';
 
-export const BACKEND_BASE_URL = 'http://localhost:3000/api';
+// export const BACKEND_BASE_URL = 'http://localhost:3000/api';
 
-export const BACKEND_PROTECTED_BASE_URL = 'http://localhost:3000/api/protected';
+// export const BACKEND_PROTECTED_BASE_URL = 'http://localhost:3000/api/protected';
 
 export const REQ_HEADERS = {
     'Content-Type': 'application/json'
