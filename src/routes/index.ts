@@ -52,10 +52,10 @@ export const app = () => {
                 })
         });
 
-        new WFRoute(USER_PATHS.chatDemo).execute(() => {
+        new WFRoute(USER_PATHS.chatDemo).execute((param: any) => {
             import("../modules/app/chatbot").
                 then(({ chatbot}) => {
-                    chatbot();
+                    chatbot(param);
                 })
         });
     });

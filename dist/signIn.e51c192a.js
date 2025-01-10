@@ -193,7 +193,7 @@ const signIn = async ()=>{
                 };
                 localStorage.setItem('@bw-user-auth', JSON.stringify(userInfo));
                 form.updateSubmitButtonText("Redirecting...");
-                (0, _core.navigate)((0, _config.USER_PATHS).chatDemo);
+                (0, _core.navigate)((0, _config.USER_PATHS).tripDesigner);
             }).catch((error)=>{
                 form.updateTextViaAttrVar({
                     error: error.message || "Unable to login. Please try again."

@@ -146,10 +146,33 @@
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "overview", ()=>overview);
+parcelHelpers.export(exports, "startNewChat", ()=>startNewChat);
+var _core = require("@xatom/core");
+var _config = require("../../config");
 const overview = ()=>{
     console.log("overview function executing");
+    const startChatBtn = new (0, _core.WFComponent)(`[xa-type="start-chat"]`);
+    startChatBtn.on("click", ()=>{
+        startChatBtn.updateTextViaAttrVar({
+            text: "Please wait..."
+        });
+        startNewChat();
+    });
+};
+const startNewChat = async ()=>{
+    try {
+        const thread = await fetch(`${(0, _config.BACKEND_PROTECTED_BASE_URL)}/assistant/createThread`, {
+            method: 'POST',
+            headers: (0, _config.REQ_HEADERS)
+        });
+        if (!thread.ok) throw new Error("Invalid session");
+        const res = await thread.json();
+        if (thread.ok) (0, _core.navigate)(`${(0, _config.USER_PATHS).chatDemo}?id=${res.emptyThread.id}`);
+    } catch (error) {
+        console.log("There was an issue creating the thread...", error);
+    }
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}]},[], null, "parcelRequire94c2")
+},{"@xatom/core":"8w4K8","../../config":"bxoGo","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}]},[], null, "parcelRequire94c2")
 
 //# sourceMappingURL=tripDesigner.bd023ed3.js.map

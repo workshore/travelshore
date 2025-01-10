@@ -1835,6 +1835,9 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "USER_PATHS", ()=>USER_PATHS);
 parcelHelpers.export(exports, "BACKEND_BASE_URL", ()=>BACKEND_BASE_URL);
+parcelHelpers.export(exports, "BACKEND_PROTECTED_BASE_URL", ()=>BACKEND_PROTECTED_BASE_URL);
+parcelHelpers.export(exports, "REQ_HEADERS", ()=>REQ_HEADERS);
+parcelHelpers.export(exports, "createReaHeaders", ()=>createReaHeaders);
 const USER_PATHS = {
     landing: "",
     authRoute: "/auth/(.*)",
@@ -1850,7 +1853,18 @@ const USER_PATHS = {
     accountSettings: "/app/settings",
     chatDemo: '/app/chatbot-demo'
 };
-const BACKEND_BASE_URL = 'https://travelshore-backend-proxy.vercel.app/api';
+const BACKEND_BASE_URL = 'http://localhost:3000/api';
+const BACKEND_PROTECTED_BASE_URL = 'http://localhost:3000/api/protected';
+const REQ_HEADERS = {
+    'Content-Type': 'application/json'
+};
+const createReaHeaders = (token = null)=>{
+    if (token) return {
+        ...REQ_HEADERS,
+        'Authorization': `Bearer ${token}`
+    };
+    return REQ_HEADERS;
+};
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"fnEL6":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -1900,15 +1914,15 @@ const app = ()=>{
                 overview();
             });
         });
-        new (0, _core.WFRoute)((0, _config.USER_PATHS).chatDemo).execute(()=>{
+        new (0, _core.WFRoute)((0, _config.USER_PATHS).chatDemo).execute((param)=>{
             require("3ec28be65cebfd6d").then(({ chatbot })=>{
-                chatbot();
+                chatbot(param);
             });
         });
     });
 };
 
-},{"@xatom/core":"8w4K8","../modules/auth":"du3Bh","../config":"bxoGo","../modules/app/sidebar":"2AjHf","bbc6c1c285582157":"lzBrm","9b9ca3d1f354f9":"cON7G","8dff4a7369311fc":"45rSL","d2ff0736bf12c1b5":"h3aRF","9e60bf79a1b8d5a0":"g8wOg","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU","3ec28be65cebfd6d":"fe8FJ"}],"2AjHf":[function(require,module,exports,__globalThis) {
+},{"@xatom/core":"8w4K8","../modules/auth":"du3Bh","../config":"bxoGo","../modules/app/sidebar":"2AjHf","bbc6c1c285582157":"lzBrm","9b9ca3d1f354f9":"cON7G","8dff4a7369311fc":"45rSL","d2ff0736bf12c1b5":"h3aRF","9e60bf79a1b8d5a0":"g8wOg","3ec28be65cebfd6d":"2abRF","@parcel/transformer-js/src/esmodule-helpers.js":"5oERU"}],"2AjHf":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "sidebar", ()=>sidebar);
@@ -2053,12 +2067,18 @@ module.exports = require("eef9d1ed383e9155")(require("a34ac05127b66812").getBund
     throw err;
 }).then(()=>module.bundle.root('5KI2x'));
 
-},{"eef9d1ed383e9155":"3dDkg","a34ac05127b66812":"jkqJ4"}],"fe8FJ":[function(require,module,exports,__globalThis) {
-module.exports = require("6ec2dabfa07bf1e6")(require("795a6c01d2766b75").getBundleURL('1Q55w') + "chatbot.7825be57.js").catch((err)=>{
-    delete module.bundle.cache[module.id];
-    throw err;
-}).then(()=>module.bundle.root('3zBgH'));
+},{"eef9d1ed383e9155":"3dDkg","a34ac05127b66812":"jkqJ4"}],"2abRF":[function(require,module,exports,__globalThis) {
+module.exports = Promise.all([
+    require("aec7ef9ab2d0c8c4")(require("fafc775e2c8611d9").getBundleURL('1Q55w') + "tripDesigner.bd023ed3.js").catch((err)=>{
+        delete module.bundle.cache[module.id];
+        throw err;
+    }),
+    require("aec7ef9ab2d0c8c4")(require("fafc775e2c8611d9").getBundleURL('1Q55w') + "chatbot.7825be57.js").catch((err)=>{
+        delete module.bundle.cache[module.id];
+        throw err;
+    })
+]).then(()=>module.bundle.root('3zBgH'));
 
-},{"6ec2dabfa07bf1e6":"3dDkg","795a6c01d2766b75":"jkqJ4"}]},["jeTtx"], "jeTtx", "parcelRequire94c2")
+},{"aec7ef9ab2d0c8c4":"3dDkg","fafc775e2c8611d9":"jkqJ4"}]},["jeTtx"], "jeTtx", "parcelRequire94c2")
 
 //# sourceMappingURL=app.js.map
