@@ -1780,13 +1780,17 @@ const initSupabase = (cb)=>{
             'Authorization': `Bearer ${localSessionInfo.token}`
         }
     }).then(async (res)=>{
-        if (!res.ok) throw new Error("Invalid session");
+        if (!res.ok) {
+            debugger;
+            throw new Error("Invalid session");
+        }
         if (res.ok) {
             const data = await res.json();
             console.log("User session active", data);
             (0, _auth.setUser)(`${data.user.user_metadata.firstName} ${data.user.user_metadata.lastName}`, data.user.email);
         }
     }).catch((err)=>{
+        debugger;
         (0, _auth.logout)();
     }).finally(cb);
     else cb();

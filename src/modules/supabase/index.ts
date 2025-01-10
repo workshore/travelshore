@@ -25,7 +25,9 @@ export const initSupabase = (cb: () => void) => {
                 'Authorization': `Bearer ${localSessionInfo.token}`
             },
         }).then(async (res) => {
-            if (!res.ok) { throw new Error("Invalid session") }
+            if (!res.ok) { 
+                debugger;
+                throw new Error("Invalid session") }
             if (res.ok) {
                 const data = await res.json();
                 console.log("User session active", data);
@@ -35,6 +37,7 @@ export const initSupabase = (cb: () => void) => {
                 );
             }
         }).catch((err) => {
+            debugger;
             logout();
         }).finally(cb);
     } else {
