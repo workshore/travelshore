@@ -376,7 +376,6 @@ const extractItineraryDetails = (response)=>{
     const doc = new (0, _jspdfDefault.default)();
     // Set font size
     doc.setFontSize(12);
-    console.log(latestItinerary.itineraryBody);
     // Replace this string with your actual content
     const content = latestItinerary.itineraryBody.replace(/\*\*(.*?)\*\*/g, '$1').replace(/\*(.*?)\*/g, '$1');
     doc.text(content, 10, 10, {

@@ -1,5 +1,5 @@
 import { createClient, SupabaseClientOptions } from "@supabase/supabase-js";
-import { logout, setUser } from "../auth";
+import { forceLogout, logout, setUser } from "../auth";
 import { BACKEND_BASE_URL, USER_PATHS } from "../../config";
 import { navigate } from "@xatom/core";
 
@@ -16,7 +16,6 @@ const options: SupabaseClientOptions<string> = {
 
 export const initSupabase = (cb: () => void) => {
     const localSessionInfo = JSON.parse(localStorage.getItem("@bw-user-auth"));
-
     if (localSessionInfo) {
         fetch(`${BACKEND_BASE_URL}/auth/getSession`, {
             method: "GET",
@@ -25,8 +24,7 @@ export const initSupabase = (cb: () => void) => {
                 'Authorization': `Bearer ${localSessionInfo.token}`
             },
         }).then(async (res) => {
-            if (!res.ok) { 
-                debugger;
+            if (!res.ok) {
                 throw new Error("Invalid session") }
             if (res.ok) {
                 const data = await res.json();
@@ -37,10 +35,13 @@ export const initSupabase = (cb: () => void) => {
                 );
             }
         }).catch((err) => {
-            debugger;
-            logout();
+            forceLogout();
         }).finally(cb);
     } else {
-        cb();
+        if (window.location.pathname !== `${USER_PATHS.signIn}`) {
+            forceLogout();
+        } else {
+            cb();
+        }
     }
 }

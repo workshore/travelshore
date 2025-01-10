@@ -6,13 +6,13 @@ import { sidebar } from "../modules/app/sidebar";
 export const app = () => {
     new WFRoute(USER_PATHS.landing).withMiddleware(userMiddleware, "GUEST", "allow", {
         onError: () => {
-            navigate(USER_PATHS.chatDemo);
+            navigate(USER_PATHS.tripDesigner);
         },
     }).execute(() => import("../modules/landing/index").then(({ landing }) => { landing() }));
 
     new WFRoute(USER_PATHS.authRoute).withMiddleware(userMiddleware, "GUEST", "allow", {
         onError: () => {
-            navigate(USER_PATHS.chatDemo);
+            navigate(USER_PATHS.tripDesigner);
         },
     }).execute(() => {
         new WFRoute(USER_PATHS.signIn).execute(() => {
