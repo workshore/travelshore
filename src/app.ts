@@ -5,7 +5,7 @@ import { app } from "./routes";
 (window as any).WFDebug = true;
 
 onReady(() => {
-    initSupabase(() => {
-        app();
-    })
+    // initSupabase(() => {
+    // })
+    app();
 });
