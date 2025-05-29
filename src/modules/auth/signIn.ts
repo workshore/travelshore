@@ -1,6 +1,6 @@
 import { navigate, WFFormComponent } from "@xatom/core";
 import axios from 'axios';
-import { BACKEND_BASE_URL, USER_PATHS } from "../../config";
+import { BACKEND_BASE_URL, REQ_HEADERS, setRefreshToken, USER_PATHS } from "../../config";
 // import supabase from "../supabase";
 
 export const signIn = async () => {
@@ -30,9 +30,7 @@ export const signIn = async () => {
             console.log(email, password);
             fetch(`${BACKEND_BASE_URL}/auth/login`, {
                 method: "POST",
-                headers: {
-                    'Content-Type': 'application/json', // This tells the server it's JSON
-                },
+                headers: REQ_HEADERS, 
                 body: JSON.stringify({ email: email, password: password }),
             }).then(async (data) => {
                 if (!data.ok) {
@@ -53,6 +51,7 @@ export const signIn = async () => {
                     "token": res.data.session.access_token
                 }
                 localStorage.setItem('@bw-user-auth', JSON.stringify(userInfo));
+                // setRefreshToken(res.data.session.refresh_token);
                 form.updateSubmitButtonText("Redirecting...");
                 navigate(USER_PATHS.tripDesigner);
             }).

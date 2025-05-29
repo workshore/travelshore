@@ -167,9 +167,7 @@ const signIn = async ()=>{
             console.log(email, password);
             fetch(`${(0, _config.BACKEND_BASE_URL)}/auth/login`, {
                 method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: (0, _config.REQ_HEADERS),
                 body: JSON.stringify({
                     email: email,
                     password: password
@@ -192,6 +190,7 @@ const signIn = async ()=>{
                     "token": res.data.session.access_token
                 };
                 localStorage.setItem('@bw-user-auth', JSON.stringify(userInfo));
+                // setRefreshToken(res.data.session.refresh_token);
                 form.updateSubmitButtonText("Redirecting...");
                 (0, _core.navigate)((0, _config.USER_PATHS).tripDesigner);
             }).catch((error)=>{

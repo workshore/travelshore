@@ -1,5 +1,5 @@
 import { navigate, WFAuth, WFAuthMiddleware } from "@xatom/core";
-import { BACKEND_BASE_URL, USER_PATHS } from "../../config";
+import { BACKEND_BASE_URL, createReqHeaders, USER_PATHS } from "../../config";
 import { app } from "../../routes";
 // import supabase from "../supabase";
 
@@ -40,12 +40,10 @@ export const setUser = (
  */
 export const logout = () => {
     const localSessionInfo = JSON.parse(localStorage.getItem("@bw-user-auth"));
+
     fetch(`${BACKEND_BASE_URL}/auth/signout`, {
         method: "GET",
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localSessionInfo.token}`
-        },
+        headers: createReqHeaders(localSessionInfo.token),
     }).then(async (res) => {
         localStorage.removeItem("@bw-user-auth");
         userAuth.logout();
