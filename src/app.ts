@@ -7,5 +7,6 @@ import { app } from "./routes";
 onReady(() => {
     // initSupabase(() => {
     // })
+    console.log("script working")
     app();
 });
