@@ -37,7 +37,7 @@ export const app = () => {
         });
     });
 
-    new WFRoute(USER_PATHS.appRoute).withMiddleware(userMiddleware, "USER", "allow", {
+    new WFRoute(USER_PATHS.appRoute).withMiddleware(userMiddleware, "GUEST", "allow", {
         onError: () => {
             navigate(USER_PATHS.landing);
         }
