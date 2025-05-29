@@ -37,11 +37,7 @@ export const app = () => {
         });
     });
 
-    new WFRoute(USER_PATHS.appRoute).withMiddleware(userMiddleware, "USER", "allow", {
-        onError: () => {
-            navigate(USER_PATHS.landing);
-        }
-    }).execute(() => {
+    new WFRoute(USER_PATHS.appRoute).execute(() => {
         if (userAuth.isLoggedIn()) {
             sidebar();
         }
