@@ -57,10 +57,10 @@ export const logout = () => {
  * Force logout when session expires.
  */
 export const forceLogout = () => {
-    console.log(USER_PATHS.signIn);
-        localStorage.removeItem("@bw-user-auth");
-        userAuth.logout();
-        navigate(USER_PATHS.signIn);
+    // console.log(USER_PATHS.signIn);
+    //     localStorage.removeItem("@bw-user-auth");
+    //     userAuth.logout();
+    //     navigate(USER_PATHS.signIn);
 }
 
 
