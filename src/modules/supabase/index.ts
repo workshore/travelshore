@@ -37,9 +37,9 @@ export const initSupabase = (cb: () => void) => {
         }).finally(cb);
     } else {
         if (window.location.pathname !== `${USER_PATHS.signIn}`) {
-            // forceLogout();
+            forceLogout();
         } else {
-            // cb();
+            cb();
         }
     }
 }
