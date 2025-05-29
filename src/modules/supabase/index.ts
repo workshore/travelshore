@@ -21,17 +21,17 @@ export const initSupabase = (cb: () => void) => {
             method: "GET",
             headers: createReqHeaders(localSessionInfo.token),
         }).then(async (res) => {
-            if (!res.ok || res.status === 401) {
-                throw new Error("Invalid session. Token expired.")
-            }
-            if (res.ok) {
+            // if (!res.ok || res.status === 401) {
+            //     throw new Error("Invalid session. Token expired.")
+            // }
+            // if (res.ok) {
                 const data = await res.json();
                 console.log("User session active", data);
                 setUser(
                     `${data.user.user_metadata.firstName} ${data.user.user_metadata.lastName}`,
                     data.user.email
                 );
-            }
+            // }
         }).catch(async (err) => {
             // forceLogout();
         }).finally(cb);
